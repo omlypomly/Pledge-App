@@ -8,11 +8,12 @@ import type { CreateChallengeInput } from "@/types";
 import { addMonths } from "date-fns";
 
 export async function createChallenge(input: CreateChallengeInput) {
-  const { userId: clerkId } = await auth();
-  if (!clerkId) throw new Error("Unauthorized");
+  try {
+    const { userId: clerkId } = await auth();
+    if (!clerkId) return { success: false as const, error: "Unauthorized" };
 
-  const user = await prisma.user.findUnique({ where: { clerkId } });
-  if (!user) throw new Error("User not found");
+    const user = await prisma.user.findUnique({ where: { clerkId } });
+    if (!user) return { success: false as const, error: "User not found" };
 
   const inviteCode = generateInviteCode();
   const inviteLink = generateInviteLink(inviteCode);
@@ -55,8 +56,12 @@ export async function createChallenge(input: CreateChallengeInput) {
     },
   });
 
-  revalidatePath("/dashboard");
-  return { success: true, challenge };
+    revalidatePath("/dashboard");
+    return { success: true as const, challenge };
+  } catch (error) {
+    console.error("createChallenge error:", error);
+    return { success: false as const, error: "Failed to create challenge" };
+  }
 }
 
 export async function joinChallenge(inviteCode: string) {
