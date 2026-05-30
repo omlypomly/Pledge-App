@@ -63,8 +63,8 @@ const BADGE_CONFIG = {
     label: "Streak Master",
     desc: "Reached a 30-day streak",
     color: "text-[#91C687]",
-    bg: "bg-violet-400/10",
-    border: "border-violet-400/30",
+    bg: "bg-[#91C687]/10",
+    border: "border-[#91C687]/30",
   },
   EARLY_ADOPTER: {
     icon: Rocket,

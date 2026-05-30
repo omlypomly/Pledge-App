@@ -118,7 +118,7 @@ function getLevelColor(level: number): string {
   if (level <= 2) return "from-slate-400 to-slate-300";
   if (level <= 4) return "from-green-400 to-emerald-300";
   if (level <= 6) return "from-blue-400 to-cyan-300";
-  if (level <= 8) return "from-violet-400 to-purple-300";
+  if (level <= 8) return "from-[#91C687] to-[#AFC2D5]";
   return "from-amber-400 to-orange-300";
 }
 
@@ -126,7 +126,7 @@ function getLevelBarColor(level: number): string {
   if (level <= 2) return "from-slate-500 to-slate-400";
   if (level <= 4) return "from-green-500 to-emerald-400";
   if (level <= 6) return "from-blue-500 to-cyan-400";
-  if (level <= 8) return "from-violet-600 to-purple-500";
+  if (level <= 8) return "from-[#91C687] to-[#785964]";
   return "from-amber-500 to-orange-400";
 }
 
@@ -248,11 +248,11 @@ function SidebarNavItem({ item, isActive, collapsed }: NavItemProps) {
         "relative flex items-center gap-3 rounded-xl text-sm font-medium transition-all duration-200 group",
         collapsed ? "px-2 py-2.5 justify-center" : "px-3 py-2.5",
         isActive
-          ? "bg-[#785964]/20 text-[#91C687] border border-[#91C687]/30 shadow-sm shadow-violet-500/10"
+          ? "bg-[#785964]/20 text-[#91C687] border border-[#91C687]/30 shadow-sm shadow-[#91C687]/10"
           : item.highlight
           ? [
-              "text-[#91C687] border border-violet-500/20",
-              "hover:bg-violet-600/10 hover:text-[#91C687] hover:border-violet-500/40",
+              "text-[#91C687] border border-[#91C687]/20",
+              "hover:bg-[#91C687]/10 hover:text-[#91C687] hover:border-[#91C687]/40",
             ]
           : "text-white/55 hover:text-white hover:bg-white/[0.06] border border-transparent"
       )}
@@ -275,7 +275,7 @@ function SidebarNavItem({ item, isActive, collapsed }: NavItemProps) {
         <>
           <span className="flex-1 truncate">{item.label}</span>
           {typeof item.badge === "number" && item.badge > 0 && (
-            <span className="flex items-center justify-center min-w-[20px] h-5 rounded-full bg-violet-600 text-[10px] font-bold text-white px-1.5 shadow-sm shadow-[#91C687]/30">
+            <span className="flex items-center justify-center min-w-[20px] h-5 rounded-full bg-[#91C687] text-[10px] font-bold text-white px-1.5 shadow-sm shadow-[#91C687]/30">
               {item.badge > 9 ? "9+" : item.badge}
             </span>
           )}
@@ -284,12 +284,12 @@ function SidebarNavItem({ item, isActive, collapsed }: NavItemProps) {
 
       {/* Dot badge (collapsed) */}
       {collapsed && typeof item.badge === "number" && item.badge > 0 && (
-        <span className="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-violet-500 shadow-sm shadow-violet-500/50" />
+        <span className="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-[#91C687] shadow-sm shadow-[#91C687]/50" />
       )}
 
       {/* Active indicator line */}
       {isActive && !collapsed && (
-        <span className="absolute left-0 top-1/2 -translate-y-1/2 w-0.5 h-5 bg-violet-500 rounded-r-full" />
+        <span className="absolute left-0 top-1/2 -translate-y-1/2 w-0.5 h-5 bg-[#91C687] rounded-r-full" />
       )}
     </Link>
   );
@@ -433,7 +433,7 @@ export function Sidebar({
           {/* Logo mark */}
           <Link
             href="/dashboard"
-            className="flex items-center justify-center w-8 h-8 rounded-lg bg-gradient-to-br from-violet-500 to-purple-700 shadow-lg shadow-[#91C687]/30 shrink-0 hover:shadow-violet-500/50 transition-shadow duration-200"
+            className="flex items-center justify-center w-8 h-8 rounded-lg bg-gradient-to-br from-[#91C687] to-[#785964] shadow-lg shadow-[#91C687]/30 shrink-0 hover:shadow-[#91C687]/50 transition-shadow duration-200"
             aria-label="Pledge. Dashboard"
           >
             <Zap className="w-4 h-4 text-white" />
@@ -443,7 +443,7 @@ export function Sidebar({
             <>
               <Link
                 href="/dashboard"
-                className="font-bold text-lg bg-gradient-to-r from-violet-300 via-purple-300 to-pink-300 bg-clip-text text-transparent tracking-tight hover:opacity-80 transition-opacity"
+                className="font-bold text-lg bg-gradient-to-r from-[#D9F6FF] via-[#AFC2D5] to-pink-300 bg-clip-text text-transparent tracking-tight hover:opacity-80 transition-opacity"
               >
                 Pledge.
               </Link>
@@ -514,7 +514,7 @@ export function Sidebar({
             appearance={{
               elements: {
                 avatarBox:
-                  "w-8 h-8 ring-1 ring-violet-500/25 hover:ring-violet-500/50 transition-all duration-200",
+                  "w-8 h-8 ring-1 ring-[#91C687]/25 hover:ring-[#91C687]/50 transition-all duration-200",
                 userButtonPopoverCard:
                   "bg-[#263228] border border-white/10 shadow-2xl shadow-black/60",
                 userButtonPopoverActions: "text-white",

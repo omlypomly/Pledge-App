@@ -67,7 +67,7 @@ export default function NotificationBell() {
       >
         <Bell className="w-5 h-5" />
         {unreadCount > 0 && (
-          <span className="absolute -top-0.5 -right-0.5 w-4 h-4 rounded-full bg-violet-600 text-white text-xs flex items-center justify-center font-bold">
+          <span className="absolute -top-0.5 -right-0.5 w-4 h-4 rounded-full bg-[#91C687] text-white text-xs flex items-center justify-center font-bold">
             {unreadCount > 9 ? "9+" : unreadCount}
           </span>
         )}
@@ -91,7 +91,7 @@ export default function NotificationBell() {
                   <div
                     key={notif.id}
                     className={`p-4 border-b border-white/5 hover:bg-white/5 transition-colors ${
-                      !notif.isRead ? "bg-violet-600/5" : ""
+                      !notif.isRead ? "bg-[#91C687]/5" : ""
                     }`}
                   >
                     <div className="flex items-start gap-3">
@@ -104,7 +104,7 @@ export default function NotificationBell() {
                         </div>
                       </div>
                       {!notif.isRead && (
-                        <div className="w-2 h-2 rounded-full bg-violet-500 flex-shrink-0 mt-1" />
+                        <div className="w-2 h-2 rounded-full bg-[#91C687] flex-shrink-0 mt-1" />
                       )}
                     </div>
                   </div>

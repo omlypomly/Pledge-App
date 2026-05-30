@@ -138,7 +138,7 @@ export default async function ChallengePage({
     <div className="min-h-screen bg-[#303D31] text-white">
       {/* Cover / Header */}
       <div className="relative">
-        <div className="h-48 sm:h-64 w-full overflow-hidden bg-gradient-to-br from-violet-900/40 via-purple-900/30 to-[#303D31]">
+        <div className="h-48 sm:h-64 w-full overflow-hidden bg-gradient-to-br from-[#303D31]/40 via-purple-900/30 to-[#303D31]">
           {challenge.coverImageUrl ? (
             <Image
               src={challenge.coverImageUrl}
@@ -148,7 +148,7 @@ export default async function ChallengePage({
               priority
             />
           ) : (
-            <div className="absolute inset-0 bg-gradient-to-br from-violet-800/20 to-purple-800/10" />
+            <div className="absolute inset-0 bg-gradient-to-br from-[#3d4e3e]/20 to-purple-800/10" />
           )}
           <div className="absolute inset-0 bg-gradient-to-t from-[#303D31] via-transparent to-transparent" />
         </div>
@@ -160,7 +160,7 @@ export default async function ChallengePage({
                 <div className="flex flex-wrap items-center gap-2 mb-2">
                   <StatusBadge status={challenge.status} />
                   {myParticipant && (
-                    <Badge variant="outline" className="border-violet-500/40 text-[#91C687]">
+                    <Badge variant="outline" className="border-[#91C687]/40 text-[#91C687]">
                       You&apos;re In
                     </Badge>
                   )}
@@ -415,7 +415,7 @@ export default async function ChallengePage({
                                 milestone.status === "COMPLETED"
                                   ? "bg-emerald-500/20 border-emerald-500"
                                   : milestone.status === "ACTIVE"
-                                  ? "bg-violet-500/20 border-violet-500"
+                                  ? "bg-[#91C687]/20 border-[#91C687]"
                                   : milestone.status === "FAILED"
                                   ? "bg-red-500/20 border-red-500"
                                   : "bg-white/5 border-white/20"
@@ -427,7 +427,7 @@ export default async function ChallengePage({
                           <Card
                             className={`flex-1 border-white/10 bg-white/[0.03] mb-0 ${
                               isCurrentMilestone
-                                ? "border-violet-500/40 shadow-lg shadow-violet-500/5"
+                                ? "border-[#91C687]/40 shadow-lg shadow-[#91C687]/5"
                                 : ""
                             }`}
                           >
@@ -691,7 +691,7 @@ export default async function ChallengePage({
           {/* Right sticky column — Prize Pool Card */}
           <div className="space-y-4">
             <div className="sticky top-6 space-y-4">
-              <Card className="border-[#91C687]/30 bg-violet-600/5 shadow-xl shadow-violet-500/5" glow>
+              <Card className="border-[#91C687]/30 bg-[#91C687]/5 shadow-xl shadow-[#91C687]/5" glow>
                 <CardHeader className="pb-3">
                   <CardTitle className="flex items-center gap-2 text-base">
                     <DollarSign className="w-4 h-4 text-[#91C687]" />
@@ -700,7 +700,7 @@ export default async function ChallengePage({
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="text-center py-4">
-                    <p className="text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-purple-400">
+                    <p className="text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[#91C687] to-[#785964]">
                       {formatCurrency(challenge.prizePool)}
                     </p>
                     <p className="text-sm text-white/40 mt-1">total pool</p>
@@ -831,7 +831,7 @@ export default async function ChallengePage({
                             m.status === "COMPLETED"
                               ? "bg-emerald-500 border-emerald-400 text-white"
                               : m.status === "ACTIVE"
-                              ? "bg-violet-600 border-violet-400 text-white"
+                              ? "bg-[#91C687] border-[#91C687] text-white"
                               : m.status === "FAILED"
                               ? "bg-red-600 border-red-400 text-white"
                               : "bg-white/5 border-white/10 text-white/30"

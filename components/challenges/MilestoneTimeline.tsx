@@ -111,7 +111,7 @@ export default function MilestoneTimeline({
 
                   {canSubmit && (
                     <Link href={`/challenges/${challengeId}/submit?milestoneId=${milestone.id}`}>
-                      <Button size="sm" className="bg-violet-600 hover:bg-violet-500 text-xs h-8">
+                      <Button size="sm" className="bg-[#91C687] hover:bg-[#91C687] text-xs h-8">
                         <Upload className="w-3 h-3 mr-1" />
                         Submit Proof
                       </Button>

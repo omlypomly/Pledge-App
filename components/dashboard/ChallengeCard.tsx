@@ -109,7 +109,7 @@ export default function ChallengeCard({ challenge, userId }: ChallengeCardProps)
                 <div
                   key={i}
                   className={`w-6 h-6 rounded-full border-2 border-gray-900 flex items-center justify-center text-xs font-bold ${
-                    p.status === "ACTIVE" ? "bg-violet-600" :
+                    p.status === "ACTIVE" ? "bg-[#91C687]" :
                     p.status === "ELIMINATED" ? "bg-red-600" :
                     "bg-gray-700"
                   }`}

@@ -63,11 +63,11 @@ function NavLogo({ showText = true }: { showText?: boolean }) {
       className="flex items-center gap-2.5 shrink-0 group"
       aria-label="Pledge. home"
     >
-      <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-gradient-to-br from-violet-500 to-purple-700 shadow-lg shadow-[#91C687]/30 group-hover:shadow-violet-500/50 transition-shadow duration-200">
+      <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-gradient-to-br from-[#91C687] to-[#785964] shadow-lg shadow-[#91C687]/30 group-hover:shadow-[#91C687]/50 transition-shadow duration-200">
         <Trophy className="w-4 h-4 text-white" />
       </div>
       {showText && (
-        <span className="font-bold text-lg bg-gradient-to-r from-violet-300 via-purple-300 to-pink-300 bg-clip-text text-transparent tracking-tight">
+        <span className="font-bold text-lg bg-gradient-to-r from-[#D9F6FF] via-[#AFC2D5] to-pink-300 bg-clip-text text-transparent tracking-tight">
           Pledge.
         </span>
       )}
@@ -101,7 +101,7 @@ function NotificationBell({ count = 0 }: { count?: number }) {
       >
         <Bell className="w-4.5 h-4.5 w-[18px] h-[18px]" />
         {count > 0 && (
-          <span className="absolute top-1.5 right-1.5 flex items-center justify-center min-w-[16px] h-4 rounded-full bg-violet-600 text-[10px] font-bold text-white px-1 shadow-lg shadow-[#91C687]/30">
+          <span className="absolute top-1.5 right-1.5 flex items-center justify-center min-w-[16px] h-4 rounded-full bg-[#91C687] text-[10px] font-bold text-white px-1 shadow-lg shadow-[#91C687]/30">
             {count > 9 ? "9+" : count}
           </span>
         )}
@@ -163,7 +163,7 @@ function NotificationBell({ count = 0 }: { count?: number }) {
                     key={i}
                     className={cn(
                       "flex gap-3 px-4 py-3.5 hover:bg-white/[0.03] cursor-pointer transition-colors",
-                      n.unread && "bg-violet-500/[0.04]"
+                      n.unread && "bg-[#91C687]/[0.04]"
                     )}
                   >
                     <span className="text-lg shrink-0 mt-0.5">{n.icon}</span>
@@ -173,7 +173,7 @@ function NotificationBell({ count = 0 }: { count?: number }) {
                           {n.title}
                         </p>
                         {n.unread && (
-                          <span className="w-1.5 h-1.5 rounded-full bg-violet-500 shrink-0" />
+                          <span className="w-1.5 h-1.5 rounded-full bg-[#91C687] shrink-0" />
                         )}
                       </div>
                       <p className="text-xs text-white/45 leading-relaxed mt-0.5 line-clamp-2">
@@ -243,7 +243,7 @@ function MobileMenu({
             >
               <span>{link.label}</span>
               {link.badge && link.badge > 0 && (
-                <span className="flex items-center justify-center min-w-[20px] h-5 rounded-full bg-violet-600 text-[10px] font-bold text-white px-1.5">
+                <span className="flex items-center justify-center min-w-[20px] h-5 rounded-full bg-[#91C687] text-[10px] font-bold text-white px-1.5">
                   {link.badge > 9 ? "9+" : link.badge}
                 </span>
               )}
@@ -348,7 +348,7 @@ export function Navbar({
                 >
                   {link.label}
                   {link.badge && link.badge > 0 && (
-                    <span className="flex items-center justify-center min-w-[18px] h-[18px] rounded-full bg-violet-600 text-[10px] font-bold text-white px-1">
+                    <span className="flex items-center justify-center min-w-[18px] h-[18px] rounded-full bg-[#91C687] text-[10px] font-bold text-white px-1">
                       {link.badge > 9 ? "9+" : link.badge}
                     </span>
                   )}
@@ -403,7 +403,7 @@ export function Navbar({
                   appearance={{
                     elements: {
                       avatarBox:
-                        "w-8 h-8 ring-2 ring-[#91C687]/30 hover:ring-violet-500/60 transition-all duration-200",
+                        "w-8 h-8 ring-2 ring-[#91C687]/30 hover:ring-[#91C687]/60 transition-all duration-200",
                       userButtonPopoverCard: "bg-[#263228] border border-white/10",
                       userButtonPopoverActions: "text-white",
                       userButtonPopoverActionButton:
@@ -424,7 +424,7 @@ export function Navbar({
                 </Link>
                 <Link
                   href="/sign-up"
-                  className="flex items-center gap-1.5 px-4 py-2 text-sm font-semibold rounded-lg bg-gradient-to-r from-[#91C687] to-[#785964] hover:from-violet-500 hover:to-purple-500 text-white transition-all duration-200 shadow-lg shadow-[#91C687]/20 hover:shadow-violet-500/35"
+                  className="flex items-center gap-1.5 px-4 py-2 text-sm font-semibold rounded-lg bg-gradient-to-r from-[#91C687] to-[#785964] hover:from-[#91C687] hover:to-[#785964] text-white transition-all duration-200 shadow-lg shadow-[#91C687]/20 hover:shadow-[#91C687]/35"
                 >
                   Get Started
                   <ChevronDown className="w-3.5 h-3.5 -rotate-90" />

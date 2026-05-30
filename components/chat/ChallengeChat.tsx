@@ -148,7 +148,7 @@ export default function ChallengeChat({ challengeId }: ChallengeChatProps) {
                 <div
                   className={`px-3 py-2 rounded-xl text-sm ${
                     isOwn
-                      ? "bg-violet-600 text-white rounded-tr-sm"
+                      ? "bg-[#91C687] text-white rounded-tr-sm"
                       : "bg-white/10 text-white/90 rounded-tl-sm"
                   }`}
                 >
@@ -179,7 +179,7 @@ export default function ChallengeChat({ challengeId }: ChallengeChatProps) {
           size="icon"
           onClick={sendMessage}
           disabled={!input.trim() || sending}
-          className="bg-violet-600 hover:bg-violet-500"
+          className="bg-[#91C687] hover:bg-[#91C687]"
         >
           {sending ? (
             <Loader2 className="w-4 h-4 animate-spin" />

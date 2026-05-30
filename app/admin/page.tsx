@@ -90,7 +90,7 @@ export default async function AdminPage() {
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
           {[
             { icon: Users, label: "Total Users", value: stats.totalUsers.toLocaleString(), color: "text-blue-400", bg: "bg-blue-600/10" },
-            { icon: Trophy, label: "Total Challenges", value: stats.totalChallenges.toLocaleString(), color: "text-[#91C687]", bg: "bg-violet-600/10" },
+            { icon: Trophy, label: "Total Challenges", value: stats.totalChallenges.toLocaleString(), color: "text-[#91C687]", bg: "bg-[#91C687]/10" },
             { icon: DollarSign, label: "Platform Revenue", value: formatCurrency(stats.totalRevenue), color: "text-emerald-400", bg: "bg-emerald-600/10" },
             { icon: TrendingUp, label: "Active Challenges", value: stats.activeChallenges.toLocaleString(), color: "text-yellow-400", bg: "bg-yellow-600/10" },
           ].map((stat) => (

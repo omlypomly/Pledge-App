@@ -33,7 +33,7 @@ export default function PrizePoolCard({
     : netPool / Math.max(1, participantCount);
 
   return (
-    <Card className="border-[#91C687]/30 bg-gradient-to-b from-violet-600/10 to-transparent sticky top-4">
+    <Card className="border-[#91C687]/30 bg-gradient-to-b from-[#91C687]/10 to-transparent sticky top-4">
       <CardHeader className="pb-3">
         <CardTitle className="flex items-center gap-2 text-white">
           <Trophy className="w-5 h-5 text-yellow-400" />
@@ -103,7 +103,7 @@ export default function PrizePoolCard({
 
         {/* User's stake */}
         {userStake && (
-          <div className="p-3 rounded-lg bg-violet-600/10 border border-[#91C687]/30 text-center">
+          <div className="p-3 rounded-lg bg-[#91C687]/10 border border-[#91C687]/30 text-center">
             <div className="text-xs text-white/50">Your stake</div>
             <div className="text-lg font-bold text-[#91C687]">{formatCurrency(userStake)}</div>
             <div className="text-xs text-white/40 mt-0.5">

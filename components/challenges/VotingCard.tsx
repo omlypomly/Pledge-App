@@ -103,7 +103,7 @@ export default function VotingCard({ submission, onVoted }: VotingCardProps) {
 
         {/* AI Analysis */}
         {submission.aiConfidence !== null && (
-          <div className="p-3 rounded-lg bg-violet-600/10 border border-violet-500/20">
+          <div className="p-3 rounded-lg bg-[#91C687]/10 border border-[#91C687]/20">
             <div className="flex items-center justify-between mb-1.5">
               <span className="text-xs text-white/50">AI Confidence</span>
               <span className={`text-sm font-bold ${

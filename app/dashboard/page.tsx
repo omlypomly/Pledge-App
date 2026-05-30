@@ -203,7 +203,7 @@ export default async function DashboardPage() {
               {activeChallenges.length === 0 ? (
                 <Card className="border-dashed border-white/20 bg-transparent">
                   <CardContent className="flex flex-col items-center justify-center py-16 text-center gap-4">
-                    <div className="w-16 h-16 rounded-2xl bg-violet-600/10 border border-violet-500/20 flex items-center justify-center">
+                    <div className="w-16 h-16 rounded-2xl bg-[#91C687]/10 border border-[#91C687]/20 flex items-center justify-center">
                       <Trophy className="w-8 h-8 text-[#91C687]" />
                     </div>
                     <div>
@@ -355,7 +355,7 @@ export default async function DashboardPage() {
                               className={`flex items-center justify-center w-10 h-10 rounded-xl shrink-0 ${
                                 isUrgent
                                   ? "bg-red-500/10 border border-red-500/20"
-                                  : "bg-[#91C687]/10 border border-violet-500/20"
+                                  : "bg-[#91C687]/10 border border-[#91C687]/20"
                               }`}
                             >
                               <Calendar
@@ -539,7 +539,7 @@ export default async function DashboardPage() {
                           </p>
                         </div>
                         {!notification.isRead && (
-                          <div className="w-1.5 h-1.5 rounded-full bg-violet-500 shrink-0 mt-2" />
+                          <div className="w-1.5 h-1.5 rounded-full bg-[#91C687] shrink-0 mt-2" />
                         )}
                       </div>
                     );
@@ -549,7 +549,7 @@ export default async function DashboardPage() {
             </Card>
 
             {/* Quick Actions */}
-            <Card className="border-violet-500/20 bg-violet-600/5">
+            <Card className="border-[#91C687]/20 bg-[#91C687]/5">
               <CardContent className="p-5 space-y-3">
                 <h3 className="text-sm font-semibold text-white">
                   Quick Actions

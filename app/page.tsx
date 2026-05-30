@@ -157,10 +157,10 @@ function LandingNavbar() {
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2.5 shrink-0">
-          <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-gradient-to-br from-violet-500 to-purple-700 shadow-lg shadow-violet-500/40">
+          <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-gradient-to-br from-[#91C687] to-[#785964] shadow-lg shadow-[#91C687]/40">
             <Trophy className="w-4 h-4 text-white" />
           </div>
-          <span className="font-bold text-lg bg-gradient-to-r from-violet-300 via-purple-300 to-pink-300 bg-clip-text text-transparent">
+          <span className="font-bold text-lg bg-gradient-to-r from-[#D9F6FF] via-[#AFC2D5] to-pink-300 bg-clip-text text-transparent">
             Pledge.
           </span>
         </Link>
@@ -187,8 +187,8 @@ function LandingNavbar() {
             Sign In
           </Link>
           <Link
-            href="/sign-up"
-            className="px-4 py-2 text-sm font-semibold rounded-lg bg-gradient-to-r from-[#91C687] to-[#785964] hover:from-violet-500 hover:to-purple-500 text-white transition-all duration-200 shadow-lg shadow-violet-500/25 hover:shadow-violet-500/40"
+            href="/challenges/create"
+            className="px-4 py-2 text-sm font-semibold rounded-lg bg-gradient-to-r from-[#91C687] to-[#785964] hover:from-[#91C687] hover:to-[#785964] text-white transition-all duration-200 shadow-lg shadow-[#91C687]/25 hover:shadow-[#91C687]/40"
           >
             Get Started
           </Link>
@@ -230,7 +230,7 @@ function LandingNavbar() {
               Sign In
             </Link>
             <Link
-              href="/sign-up"
+              href="/challenges/create"
               className="block px-3 py-2.5 text-sm font-semibold rounded-lg bg-gradient-to-r from-[#91C687] to-[#785964] text-white text-center"
             >
               Get Started
@@ -256,7 +256,7 @@ const heroStats: StatCard[] = [
     value: "94%",
     label: "Completion Rate",
     icon: <TrendingUp className="w-4 h-4" />,
-    color: "from-violet-500/20 to-purple-500/10 border-violet-500/20",
+    color: "from-[#91C687]/20 to-[#785964]/10 border-[#91C687]/20",
   },
   {
     value: "12,000+",
@@ -271,7 +271,7 @@ function HeroSection() {
     <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-grid pt-16">
       {/* Background glowing orbs */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-40 -left-40 w-[600px] h-[600px] rounded-full bg-violet-600/10 blur-[120px]" />
+        <div className="absolute -top-40 -left-40 w-[600px] h-[600px] rounded-full bg-[#91C687]/10 blur-[120px]" />
         <div className="absolute -bottom-40 -right-20 w-[500px] h-[500px] rounded-full bg-pink-600/8 blur-[100px]" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] rounded-full bg-purple-900/10 blur-[80px]" />
       </div>
@@ -282,7 +282,7 @@ function HeroSection() {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5 }}
-          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#91C687]/10 border border-violet-500/25 text-[#91C687] text-sm font-medium mb-8"
+          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#91C687]/10 border border-[#91C687]/25 text-[#91C687] text-sm font-medium mb-8"
         >
           <Flame className="w-3.5 h-3.5 text-orange-400" />
           <span>Real money. Real accountability. Real results.</span>
@@ -296,7 +296,7 @@ function HeroSection() {
           className="text-5xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white mb-6 leading-[1.08]"
         >
           Put Your Money{" "}
-          <span className="bg-gradient-to-r from-violet-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+          <span className="bg-gradient-to-r from-[#91C687] via-[#785964] to-pink-400 bg-clip-text text-transparent">
             Where Your Goals Are
           </span>
         </motion.h1>
@@ -321,8 +321,8 @@ function HeroSection() {
           className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16"
         >
           <Link
-            href="/sign-up"
-            className="group flex items-center gap-2 px-7 py-3.5 rounded-xl bg-gradient-to-r from-[#91C687] to-[#785964] hover:from-violet-500 hover:to-purple-500 text-white font-semibold text-base transition-all duration-200 shadow-xl shadow-[#91C687]/30 hover:shadow-violet-500/50 hover:-translate-y-0.5"
+            href="/challenges/create"
+            className="group flex items-center gap-2 px-7 py-3.5 rounded-xl bg-gradient-to-r from-[#91C687] to-[#785964] hover:from-[#91C687] hover:to-[#785964] text-white font-semibold text-base transition-all duration-200 shadow-xl shadow-[#91C687]/30 hover:shadow-[#91C687]/50 hover:-translate-y-0.5"
           >
             Start a Challenge
             <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
@@ -414,7 +414,7 @@ function HowItWorksSection() {
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <FadeInWhenVisible className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#91C687]/10 border border-violet-500/25 text-[#91C687] text-sm font-medium mb-4">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#91C687]/10 border border-[#91C687]/25 text-[#91C687] text-sm font-medium mb-4">
             <Zap className="w-3.5 h-3.5" />
             Simple by design
           </div>
@@ -431,10 +431,10 @@ function HowItWorksSection() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {steps.map((step, i) => (
             <FadeInWhenVisible key={step.number} delay={i * 0.1}>
-              <div className="relative group h-full p-6 rounded-2xl bg-white/[0.03] border border-white/[0.07] hover:border-[#91C687]/30 hover:bg-violet-500/[0.04] transition-all duration-300">
+              <div className="relative group h-full p-6 rounded-2xl bg-white/[0.03] border border-white/[0.07] hover:border-[#91C687]/30 hover:bg-[#91C687]/[0.04] transition-all duration-300">
                 {/* Connector line */}
                 {i < steps.length - 1 && (
-                  <div className="hidden lg:block absolute top-10 left-full w-6 h-px bg-gradient-to-r from-violet-500/40 to-transparent z-10" />
+                  <div className="hidden lg:block absolute top-10 left-full w-6 h-px bg-gradient-to-r from-[#91C687]/40 to-transparent z-10" />
                 )}
 
                 {/* Step number */}
@@ -443,7 +443,7 @@ function HowItWorksSection() {
                 </span>
 
                 {/* Icon */}
-                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-violet-600/30 to-purple-600/20 border border-violet-500/25 flex items-center justify-center text-[#91C687] mb-5 group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-violet-500/10">
+                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#91C687]/30 to-[#785964]/20 border border-[#91C687]/25 flex items-center justify-center text-[#91C687] mb-5 group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-[#91C687]/10">
                   {step.icon}
                 </div>
 
@@ -500,7 +500,7 @@ const goalCategories: GoalCategory[] = [
     title: "Read Books",
     example: "Read 24 books this year",
     stake: "$30/person",
-    color: "from-purple-500/10 to-violet-500/5 border-purple-500/15",
+    color: "from-[#785964]/10 to-[#91C687]/5 border-[#785964]/15",
   },
   {
     emoji: "💻",
@@ -508,7 +508,7 @@ const goalCategories: GoalCategory[] = [
     title: "Learn to Code",
     example: "Ship a full-stack app",
     stake: "$150/person",
-    color: "from-violet-500/10 to-indigo-500/5 border-violet-500/15",
+    color: "from-[#91C687]/10 to-indigo-500/5 border-[#91C687]/15",
   },
   {
     emoji: "🌙",
@@ -551,7 +551,7 @@ function ChallengeTypesSection() {
             <FadeInWhenVisible key={cat.title} delay={(i % 4) * 0.08}>
               <div
                 className={cn(
-                  "group p-5 rounded-2xl bg-gradient-to-br border transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-violet-500/10 cursor-pointer",
+                  "group p-5 rounded-2xl bg-gradient-to-br border transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-[#91C687]/10 cursor-pointer",
                   cat.color
                 )}
               >
@@ -672,9 +672,9 @@ function VerificationSection() {
           <SlideInWhenVisible direction="right" delay={0.15}>
             <div className="relative">
               {/* Glow */}
-              <div className="absolute inset-0 rounded-3xl bg-violet-600/10 blur-2xl scale-90" />
+              <div className="absolute inset-0 rounded-3xl bg-[#91C687]/10 blur-2xl scale-90" />
 
-              <div className="relative p-7 rounded-3xl bg-[#263228] border border-violet-500/25 shadow-2xl shadow-violet-500/10">
+              <div className="relative p-7 rounded-3xl bg-[#263228] border border-[#91C687]/25 shadow-2xl shadow-[#91C687]/10">
                 {/* Header */}
                 <div className="flex items-center justify-between mb-6">
                   <div>
@@ -683,7 +683,7 @@ function VerificationSection() {
                     </p>
                     <h3 className="font-bold text-white">Milestone Review</h3>
                   </div>
-                  <span className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#91C687]/15 border border-violet-500/25 text-[#91C687] text-sm font-semibold">
+                  <span className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#91C687]/15 border border-[#91C687]/25 text-[#91C687] text-sm font-semibold">
                     <Brain className="w-3.5 h-3.5" />
                     AI
                   </span>
@@ -838,12 +838,12 @@ function TestimonialsSection() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {testimonials.map((t, i) => (
             <FadeInWhenVisible key={t.handle} delay={i * 0.1}>
-              <div className="h-full p-6 rounded-2xl bg-white/[0.025] border border-white/[0.07] hover:border-violet-500/20 transition-all duration-300">
+              <div className="h-full p-6 rounded-2xl bg-white/[0.025] border border-white/[0.07] hover:border-[#91C687]/20 transition-all duration-300">
                 {/* Top bar */}
                 <div className="flex items-start justify-between mb-4">
                   <div className="flex items-center gap-3">
                     {/* Avatar */}
-                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-violet-500 to-purple-600 flex items-center justify-center text-sm font-bold text-white shrink-0">
+                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#91C687] to-[#785964] flex items-center justify-center text-sm font-bold text-white shrink-0">
                       {t.avatar}
                     </div>
                     <div>
@@ -884,7 +884,7 @@ function PricingSection() {
     <section id="pricing" className="py-24 px-4 sm:px-6 lg:px-8">
       <div className="max-w-5xl mx-auto">
         <FadeInWhenVisible className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#91C687]/10 border border-violet-500/25 text-[#91C687] text-sm font-medium mb-4">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#91C687]/10 border border-[#91C687]/25 text-[#91C687] text-sm font-medium mb-4">
             <DollarSign className="w-3.5 h-3.5" />
             Simple, transparent pricing
           </div>
@@ -931,7 +931,7 @@ function PricingSection() {
               </ul>
 
               <Link
-                href="/sign-up"
+                href="/challenges/create"
                 className="block w-full py-3 rounded-xl border border-white/15 text-white/80 hover:text-white hover:border-white/30 hover:bg-white/5 font-semibold text-sm text-center transition-all duration-200"
               >
                 Get Started Free
@@ -941,7 +941,7 @@ function PricingSection() {
 
           {/* Pro Tier */}
           <FadeInWhenVisible delay={0.15}>
-            <div className="h-full p-8 rounded-2xl bg-gradient-to-b from-violet-600/15 to-purple-600/5 border border-violet-500/35 flex flex-col relative overflow-hidden">
+            <div className="h-full p-8 rounded-2xl bg-gradient-to-b from-[#91C687]/15 to-[#785964]/5 border border-[#91C687]/35 flex flex-col relative overflow-hidden">
               {/* Popular badge */}
               <div className="absolute top-5 right-5">
                 <span className="px-3 py-1 rounded-full bg-gradient-to-r from-[#91C687] to-[#785964] text-white text-xs font-semibold shadow-lg shadow-[#91C687]/30">
@@ -985,7 +985,7 @@ function PricingSection() {
 
               <Link
                 href="/sign-up?plan=pro"
-                className="relative block w-full py-3 rounded-xl bg-gradient-to-r from-[#91C687] to-[#785964] hover:from-violet-500 hover:to-purple-500 text-white font-semibold text-sm text-center transition-all duration-200 shadow-lg shadow-[#91C687]/30 hover:shadow-violet-500/50"
+                className="relative block w-full py-3 rounded-xl bg-gradient-to-r from-[#91C687] to-[#785964] hover:from-[#91C687] hover:to-[#785964] text-white font-semibold text-sm text-center transition-all duration-200 shadow-lg shadow-[#91C687]/30 hover:shadow-[#91C687]/50"
               >
                 Start Pro Free for 7 Days
               </Link>
@@ -1035,10 +1035,10 @@ function Footer() {
           {/* Brand column */}
           <div className="col-span-2 md:col-span-1">
             <div className="flex items-center gap-2.5 mb-4">
-              <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-gradient-to-br from-violet-500 to-purple-700">
+              <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-gradient-to-br from-[#91C687] to-[#785964]">
                 <Trophy className="w-4 h-4 text-white" />
               </div>
-              <span className="font-bold text-lg bg-gradient-to-r from-violet-300 to-pink-300 bg-clip-text text-transparent">
+              <span className="font-bold text-lg bg-gradient-to-r from-[#D9F6FF] to-pink-300 bg-clip-text text-transparent">
                 Pledge.
               </span>
             </div>

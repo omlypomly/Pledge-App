@@ -4,12 +4,12 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-lg text-sm font-semibold transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-500 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-lg text-sm font-semibold transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#91C687] focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
   {
     variants: {
       variant: {
         default:
-          "bg-violet-600 text-white shadow-lg shadow-violet-500/25 hover:bg-violet-500 active:scale-95",
+          "bg-[#91C687] text-white shadow-lg shadow-[#91C687]/25 hover:bg-[#91C687] active:scale-95",
         destructive:
           "bg-red-600 text-white shadow-lg shadow-red-500/25 hover:bg-red-500 active:scale-95",
         outline:
@@ -20,7 +20,7 @@ const buttonVariants = cva(
           "text-white/70 hover:text-white hover:bg-white/10 active:scale-95",
         link: "text-[#91C687] underline-offset-4 hover:underline hover:text-[#91C687]",
         gradient:
-          "bg-gradient-to-r from-[#91C687] to-[#785964] text-white shadow-lg shadow-[#91C687]/30 hover:from-violet-500 hover:to-purple-500 active:scale-95",
+          "bg-gradient-to-r from-[#91C687] to-[#785964] text-white shadow-lg shadow-[#91C687]/30 hover:from-[#91C687] hover:to-[#785964] active:scale-95",
         success:
           "bg-emerald-600 text-white shadow-lg shadow-emerald-500/25 hover:bg-emerald-500 active:scale-95",
       },

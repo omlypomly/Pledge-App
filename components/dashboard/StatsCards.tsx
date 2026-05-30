@@ -14,8 +14,8 @@ export default function StatsCards({ stats }: StatsCardsProps) {
       label: "Active Challenges",
       value: stats.activeChallenges,
       color: "text-[#91C687]",
-      bg: "from-violet-600/20 to-violet-600/5",
-      border: "border-violet-500/20",
+      bg: "from-[#91C687]/20 to-[#91C687]/5",
+      border: "border-[#91C687]/20",
     },
     {
       icon: DollarSign,
@@ -54,8 +54,8 @@ export default function StatsCards({ stats }: StatsCardsProps) {
       label: "XP",
       value: `${stats.xp.toLocaleString()} (Lv.${stats.level})`,
       color: "text-[#785964]",
-      bg: "from-purple-600/20 to-purple-600/5",
-      border: "border-purple-500/20",
+      bg: "from-[#785964]/20 to-[#785964]/5",
+      border: "border-[#785964]/20",
     },
   ];
 

@@ -121,7 +121,7 @@ export default function SettingsPage() {
                   </div>
                   <button
                     className={`w-10 h-5 rounded-full transition-colors ${
-                      notif.enabled ? "bg-violet-600" : "bg-white/20"
+                      notif.enabled ? "bg-[#91C687]" : "bg-white/20"
                     }`}
                   >
                     <div className={`w-4 h-4 rounded-full bg-white mx-auto transition-transform ${notif.enabled ? "translate-x-2.5" : "-translate-x-2.5"}`} />

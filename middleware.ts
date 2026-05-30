@@ -9,16 +9,14 @@ const isPublicRoute = createRouteMatcher([
   "/terms",
   "/privacy",
   "/leaderboard",
+  "/challenges(.*)",
   "/api/webhooks(.*)",
 ]);
-
-const isAdminRoute = createRouteMatcher(["/admin(.*)", "/disputes(.*)"]);
 
 export default clerkMiddleware(async (auth, request: NextRequest) => {
   if (!isPublicRoute(request)) {
     await auth.protect();
   }
-
   return NextResponse.next();
 });
 

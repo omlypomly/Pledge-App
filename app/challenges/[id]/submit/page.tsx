@@ -251,7 +251,7 @@ export default function SubmitProofPage() {
             className={`w-20 h-20 rounded-full flex items-center justify-center mx-auto ${
               isApproved
                 ? "bg-emerald-500/20 border-2 border-emerald-500"
-                : "bg-violet-500/20 border-2 border-violet-500"
+                : "bg-[#91C687]/20 border-2 border-[#91C687]"
             }`}
           >
             {isApproved ? (
@@ -373,7 +373,7 @@ export default function SubmitProofPage() {
             </CardContent>
           </Card>
         ) : milestone ? (
-          <Card className="border-[#91C687]/30 bg-violet-600/5">
+          <Card className="border-[#91C687]/30 bg-[#91C687]/5">
             <CardContent className="p-5">
               <div className="flex items-start justify-between gap-3">
                 <div className="flex-1">
@@ -417,7 +417,7 @@ export default function SubmitProofPage() {
         ) : null}
 
         {/* AI Verification Info */}
-        <Card className="border-violet-500/20 bg-gradient-to-r from-violet-900/10 to-purple-900/10">
+        <Card className="border-[#91C687]/20 bg-gradient-to-r from-[#303D31]/10 to-purple-900/10">
           <CardContent className="p-4 flex items-start gap-3">
             <div className="w-9 h-9 rounded-xl bg-[#785964]/20 flex items-center justify-center shrink-0">
               <Zap className="w-4 h-4 text-[#91C687]" />
@@ -486,7 +486,7 @@ export default function SubmitProofPage() {
               onDrop={handleDrop}
               className={`relative rounded-xl border-2 border-dashed transition-all duration-200 ${
                 isDragging
-                  ? "border-violet-500 bg-[#91C687]/10"
+                  ? "border-[#91C687] bg-[#91C687]/10"
                   : uploadedFiles.length === 0
                   ? "border-white/20 bg-white/[0.02] hover:border-white/30 hover:bg-white/[0.04]"
                   : "border-white/10 bg-white/[0.02]"
@@ -502,7 +502,7 @@ export default function SubmitProofPage() {
               />
               {uploadedFiles.length === 0 ? (
                 <div className="flex flex-col items-center justify-center py-14 text-center pointer-events-none">
-                  <div className="w-14 h-14 rounded-2xl bg-violet-600/10 border border-violet-500/20 flex items-center justify-center mb-3">
+                  <div className="w-14 h-14 rounded-2xl bg-[#91C687]/10 border border-[#91C687]/20 flex items-center justify-center mb-3">
                     <Upload className="w-6 h-6 text-[#91C687]" />
                   </div>
                   <p className="text-white font-medium text-sm">
@@ -551,7 +551,7 @@ export default function SubmitProofPage() {
                     </div>
                   ))}
                   {uploadedFiles.length < 5 && (
-                    <div className="rounded-lg border-2 border-dashed border-white/10 flex items-center justify-center aspect-square hover:border-violet-500/40 transition-colors">
+                    <div className="rounded-lg border-2 border-dashed border-white/10 flex items-center justify-center aspect-square hover:border-[#91C687]/40 transition-colors">
                       <Upload className="w-5 h-5 text-white/30" />
                     </div>
                   )}
@@ -576,7 +576,7 @@ export default function SubmitProofPage() {
               value={notes}
               onChange={(e) => setNotes(e.target.value)}
               placeholder="Add context about your submission — what did you accomplish? Any details that support your proof..."
-              className="bg-white/5 border-white/10 text-white placeholder:text-white/30 resize-none min-h-[100px] focus:border-violet-500/50"
+              className="bg-white/5 border-white/10 text-white placeholder:text-white/30 resize-none min-h-[100px] focus:border-[#91C687]/50"
               maxLength={500}
               disabled={isLoading}
             />
@@ -626,7 +626,7 @@ export default function SubmitProofPage() {
 
           {/* Upload progress */}
           {isUploading && (
-            <Card className="border-violet-500/20 bg-violet-500/5">
+            <Card className="border-[#91C687]/20 bg-[#91C687]/5">
               <CardContent className="flex items-center gap-3 p-4">
                 <Loader2 className="w-4 h-4 text-[#91C687] animate-spin shrink-0" />
                 <div className="flex-1">
@@ -642,7 +642,7 @@ export default function SubmitProofPage() {
           )}
 
           {isPending && !isUploading && (
-            <Card className="border-violet-500/20 bg-violet-500/5">
+            <Card className="border-[#91C687]/20 bg-[#91C687]/5">
               <CardContent className="flex items-center gap-3 p-4">
                 <Zap className="w-4 h-4 text-[#91C687] animate-pulse shrink-0" />
                 <div>

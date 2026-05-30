@@ -113,7 +113,7 @@ export default function JoinChallengePage() {
     return (
       <div className="min-h-screen bg-[#303D31] flex items-center justify-center">
         <div className="flex flex-col items-center gap-4">
-          <div className="w-12 h-12 rounded-full border-2 border-violet-500 border-t-transparent animate-spin" />
+          <div className="w-12 h-12 rounded-full border-2 border-[#91C687] border-t-transparent animate-spin" />
           <p className="text-white/60 text-sm">Loading challenge...</p>
         </div>
       </div>
@@ -148,7 +148,7 @@ export default function JoinChallengePage() {
       <div className="max-w-2xl mx-auto space-y-6">
         {/* Header */}
         <div className="text-center space-y-2">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-violet-600/10 border border-violet-500/20 text-[#91C687] text-sm font-medium mb-2">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#91C687]/10 border border-[#91C687]/20 text-[#91C687] text-sm font-medium mb-2">
             <Trophy className="w-4 h-4" />
             You&apos;ve been invited!
           </div>

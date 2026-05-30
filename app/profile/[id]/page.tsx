@@ -43,7 +43,7 @@ export default async function ProfilePage({ params }: { params: Promise<{ id: st
       <div className="max-w-4xl mx-auto">
         {/* Profile Header */}
         <div className="relative mb-8">
-          <div className="h-40 rounded-2xl bg-gradient-to-r from-violet-900/50 via-purple-800/30 to-pink-900/30 border border-white/10" />
+          <div className="h-40 rounded-2xl bg-gradient-to-r from-[#303D31]/50 via-purple-800/30 to-pink-900/30 border border-white/10" />
           <div className="absolute -bottom-12 left-6 flex items-end gap-4">
             <Avatar className="w-24 h-24 ring-4 ring-[#303D31]">
               <AvatarImage src={user.avatarUrl ?? ""} />
