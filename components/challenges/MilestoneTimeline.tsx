@@ -92,7 +92,7 @@ export default function MilestoneTimeline({
                       {formatDate(milestone.deadline)}
                     </div>
                     {milestone.targetValue && (
-                      <div className="text-xs text-violet-400 font-medium mt-0.5">
+                      <div className="text-xs text-[#91C687] font-medium mt-0.5">
                         Target: {milestone.targetValue} {milestone.targetUnit}
                       </div>
                     )}

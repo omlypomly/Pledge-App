@@ -245,7 +245,7 @@ export default function SubmitProofPage() {
     const needsVoting = result.requiresVoting;
 
     return (
-      <div className="min-h-screen bg-[#080810] text-white flex items-center justify-center p-4">
+      <div className="min-h-screen bg-[#303D31] text-white flex items-center justify-center p-4">
         <div className="max-w-md w-full space-y-6 text-center">
           <div
             className={`w-20 h-20 rounded-full flex items-center justify-center mx-auto ${
@@ -257,7 +257,7 @@ export default function SubmitProofPage() {
             {isApproved ? (
               <CheckCircle2 className="w-10 h-10 text-emerald-400" />
             ) : (
-              <Eye className="w-10 h-10 text-violet-400" />
+              <Eye className="w-10 h-10 text-[#91C687]" />
             )}
           </div>
 
@@ -339,7 +339,7 @@ export default function SubmitProofPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#080810] text-white py-8 px-4">
+    <div className="min-h-screen bg-[#303D31] text-white py-8 px-4">
       <div className="max-w-2xl mx-auto space-y-6">
         {/* Back nav */}
         <Button variant="ghost" size="sm" className="text-white/40 -ml-1" asChild>
@@ -361,7 +361,7 @@ export default function SubmitProofPage() {
         {loadingMilestone ? (
           <Card className="border-white/10 bg-white/[0.03]">
             <CardContent className="flex items-center gap-3 p-6">
-              <Loader2 className="w-5 h-5 text-violet-400 animate-spin" />
+              <Loader2 className="w-5 h-5 text-[#91C687] animate-spin" />
               <span className="text-white/50 text-sm">Loading milestone...</span>
             </CardContent>
           </Card>
@@ -373,7 +373,7 @@ export default function SubmitProofPage() {
             </CardContent>
           </Card>
         ) : milestone ? (
-          <Card className="border-violet-500/30 bg-violet-600/5">
+          <Card className="border-[#91C687]/30 bg-violet-600/5">
             <CardContent className="p-5">
               <div className="flex items-start justify-between gap-3">
                 <div className="flex-1">
@@ -397,7 +397,7 @@ export default function SubmitProofPage() {
                     {milestone.description}
                   </p>
                   {milestone.targetValue && (
-                    <p className="text-sm text-violet-400 mt-2 font-medium">
+                    <p className="text-sm text-[#91C687] mt-2 font-medium">
                       Target: {milestone.targetValue} {milestone.targetUnit}
                     </p>
                   )}
@@ -419,8 +419,8 @@ export default function SubmitProofPage() {
         {/* AI Verification Info */}
         <Card className="border-violet-500/20 bg-gradient-to-r from-violet-900/10 to-purple-900/10">
           <CardContent className="p-4 flex items-start gap-3">
-            <div className="w-9 h-9 rounded-xl bg-violet-600/20 flex items-center justify-center shrink-0">
-              <Zap className="w-4 h-4 text-violet-400" />
+            <div className="w-9 h-9 rounded-xl bg-[#785964]/20 flex items-center justify-center shrink-0">
+              <Zap className="w-4 h-4 text-[#91C687]" />
             </div>
             <div>
               <p className="text-sm font-semibold text-white mb-0.5">
@@ -428,7 +428,7 @@ export default function SubmitProofPage() {
               </p>
               <p className="text-xs text-white/50 leading-relaxed">
                 Our AI will analyze your proof. A confidence score of{" "}
-                <strong className="text-violet-400">80% or higher</strong> gets
+                <strong className="text-[#91C687]">80% or higher</strong> gets
                 instant approval. Lower scores go to community voting (24h
                 window).
               </p>
@@ -450,17 +450,17 @@ export default function SubmitProofPage() {
               <SelectTrigger className="bg-white/5 border-white/10 text-white h-11">
                 <SelectValue />
               </SelectTrigger>
-              <SelectContent className="bg-[#0d0d1a] border-white/10">
+              <SelectContent className="bg-[#263228] border-white/10">
                 {PROOF_TYPE_OPTIONS.map((opt) => {
                   const Icon = opt.icon;
                   return (
                     <SelectItem
                       key={opt.value}
                       value={opt.value}
-                      className="text-white focus:bg-violet-600/20 focus:text-white"
+                      className="text-white focus:bg-[#785964]/20 focus:text-white"
                     >
                       <span className="flex items-center gap-2">
-                        <Icon className="w-4 h-4 text-violet-400" />
+                        <Icon className="w-4 h-4 text-[#91C687]" />
                         {opt.label}
                       </span>
                     </SelectItem>
@@ -486,7 +486,7 @@ export default function SubmitProofPage() {
               onDrop={handleDrop}
               className={`relative rounded-xl border-2 border-dashed transition-all duration-200 ${
                 isDragging
-                  ? "border-violet-500 bg-violet-500/10"
+                  ? "border-violet-500 bg-[#91C687]/10"
                   : uploadedFiles.length === 0
                   ? "border-white/20 bg-white/[0.02] hover:border-white/30 hover:bg-white/[0.04]"
                   : "border-white/10 bg-white/[0.02]"
@@ -503,7 +503,7 @@ export default function SubmitProofPage() {
               {uploadedFiles.length === 0 ? (
                 <div className="flex flex-col items-center justify-center py-14 text-center pointer-events-none">
                   <div className="w-14 h-14 rounded-2xl bg-violet-600/10 border border-violet-500/20 flex items-center justify-center mb-3">
-                    <Upload className="w-6 h-6 text-violet-400" />
+                    <Upload className="w-6 h-6 text-[#91C687]" />
                   </div>
                   <p className="text-white font-medium text-sm">
                     Drag & drop files here
@@ -529,9 +529,9 @@ export default function SubmitProofPage() {
                       ) : (
                         <div className="w-full h-full flex flex-col items-center justify-center gap-2 p-2">
                           {uf.type === "video" ? (
-                            <Video className="w-8 h-8 text-violet-400" />
+                            <Video className="w-8 h-8 text-[#91C687]" />
                           ) : (
-                            <FileText className="w-8 h-8 text-violet-400" />
+                            <FileText className="w-8 h-8 text-[#91C687]" />
                           )}
                           <p className="text-[10px] text-white/50 text-center leading-tight truncate w-full px-1">
                             {uf.file.name}
@@ -628,7 +628,7 @@ export default function SubmitProofPage() {
           {isUploading && (
             <Card className="border-violet-500/20 bg-violet-500/5">
               <CardContent className="flex items-center gap-3 p-4">
-                <Loader2 className="w-4 h-4 text-violet-400 animate-spin shrink-0" />
+                <Loader2 className="w-4 h-4 text-[#91C687] animate-spin shrink-0" />
                 <div className="flex-1">
                   <p className="text-sm text-white font-medium">
                     Uploading files...
@@ -644,7 +644,7 @@ export default function SubmitProofPage() {
           {isPending && !isUploading && (
             <Card className="border-violet-500/20 bg-violet-500/5">
               <CardContent className="flex items-center gap-3 p-4">
-                <Zap className="w-4 h-4 text-violet-400 animate-pulse shrink-0" />
+                <Zap className="w-4 h-4 text-[#91C687] animate-pulse shrink-0" />
                 <div>
                   <p className="text-sm text-white font-medium">
                     AI is analyzing your proof...

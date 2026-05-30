@@ -248,11 +248,11 @@ function SidebarNavItem({ item, isActive, collapsed }: NavItemProps) {
         "relative flex items-center gap-3 rounded-xl text-sm font-medium transition-all duration-200 group",
         collapsed ? "px-2 py-2.5 justify-center" : "px-3 py-2.5",
         isActive
-          ? "bg-violet-600/20 text-violet-300 border border-violet-500/30 shadow-sm shadow-violet-500/10"
+          ? "bg-[#785964]/20 text-[#91C687] border border-[#91C687]/30 shadow-sm shadow-violet-500/10"
           : item.highlight
           ? [
-              "text-violet-400 border border-violet-500/20",
-              "hover:bg-violet-600/10 hover:text-violet-300 hover:border-violet-500/40",
+              "text-[#91C687] border border-violet-500/20",
+              "hover:bg-violet-600/10 hover:text-[#91C687] hover:border-violet-500/40",
             ]
           : "text-white/55 hover:text-white hover:bg-white/[0.06] border border-transparent"
       )}
@@ -263,9 +263,9 @@ function SidebarNavItem({ item, isActive, collapsed }: NavItemProps) {
           "shrink-0 transition-colors duration-200",
           collapsed ? "w-5 h-5" : "w-4 h-4",
           isActive
-            ? "text-violet-400"
+            ? "text-[#91C687]"
             : item.highlight
-            ? "text-violet-400 group-hover:text-violet-300"
+            ? "text-[#91C687] group-hover:text-[#91C687]"
             : "text-current"
         )}
       />
@@ -275,7 +275,7 @@ function SidebarNavItem({ item, isActive, collapsed }: NavItemProps) {
         <>
           <span className="flex-1 truncate">{item.label}</span>
           {typeof item.badge === "number" && item.badge > 0 && (
-            <span className="flex items-center justify-center min-w-[20px] h-5 rounded-full bg-violet-600 text-[10px] font-bold text-white px-1.5 shadow-sm shadow-violet-500/30">
+            <span className="flex items-center justify-center min-w-[20px] h-5 rounded-full bg-violet-600 text-[10px] font-bold text-white px-1.5 shadow-sm shadow-[#91C687]/30">
               {item.badge > 9 ? "9+" : item.badge}
             </span>
           )}
@@ -418,7 +418,7 @@ export function Sidebar({
     return (
       <aside
         className={cn(
-          "flex flex-col h-screen bg-[#0d0d1a] border-r border-white/[0.07] transition-all duration-300",
+          "flex flex-col h-screen bg-[#263228] border-r border-white/[0.07] transition-all duration-300",
           effectiveCollapsed ? "w-[68px]" : "w-[240px]",
           className
         )}
@@ -433,8 +433,8 @@ export function Sidebar({
           {/* Logo mark */}
           <Link
             href="/dashboard"
-            className="flex items-center justify-center w-8 h-8 rounded-lg bg-gradient-to-br from-violet-500 to-purple-700 shadow-lg shadow-violet-500/30 shrink-0 hover:shadow-violet-500/50 transition-shadow duration-200"
-            aria-label="StakeUp Dashboard"
+            className="flex items-center justify-center w-8 h-8 rounded-lg bg-gradient-to-br from-violet-500 to-purple-700 shadow-lg shadow-[#91C687]/30 shrink-0 hover:shadow-violet-500/50 transition-shadow duration-200"
+            aria-label="Pledge. Dashboard"
           >
             <Zap className="w-4 h-4 text-white" />
           </Link>
@@ -445,7 +445,7 @@ export function Sidebar({
                 href="/dashboard"
                 className="font-bold text-lg bg-gradient-to-r from-violet-300 via-purple-300 to-pink-300 bg-clip-text text-transparent tracking-tight hover:opacity-80 transition-opacity"
               >
-                StakeUp
+                Pledge.
               </Link>
               <CollapseButton
                 collapsed={effectiveCollapsed}
@@ -457,7 +457,7 @@ export function Sidebar({
           {effectiveCollapsed && (
             <button
               onClick={() => setCollapsed(false)}
-              className="absolute right-0 translate-x-full top-5 flex items-center justify-center w-5 h-6 rounded-r-md bg-[#0d0d1a] border border-l-0 border-white/[0.07] text-white/30 hover:text-white transition-colors z-10"
+              className="absolute right-0 translate-x-full top-5 flex items-center justify-center w-5 h-6 rounded-r-md bg-[#263228] border border-l-0 border-white/[0.07] text-white/30 hover:text-white transition-colors z-10"
               aria-label="Expand sidebar"
             >
               <ChevronRight className="w-3 h-3" />
@@ -516,7 +516,7 @@ export function Sidebar({
                 avatarBox:
                   "w-8 h-8 ring-1 ring-violet-500/25 hover:ring-violet-500/50 transition-all duration-200",
                 userButtonPopoverCard:
-                  "bg-[#0d0d1a] border border-white/10 shadow-2xl shadow-black/60",
+                  "bg-[#263228] border border-white/10 shadow-2xl shadow-black/60",
                 userButtonPopoverActions: "text-white",
                 userButtonPopoverActionButton:
                   "text-white/70 hover:text-white hover:bg-white/5",
@@ -564,7 +564,7 @@ export function Sidebar({
 
       {/* Mobile toggle button — shown below lg */}
       <button
-        className="lg:hidden fixed top-4 left-4 z-50 flex items-center justify-center w-9 h-9 rounded-xl bg-[#0d0d1a] border border-white/10 text-white/60 hover:text-white shadow-lg shadow-black/40 transition-colors"
+        className="lg:hidden fixed top-4 left-4 z-50 flex items-center justify-center w-9 h-9 rounded-xl bg-[#263228] border border-white/10 text-white/60 hover:text-white shadow-lg shadow-black/40 transition-colors"
         onClick={() => setMobileOpen(true)}
         aria-label="Open sidebar"
       >

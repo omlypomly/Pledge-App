@@ -35,7 +35,7 @@ export default function ChallengeCard({ challenge, userId }: ChallengeCardProps)
 
   return (
     <Link href={`/challenges/${challenge.id}`}>
-      <Card className="border-white/10 bg-white/5 hover:border-violet-500/30 hover:bg-white/8 transition-all cursor-pointer group overflow-hidden">
+      <Card className="border-white/10 bg-white/5 hover:border-[#91C687]/30 hover:bg-white/8 transition-all cursor-pointer group overflow-hidden">
         {challenge.coverImageUrl && (
           <div
             className="h-28 bg-cover bg-center opacity-40"
@@ -45,7 +45,7 @@ export default function ChallengeCard({ challenge, userId }: ChallengeCardProps)
         <CardContent className={`p-4 ${challenge.coverImageUrl ? "" : "pt-4"}`}>
           <div className="flex items-start justify-between gap-2 mb-3">
             <div className="flex-1 min-w-0">
-              <h3 className="font-semibold text-white truncate group-hover:text-violet-300 transition-colors">
+              <h3 className="font-semibold text-white truncate group-hover:text-[#91C687] transition-colors">
                 {challenge.name}
               </h3>
               <p className="text-xs text-white/40 mt-0.5">
@@ -91,8 +91,8 @@ export default function ChallengeCard({ challenge, userId }: ChallengeCardProps)
             </div>
             {nextDeadline && (
               <div className="flex items-center gap-1 ml-auto">
-                <Clock className="w-3 h-3 text-violet-400" />
-                <span className="text-violet-300">{formatRelativeTime(nextDeadline.deadline)}</span>
+                <Clock className="w-3 h-3 text-[#91C687]" />
+                <span className="text-[#91C687]">{formatRelativeTime(nextDeadline.deadline)}</span>
               </div>
             )}
             {challenge.endsAt && challenge.status === "ACTIVE" && !nextDeadline && (
@@ -118,7 +118,7 @@ export default function ChallengeCard({ challenge, userId }: ChallengeCardProps)
                 </div>
               ))}
             </div>
-            <ArrowRight className="w-4 h-4 text-white/30 group-hover:text-violet-400 group-hover:translate-x-0.5 transition-all" />
+            <ArrowRight className="w-4 h-4 text-white/30 group-hover:text-[#91C687] group-hover:translate-x-0.5 transition-all" />
           </div>
         </CardContent>
       </Card>

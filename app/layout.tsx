@@ -15,12 +15,12 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "StakeUp — Accountability Challenges with Real Stakes",
+  title: "Pledge. — Accountability Challenges with Real Stakes",
   description:
     "Put your money where your goals are. Join friend groups, stake money, hit milestones, and win the prize pool.",
   keywords: ["accountability", "challenges", "fitness goals", "money stake", "friend groups"],
   openGraph: {
-    title: "StakeUp",
+    title: "Pledge.",
     description: "Accountability challenges with real financial stakes",
     type: "website",
   },
@@ -35,16 +35,16 @@ export default function RootLayout({
     <ClerkProvider
       appearance={{
         variables: {
-          colorPrimary: "#7c3aed",
-          colorBackground: "#0d0d1a",
-          colorInputBackground: "#1a1a2e",
+          colorPrimary: "#91C687",
+          colorBackground: "#263228",
+          colorInputBackground: "#2d3f2e",
           borderRadius: "0.75rem",
         },
       }}
     >
       <html lang="en" className="dark">
         <body
-          className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#080810] text-white`}
+          className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#303D31] text-white`}
         >
           {children}
           <Toaster
@@ -52,7 +52,7 @@ export default function RootLayout({
             position="top-right"
             toastOptions={{
               style: {
-                background: "#1a1a2e",
+                background: "#2d3f2e",
                 border: "1px solid rgba(124,58,237,0.3)",
                 color: "white",
               },

@@ -1,6 +1,6 @@
 export default function TermsPage() {
   return (
-    <div className="min-h-screen bg-[#080810] py-16 px-4">
+    <div className="min-h-screen bg-[#303D31] py-16 px-4">
       <div className="max-w-3xl mx-auto">
         <h1 className="text-4xl font-bold text-white mb-2">Terms of Service</h1>
         <p className="text-white/50 mb-10">Last updated: January 1, 2025</p>
@@ -9,7 +9,7 @@ export default function TermsPage() {
           <section>
             <h2 className="text-xl font-semibold text-white mb-3">1. Overview</h2>
             <p className="text-white/70">
-              StakeUp is a skill-based accountability platform, not a gambling service.
+              Pledge. is a skill-based accountability platform, not a gambling service.
               Participants stake money at the start of a challenge and can recover their
               stake—plus a proportionate share of eliminated participants&apos; stakes—by
               completing all verified milestones. No house edge is applied; the platform
@@ -68,7 +68,7 @@ export default function TermsPage() {
           <section>
             <h2 className="text-xl font-semibold text-white mb-3">7. Platform Fee</h2>
             <p className="text-white/70">
-              StakeUp collects a 10% administrative fee from the total prize pool at
+              Pledge. collects a 10% administrative fee from the total prize pool at
               challenge completion. This fee covers payment processing, AI verification,
               moderation, and platform operations.
             </p>

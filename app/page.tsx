@@ -150,7 +150,7 @@ function LandingNavbar() {
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
         scrolled
-          ? "bg-[#080810]/80 backdrop-blur-xl border-b border-white/[0.06] shadow-lg shadow-black/40"
+          ? "bg-[#303D31]/80 backdrop-blur-xl border-b border-white/[0.06] shadow-lg shadow-black/40"
           : "bg-transparent"
       )}
     >
@@ -161,7 +161,7 @@ function LandingNavbar() {
             <Trophy className="w-4 h-4 text-white" />
           </div>
           <span className="font-bold text-lg bg-gradient-to-r from-violet-300 via-purple-300 to-pink-300 bg-clip-text text-transparent">
-            StakeUp
+            Pledge.
           </span>
         </Link>
 
@@ -188,7 +188,7 @@ function LandingNavbar() {
           </Link>
           <Link
             href="/sign-up"
-            className="px-4 py-2 text-sm font-semibold rounded-lg bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-500 hover:to-purple-500 text-white transition-all duration-200 shadow-lg shadow-violet-500/25 hover:shadow-violet-500/40"
+            className="px-4 py-2 text-sm font-semibold rounded-lg bg-gradient-to-r from-[#91C687] to-[#785964] hover:from-violet-500 hover:to-purple-500 text-white transition-all duration-200 shadow-lg shadow-violet-500/25 hover:shadow-violet-500/40"
           >
             Get Started
           </Link>
@@ -210,7 +210,7 @@ function LandingNavbar() {
           initial={{ opacity: 0, y: -8 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -8 }}
-          className="md:hidden bg-[#0d0d1a]/95 backdrop-blur-xl border-b border-white/[0.06] px-4 pb-4 space-y-1"
+          className="md:hidden bg-[#263228]/95 backdrop-blur-xl border-b border-white/[0.06] px-4 pb-4 space-y-1"
         >
           {links.map((link) => (
             <a
@@ -231,7 +231,7 @@ function LandingNavbar() {
             </Link>
             <Link
               href="/sign-up"
-              className="block px-3 py-2.5 text-sm font-semibold rounded-lg bg-gradient-to-r from-violet-600 to-purple-600 text-white text-center"
+              className="block px-3 py-2.5 text-sm font-semibold rounded-lg bg-gradient-to-r from-[#91C687] to-[#785964] text-white text-center"
             >
               Get Started
             </Link>
@@ -282,7 +282,7 @@ function HeroSection() {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5 }}
-          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-violet-500/10 border border-violet-500/25 text-violet-300 text-sm font-medium mb-8"
+          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#91C687]/10 border border-violet-500/25 text-[#91C687] text-sm font-medium mb-8"
         >
           <Flame className="w-3.5 h-3.5 text-orange-400" />
           <span>Real money. Real accountability. Real results.</span>
@@ -322,7 +322,7 @@ function HeroSection() {
         >
           <Link
             href="/sign-up"
-            className="group flex items-center gap-2 px-7 py-3.5 rounded-xl bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-500 hover:to-purple-500 text-white font-semibold text-base transition-all duration-200 shadow-xl shadow-violet-500/30 hover:shadow-violet-500/50 hover:-translate-y-0.5"
+            className="group flex items-center gap-2 px-7 py-3.5 rounded-xl bg-gradient-to-r from-[#91C687] to-[#785964] hover:from-violet-500 hover:to-purple-500 text-white font-semibold text-base transition-all duration-200 shadow-xl shadow-[#91C687]/30 hover:shadow-violet-500/50 hover:-translate-y-0.5"
           >
             Start a Challenge
             <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
@@ -369,7 +369,7 @@ function HeroSection() {
       </div>
 
       {/* Bottom fade */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#080810] to-transparent pointer-events-none" />
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#303D31] to-transparent pointer-events-none" />
     </section>
   );
 }
@@ -414,7 +414,7 @@ function HowItWorksSection() {
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <FadeInWhenVisible className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-violet-500/10 border border-violet-500/25 text-violet-300 text-sm font-medium mb-4">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#91C687]/10 border border-violet-500/25 text-[#91C687] text-sm font-medium mb-4">
             <Zap className="w-3.5 h-3.5" />
             Simple by design
           </div>
@@ -431,7 +431,7 @@ function HowItWorksSection() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {steps.map((step, i) => (
             <FadeInWhenVisible key={step.number} delay={i * 0.1}>
-              <div className="relative group h-full p-6 rounded-2xl bg-white/[0.03] border border-white/[0.07] hover:border-violet-500/30 hover:bg-violet-500/[0.04] transition-all duration-300">
+              <div className="relative group h-full p-6 rounded-2xl bg-white/[0.03] border border-white/[0.07] hover:border-[#91C687]/30 hover:bg-violet-500/[0.04] transition-all duration-300">
                 {/* Connector line */}
                 {i < steps.length - 1 && (
                   <div className="hidden lg:block absolute top-10 left-full w-6 h-px bg-gradient-to-r from-violet-500/40 to-transparent z-10" />
@@ -443,7 +443,7 @@ function HowItWorksSection() {
                 </span>
 
                 {/* Icon */}
-                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-violet-600/30 to-purple-600/20 border border-violet-500/25 flex items-center justify-center text-violet-400 mb-5 group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-violet-500/10">
+                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-violet-600/30 to-purple-600/20 border border-violet-500/25 flex items-center justify-center text-[#91C687] mb-5 group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-violet-500/10">
                   {step.icon}
                 </div>
 
@@ -565,7 +565,7 @@ function ChallengeTypesSection() {
                   {cat.example}
                 </p>
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-semibold text-violet-300 bg-violet-500/10 px-2.5 py-1 rounded-full">
+                  <span className="text-xs font-semibold text-[#91C687] bg-[#91C687]/10 px-2.5 py-1 rounded-full">
                     Stake: {cat.stake}
                   </span>
                   <ChevronRight className="w-3.5 h-3.5 text-white/25 group-hover:text-white/60 group-hover:translate-x-0.5 transition-all duration-200" />
@@ -635,7 +635,7 @@ function VerificationSection() {
                     className={cn(
                       "w-12 h-12 rounded-xl flex items-center justify-center shrink-0",
                       item.color === "violet"
-                        ? "bg-violet-500/15 text-violet-400"
+                        ? "bg-[#91C687]/15 text-[#91C687]"
                         : item.color === "blue"
                         ? "bg-blue-500/15 text-blue-400"
                         : "bg-pink-500/15 text-pink-400"
@@ -650,7 +650,7 @@ function VerificationSection() {
                         className={cn(
                           "text-xs font-medium px-2 py-0.5 rounded-full",
                           item.color === "violet"
-                            ? "bg-violet-500/15 text-violet-300"
+                            ? "bg-[#91C687]/15 text-[#91C687]"
                             : item.color === "blue"
                             ? "bg-blue-500/15 text-blue-300"
                             : "bg-pink-500/15 text-pink-300"
@@ -674,7 +674,7 @@ function VerificationSection() {
               {/* Glow */}
               <div className="absolute inset-0 rounded-3xl bg-violet-600/10 blur-2xl scale-90" />
 
-              <div className="relative p-7 rounded-3xl bg-[#0d0d1a] border border-violet-500/25 shadow-2xl shadow-violet-500/10">
+              <div className="relative p-7 rounded-3xl bg-[#263228] border border-violet-500/25 shadow-2xl shadow-violet-500/10">
                 {/* Header */}
                 <div className="flex items-center justify-between mb-6">
                   <div>
@@ -683,7 +683,7 @@ function VerificationSection() {
                     </p>
                     <h3 className="font-bold text-white">Milestone Review</h3>
                   </div>
-                  <span className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-violet-500/15 border border-violet-500/25 text-violet-300 text-sm font-semibold">
+                  <span className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#91C687]/15 border border-violet-500/25 text-[#91C687] text-sm font-semibold">
                     <Brain className="w-3.5 h-3.5" />
                     AI
                   </span>
@@ -780,7 +780,7 @@ const testimonials: Testimonial[] = [
     name: "Jordan Rivera",
     handle: "@jordanfit94",
     avatar: "JR",
-    text: "I'd tried losing weight for 3 years. StakeUp made it click — having $300 on the line and 5 friends watching every weigh-in is motivation I couldn't manufacture myself. Lost 28 lbs and split $1,800 with two others.",
+    text: "I'd tried losing weight for 3 years. Pledge. made it click — having $300 on the line and 5 friends watching every weigh-in is motivation I couldn't manufacture myself. Lost 28 lbs and split $1,800 with two others.",
     amount: "+$600",
     challenge: "Weight Loss — 6mo",
     rating: 5,
@@ -798,7 +798,7 @@ const testimonials: Testimonial[] = [
     name: "Priya Nair",
     handle: "@priya_saves",
     avatar: "PN",
-    text: "I used to be terrible at saving. Put $200 in a StakeUp savings challenge with 4 friends — had to prove monthly bank statements. Saved $6k in 4 months for the first time ever AND won an extra $320.",
+    text: "I used to be terrible at saving. Put $200 in a Pledge. savings challenge with 4 friends — had to prove monthly bank statements. Saved $6k in 4 months for the first time ever AND won an extra $320.",
     amount: "+$320",
     challenge: "Save $6k — 4mo",
     rating: 5,
@@ -884,7 +884,7 @@ function PricingSection() {
     <section id="pricing" className="py-24 px-4 sm:px-6 lg:px-8">
       <div className="max-w-5xl mx-auto">
         <FadeInWhenVisible className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-violet-500/10 border border-violet-500/25 text-violet-300 text-sm font-medium mb-4">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#91C687]/10 border border-violet-500/25 text-[#91C687] text-sm font-medium mb-4">
             <DollarSign className="w-3.5 h-3.5" />
             Simple, transparent pricing
           </div>
@@ -944,16 +944,16 @@ function PricingSection() {
             <div className="h-full p-8 rounded-2xl bg-gradient-to-b from-violet-600/15 to-purple-600/5 border border-violet-500/35 flex flex-col relative overflow-hidden">
               {/* Popular badge */}
               <div className="absolute top-5 right-5">
-                <span className="px-3 py-1 rounded-full bg-gradient-to-r from-violet-600 to-purple-600 text-white text-xs font-semibold shadow-lg shadow-violet-500/30">
+                <span className="px-3 py-1 rounded-full bg-gradient-to-r from-[#91C687] to-[#785964] text-white text-xs font-semibold shadow-lg shadow-[#91C687]/30">
                   Most Popular
                 </span>
               </div>
 
               {/* Glow */}
-              <div className="absolute top-0 right-0 w-60 h-60 bg-violet-500/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />
+              <div className="absolute top-0 right-0 w-60 h-60 bg-[#91C687]/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />
 
               <div className="mb-6 relative">
-                <p className="text-sm font-semibold text-violet-300 uppercase tracking-wider mb-2">
+                <p className="text-sm font-semibold text-[#91C687] uppercase tracking-wider mb-2">
                   Pro
                 </p>
                 <div className="flex items-end gap-1 mb-3">
@@ -977,7 +977,7 @@ function PricingSection() {
                   "Reduced 7% platform fee",
                 ].map((item) => (
                   <li key={item} className="flex items-start gap-2.5 text-sm text-white/70">
-                    <CheckCircle2 className="w-4 h-4 text-violet-400 shrink-0 mt-0.5" />
+                    <CheckCircle2 className="w-4 h-4 text-[#91C687] shrink-0 mt-0.5" />
                     {item}
                   </li>
                 ))}
@@ -985,7 +985,7 @@ function PricingSection() {
 
               <Link
                 href="/sign-up?plan=pro"
-                className="relative block w-full py-3 rounded-xl bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-500 hover:to-purple-500 text-white font-semibold text-sm text-center transition-all duration-200 shadow-lg shadow-violet-500/30 hover:shadow-violet-500/50"
+                className="relative block w-full py-3 rounded-xl bg-gradient-to-r from-[#91C687] to-[#785964] hover:from-violet-500 hover:to-purple-500 text-white font-semibold text-sm text-center transition-all duration-200 shadow-lg shadow-[#91C687]/30 hover:shadow-violet-500/50"
               >
                 Start Pro Free for 7 Days
               </Link>
@@ -1004,7 +1004,7 @@ function PricingSection() {
                 How the 10% platform fee works
               </p>
               <p className="text-sm text-white/45 leading-relaxed">
-                Example: 8 friends stake $100 each = $800 pool. StakeUp keeps
+                Example: 8 friends stake $100 each = $800 pool. Pledge. keeps
                 $80 (10%). If 3 people complete the challenge, they each get{" "}
                 <strong className="text-white/70">$240</strong> — 2.4× their
                 stake back. Lose? Your $100 goes to the winners.
@@ -1029,7 +1029,7 @@ function Footer() {
   };
 
   return (
-    <footer className="border-t border-white/[0.06] bg-[#080810]">
+    <footer className="border-t border-white/[0.06] bg-[#303D31]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-2 md:grid-cols-5 gap-8 mb-12">
           {/* Brand column */}
@@ -1039,7 +1039,7 @@ function Footer() {
                 <Trophy className="w-4 h-4 text-white" />
               </div>
               <span className="font-bold text-lg bg-gradient-to-r from-violet-300 to-pink-300 bg-clip-text text-transparent">
-                StakeUp
+                Pledge.
               </span>
             </div>
             <p className="text-sm text-white/40 leading-relaxed">
@@ -1072,7 +1072,7 @@ function Footer() {
 
         <div className="pt-8 border-t border-white/[0.06] flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-sm text-white/25">
-            © 2026 StakeUp, Inc. All rights reserved.
+            © 2026 Pledge., Inc. All rights reserved.
           </p>
           <div className="flex items-center gap-1.5 text-sm text-white/25">
             <span>Built with</span>
@@ -1090,7 +1090,7 @@ function Footer() {
 ───────────────────────────────────────────── */
 export default function LandingPage() {
   return (
-    <div className="min-h-screen bg-[#080810] text-white">
+    <div className="min-h-screen bg-[#303D31] text-white">
       <LandingNavbar />
       <HeroSection />
       <HowItWorksSection />

@@ -61,14 +61,14 @@ function NavLogo({ showText = true }: { showText?: boolean }) {
     <Link
       href="/"
       className="flex items-center gap-2.5 shrink-0 group"
-      aria-label="StakeUp home"
+      aria-label="Pledge. home"
     >
-      <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-gradient-to-br from-violet-500 to-purple-700 shadow-lg shadow-violet-500/30 group-hover:shadow-violet-500/50 transition-shadow duration-200">
+      <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-gradient-to-br from-violet-500 to-purple-700 shadow-lg shadow-[#91C687]/30 group-hover:shadow-violet-500/50 transition-shadow duration-200">
         <Trophy className="w-4 h-4 text-white" />
       </div>
       {showText && (
         <span className="font-bold text-lg bg-gradient-to-r from-violet-300 via-purple-300 to-pink-300 bg-clip-text text-transparent tracking-tight">
-          StakeUp
+          Pledge.
         </span>
       )}
     </Link>
@@ -101,7 +101,7 @@ function NotificationBell({ count = 0 }: { count?: number }) {
       >
         <Bell className="w-4.5 h-4.5 w-[18px] h-[18px]" />
         {count > 0 && (
-          <span className="absolute top-1.5 right-1.5 flex items-center justify-center min-w-[16px] h-4 rounded-full bg-violet-600 text-[10px] font-bold text-white px-1 shadow-lg shadow-violet-500/30">
+          <span className="absolute top-1.5 right-1.5 flex items-center justify-center min-w-[16px] h-4 rounded-full bg-violet-600 text-[10px] font-bold text-white px-1 shadow-lg shadow-[#91C687]/30">
             {count > 9 ? "9+" : count}
           </span>
         )}
@@ -109,13 +109,13 @@ function NotificationBell({ count = 0 }: { count?: number }) {
 
       {/* Dropdown */}
       {open && (
-        <div className="absolute right-0 top-full mt-2 w-80 rounded-2xl bg-[#0d0d1a] border border-white/[0.08] shadow-2xl shadow-black/60 overflow-hidden z-50">
+        <div className="absolute right-0 top-full mt-2 w-80 rounded-2xl bg-[#263228] border border-white/[0.08] shadow-2xl shadow-black/60 overflow-hidden z-50">
           <div className="flex items-center justify-between px-4 py-3 border-b border-white/[0.06]">
             <span className="text-sm font-semibold text-white">
               Notifications
             </span>
             {count > 0 && (
-              <span className="text-xs text-violet-400 hover:text-violet-300 cursor-pointer font-medium">
+              <span className="text-xs text-[#91C687] hover:text-[#91C687] cursor-pointer font-medium">
                 Mark all read
               </span>
             )}
@@ -190,7 +190,7 @@ function NotificationBell({ count = 0 }: { count?: number }) {
             <Link
               href="/notifications"
               onClick={() => setOpen(false)}
-              className="block text-center text-xs font-medium text-violet-400 hover:text-violet-300 transition-colors"
+              className="block text-center text-xs font-medium text-[#91C687] hover:text-[#91C687] transition-colors"
             >
               View all notifications
             </Link>
@@ -222,7 +222,7 @@ function MobileMenu({
   if (!isOpen) return null;
 
   return (
-    <div className="md:hidden border-t border-white/[0.06] bg-[#0d0d1a]/98 backdrop-blur-xl">
+    <div className="md:hidden border-t border-white/[0.06] bg-[#263228]/98 backdrop-blur-xl">
       <nav className="px-4 py-3 space-y-1">
         {links.map((link) => {
           const isActive = link.exact
@@ -237,7 +237,7 @@ function MobileMenu({
               className={cn(
                 "flex items-center justify-between px-3 py-2.5 rounded-lg text-sm font-medium transition-colors",
                 isActive
-                  ? "bg-violet-500/15 text-violet-300"
+                  ? "bg-[#91C687]/15 text-[#91C687]"
                   : "text-white/60 hover:text-white hover:bg-white/5"
               )}
             >
@@ -264,7 +264,7 @@ function MobileMenu({
           <Link
             href="/sign-up"
             onClick={onClose}
-            className="block px-4 py-2.5 text-sm font-semibold rounded-lg bg-gradient-to-r from-violet-600 to-purple-600 text-white text-center"
+            className="block px-4 py-2.5 text-sm font-semibold rounded-lg bg-gradient-to-r from-[#91C687] to-[#785964] text-white text-center"
           >
             Get Started
           </Link>
@@ -316,7 +316,7 @@ export function Navbar({
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
         scrolled
-          ? "bg-[#080810]/85 backdrop-blur-xl border-b border-white/[0.06] shadow-lg shadow-black/40"
+          ? "bg-[#303D31]/85 backdrop-blur-xl border-b border-white/[0.06] shadow-lg shadow-black/40"
           : "bg-transparent",
         className
       )}
@@ -342,7 +342,7 @@ export function Navbar({
                   className={cn(
                     "relative flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200",
                     isActive
-                      ? "text-white bg-violet-500/10"
+                      ? "text-white bg-[#91C687]/10"
                       : "text-white/55 hover:text-white hover:bg-white/5"
                   )}
                 >
@@ -353,7 +353,7 @@ export function Navbar({
                     </span>
                   )}
                   {isActive && (
-                    <span className="absolute inset-x-3 -bottom-0.5 h-px bg-gradient-to-r from-violet-500 to-purple-500 rounded-full" />
+                    <span className="absolute inset-x-3 -bottom-0.5 h-px bg-gradient-to-r from-[#91C687] to-[#785964] rounded-full" />
                   )}
                 </Link>
               );
@@ -387,7 +387,7 @@ export function Navbar({
                   className={cn(
                     "hidden md:flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium transition-colors",
                     pathname.startsWith("/dashboard")
-                      ? "text-violet-300 bg-violet-500/10"
+                      ? "text-[#91C687] bg-[#91C687]/10"
                       : "text-white/50 hover:text-white hover:bg-white/5"
                   )}
                 >
@@ -403,8 +403,8 @@ export function Navbar({
                   appearance={{
                     elements: {
                       avatarBox:
-                        "w-8 h-8 ring-2 ring-violet-500/30 hover:ring-violet-500/60 transition-all duration-200",
-                      userButtonPopoverCard: "bg-[#0d0d1a] border border-white/10",
+                        "w-8 h-8 ring-2 ring-[#91C687]/30 hover:ring-violet-500/60 transition-all duration-200",
+                      userButtonPopoverCard: "bg-[#263228] border border-white/10",
                       userButtonPopoverActions: "text-white",
                       userButtonPopoverActionButton:
                         "text-white/70 hover:text-white hover:bg-white/5",
@@ -424,7 +424,7 @@ export function Navbar({
                 </Link>
                 <Link
                   href="/sign-up"
-                  className="flex items-center gap-1.5 px-4 py-2 text-sm font-semibold rounded-lg bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-500 hover:to-purple-500 text-white transition-all duration-200 shadow-lg shadow-violet-500/20 hover:shadow-violet-500/35"
+                  className="flex items-center gap-1.5 px-4 py-2 text-sm font-semibold rounded-lg bg-gradient-to-r from-[#91C687] to-[#785964] hover:from-violet-500 hover:to-purple-500 text-white transition-all duration-200 shadow-lg shadow-[#91C687]/20 hover:shadow-violet-500/35"
                 >
                   Get Started
                   <ChevronDown className="w-3.5 h-3.5 -rotate-90" />

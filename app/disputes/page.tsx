@@ -40,7 +40,7 @@ export default async function DisputesPage() {
   const disputes = await getDisputes();
 
   return (
-    <div className="min-h-screen bg-[#080810] py-8 px-6">
+    <div className="min-h-screen bg-[#303D31] py-8 px-6">
       <div className="max-w-5xl mx-auto">
         <div className="flex items-center gap-3 mb-8">
           <AlertTriangle className="w-7 h-7 text-red-400" />
@@ -113,7 +113,7 @@ export default async function DisputesPage() {
                           href={url}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-xs text-violet-400 hover:text-violet-300 underline"
+                          className="text-xs text-[#91C687] hover:text-[#91C687] underline"
                         >
                           Proof {i + 1}
                         </a>

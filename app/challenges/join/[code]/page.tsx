@@ -111,7 +111,7 @@ export default function JoinChallengePage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-[#080810] flex items-center justify-center">
+      <div className="min-h-screen bg-[#303D31] flex items-center justify-center">
         <div className="flex flex-col items-center gap-4">
           <div className="w-12 h-12 rounded-full border-2 border-violet-500 border-t-transparent animate-spin" />
           <p className="text-white/60 text-sm">Loading challenge...</p>
@@ -122,7 +122,7 @@ export default function JoinChallengePage() {
 
   if (error || !challenge) {
     return (
-      <div className="min-h-screen bg-[#080810] flex items-center justify-center p-4">
+      <div className="min-h-screen bg-[#303D31] flex items-center justify-center p-4">
         <Card className="max-w-md w-full border-red-500/20 bg-red-500/5">
           <CardContent className="flex flex-col items-center gap-4 py-12 text-center">
             <AlertTriangle className="w-12 h-12 text-red-400" />
@@ -144,11 +144,11 @@ export default function JoinChallengePage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#080810] text-white py-12 px-4">
+    <div className="min-h-screen bg-[#303D31] text-white py-12 px-4">
       <div className="max-w-2xl mx-auto space-y-6">
         {/* Header */}
         <div className="text-center space-y-2">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-violet-600/10 border border-violet-500/20 text-violet-400 text-sm font-medium mb-2">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-violet-600/10 border border-violet-500/20 text-[#91C687] text-sm font-medium mb-2">
             <Trophy className="w-4 h-4" />
             You&apos;ve been invited!
           </div>
@@ -239,7 +239,7 @@ export default function JoinChallengePage() {
                 <p className="text-[10px] text-white/40">Your Stake</p>
               </div>
               <div className="p-3 rounded-xl bg-white/5 border border-white/10 text-center">
-                <Trophy className="w-4 h-4 text-violet-400 mx-auto mb-1" />
+                <Trophy className="w-4 h-4 text-[#91C687] mx-auto mb-1" />
                 <p className="text-lg font-bold text-white">
                   {formatCurrency(
                     challenge.prizePool > 0
@@ -271,7 +271,7 @@ export default function JoinChallengePage() {
                 <p className="text-[10px] text-white/40">Milestones</p>
               </div>
               <div className="p-3 rounded-xl bg-white/5 border border-white/10 text-center">
-                <Shield className="w-4 h-4 text-violet-400 mx-auto mb-1" />
+                <Shield className="w-4 h-4 text-[#91C687] mx-auto mb-1" />
                 <p className="text-xs font-bold text-white leading-tight">
                   {challenge.verificationMethod.replace(/_/g, " ")}
                 </p>
@@ -295,7 +295,7 @@ export default function JoinChallengePage() {
                   key={milestone.id}
                   className="flex items-start gap-3 p-3 rounded-lg bg-white/5"
                 >
-                  <div className="w-7 h-7 rounded-full bg-violet-600/20 border border-violet-500/30 flex items-center justify-center text-xs font-bold text-violet-400 shrink-0 mt-0.5">
+                  <div className="w-7 h-7 rounded-full bg-[#785964]/20 border border-[#91C687]/30 flex items-center justify-center text-xs font-bold text-[#91C687] shrink-0 mt-0.5">
                     {idx + 1}
                   </div>
                   <div className="flex-1 min-w-0">

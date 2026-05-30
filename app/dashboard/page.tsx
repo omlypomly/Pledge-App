@@ -104,8 +104,8 @@ export default async function DashboardPage() {
       label: "Active Challenges",
       value: activeChallenges.length,
       icon: Trophy,
-      color: "text-violet-400",
-      bg: "bg-violet-500/10",
+      color: "text-[#91C687]",
+      bg: "bg-[#91C687]/10",
     },
     {
       label: "Total Earned",
@@ -134,7 +134,7 @@ export default async function DashboardPage() {
     user.displayName?.split(" ")[0] || user.username || "Champion";
 
   return (
-    <div className="min-h-screen bg-[#080810] text-white">
+    <div className="min-h-screen bg-[#303D31] text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
         {/* Header */}
         <div className="flex items-center justify-between">
@@ -193,7 +193,7 @@ export default async function DashboardPage() {
                   My Active Challenges
                 </h2>
                 <Button variant="ghost" size="sm" asChild>
-                  <Link href="/challenges" className="text-violet-400 hover:text-violet-300">
+                  <Link href="/challenges" className="text-[#91C687] hover:text-[#91C687]">
                     View all
                     <ArrowRight className="w-4 h-4 ml-1" />
                   </Link>
@@ -204,7 +204,7 @@ export default async function DashboardPage() {
                 <Card className="border-dashed border-white/20 bg-transparent">
                   <CardContent className="flex flex-col items-center justify-center py-16 text-center gap-4">
                     <div className="w-16 h-16 rounded-2xl bg-violet-600/10 border border-violet-500/20 flex items-center justify-center">
-                      <Trophy className="w-8 h-8 text-violet-400" />
+                      <Trophy className="w-8 h-8 text-[#91C687]" />
                     </div>
                     <div>
                       <p className="text-white font-semibold text-lg">
@@ -254,7 +254,7 @@ export default async function DashboardPage() {
                     return (
                       <Card
                         key={challenge.id}
-                        className={`border-white/10 bg-white/[0.03] overflow-hidden transition-all hover:border-violet-500/30 ${
+                        className={`border-white/10 bg-white/[0.03] overflow-hidden transition-all hover:border-[#91C687]/30 ${
                           isEliminated ? "opacity-60" : ""
                         }`}
                       >
@@ -355,14 +355,14 @@ export default async function DashboardPage() {
                               className={`flex items-center justify-center w-10 h-10 rounded-xl shrink-0 ${
                                 isUrgent
                                   ? "bg-red-500/10 border border-red-500/20"
-                                  : "bg-violet-500/10 border border-violet-500/20"
+                                  : "bg-[#91C687]/10 border border-violet-500/20"
                               }`}
                             >
                               <Calendar
                                 className={`w-4 h-4 ${
                                   isUrgent
                                     ? "text-red-400"
-                                    : "text-violet-400"
+                                    : "text-[#91C687]"
                                 }`}
                               />
                             </div>
@@ -522,7 +522,7 @@ export default async function DashboardPage() {
                           ) : isNegative ? (
                             <XCircle className="w-3.5 h-3.5 text-red-400" />
                           ) : (
-                            <Zap className="w-3.5 h-3.5 text-violet-400" />
+                            <Zap className="w-3.5 h-3.5 text-[#91C687]" />
                           )}
                         </div>
                         <div className="flex-1 min-w-0">

@@ -70,7 +70,7 @@ export function getStatusColor(status: string): string {
     ACTIVE: "text-green-400",
     ELIMINATED: "text-red-400",
     PENDING: "text-yellow-400",
-    WINNER: "text-purple-400",
+    WINNER: "text-[#785964]",
     COMPLETED: "text-blue-400",
     DRAFT: "text-gray-400",
   };

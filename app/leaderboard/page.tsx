@@ -20,7 +20,7 @@ export default async function LeaderboardPage() {
   }));
 
   return (
-    <div className="min-h-screen bg-[#080810] bg-grid py-12 px-4">
+    <div className="min-h-screen bg-[#303D31] bg-grid py-12 px-4">
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-10">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-yellow-600/20 border border-yellow-500/30 text-yellow-300 text-sm mb-4">
@@ -93,7 +93,7 @@ export default async function LeaderboardPage() {
         <Card className="border-white/10 bg-white/5">
           <CardHeader>
             <CardTitle className="flex items-center gap-2 text-white">
-              <Medal className="w-5 h-5 text-violet-400" />
+              <Medal className="w-5 h-5 text-[#91C687]" />
               All Rankings
             </CardTitle>
           </CardHeader>
@@ -142,7 +142,7 @@ export default async function LeaderboardPage() {
                       <div className="text-white/40 text-xs">Wins</div>
                     </div>
                     <div className="text-center">
-                      <div className="text-violet-400 font-semibold">{user.winRate}%</div>
+                      <div className="text-[#91C687] font-semibold">{user.winRate}%</div>
                       <div className="text-white/40 text-xs">Win Rate</div>
                     </div>
                     <div className="text-center">

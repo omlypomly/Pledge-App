@@ -73,7 +73,7 @@ function MilestoneStatusIcon({ status }: { status: string }) {
     case "FAILED":
       return <XCircle className="w-5 h-5 text-red-400" />;
     case "ACTIVE":
-      return <Circle className="w-5 h-5 text-violet-400 animate-pulse" />;
+      return <Circle className="w-5 h-5 text-[#91C687] animate-pulse" />;
     default:
       return <Circle className="w-5 h-5 text-white/20" />;
   }
@@ -135,10 +135,10 @@ export default async function ChallengePage({
   });
 
   return (
-    <div className="min-h-screen bg-[#080810] text-white">
+    <div className="min-h-screen bg-[#303D31] text-white">
       {/* Cover / Header */}
       <div className="relative">
-        <div className="h-48 sm:h-64 w-full overflow-hidden bg-gradient-to-br from-violet-900/40 via-purple-900/30 to-[#080810]">
+        <div className="h-48 sm:h-64 w-full overflow-hidden bg-gradient-to-br from-violet-900/40 via-purple-900/30 to-[#303D31]">
           {challenge.coverImageUrl ? (
             <Image
               src={challenge.coverImageUrl}
@@ -150,7 +150,7 @@ export default async function ChallengePage({
           ) : (
             <div className="absolute inset-0 bg-gradient-to-br from-violet-800/20 to-purple-800/10" />
           )}
-          <div className="absolute inset-0 bg-gradient-to-t from-[#080810] via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#303D31] via-transparent to-transparent" />
         </div>
 
         <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-8">
@@ -160,7 +160,7 @@ export default async function ChallengePage({
                 <div className="flex flex-wrap items-center gap-2 mb-2">
                   <StatusBadge status={challenge.status} />
                   {myParticipant && (
-                    <Badge variant="outline" className="border-violet-500/40 text-violet-300">
+                    <Badge variant="outline" className="border-violet-500/40 text-[#91C687]">
                       You&apos;re In
                     </Badge>
                   )}
@@ -215,7 +215,7 @@ export default async function ChallengePage({
             {/* Quick stats row */}
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-8">
               <div className="rounded-xl bg-white/[0.03] border border-white/10 p-4 text-center">
-                <p className="text-2xl font-bold text-violet-400">
+                <p className="text-2xl font-bold text-[#91C687]">
                   {formatCurrency(challenge.prizePool)}
                 </p>
                 <p className="text-xs text-white/50 mt-1">Prize Pool</p>
@@ -287,7 +287,7 @@ export default async function ChallengePage({
                       <div>
                         <p className="text-xs text-white/40 mb-1">Verification</p>
                         <p className="text-sm text-white font-medium flex items-center gap-1">
-                          <Shield className="w-3 h-3 text-violet-400" />
+                          <Shield className="w-3 h-3 text-[#91C687]" />
                           {challenge.verificationMethod.replace(/_/g, " ")}
                         </p>
                       </div>
@@ -468,7 +468,7 @@ export default async function ChallengePage({
                                       ? "bg-emerald-500/10 text-emerald-400"
                                       : mySubmission.status === "REJECTED"
                                       ? "bg-red-500/10 text-red-400"
-                                      : "bg-violet-500/10 text-violet-400"
+                                      : "bg-[#91C687]/10 text-[#91C687]"
                                   }`}
                                 >
                                   {mySubmission.status === "APPROVED" ? (
@@ -577,7 +577,7 @@ export default async function ChallengePage({
                           </div>
                           <div className="text-right shrink-0">
                             <p className="text-xs text-white/40">Level</p>
-                            <p className="text-sm font-bold text-violet-400">
+                            <p className="text-sm font-bold text-[#91C687]">
                               {participant.user.level}
                             </p>
                           </div>
@@ -605,8 +605,8 @@ export default async function ChallengePage({
                         key={message.id}
                         className="flex items-start gap-3 p-4 rounded-xl bg-white/[0.02] border border-white/5"
                       >
-                        <div className="w-8 h-8 rounded-full bg-violet-500/10 flex items-center justify-center shrink-0">
-                          <Zap className="w-3.5 h-3.5 text-violet-400" />
+                        <div className="w-8 h-8 rounded-full bg-[#91C687]/10 flex items-center justify-center shrink-0">
+                          <Zap className="w-3.5 h-3.5 text-[#91C687]" />
                         </div>
                         <div className="flex-1 min-w-0">
                           <p className="text-sm text-white/80 leading-snug">
@@ -691,10 +691,10 @@ export default async function ChallengePage({
           {/* Right sticky column — Prize Pool Card */}
           <div className="space-y-4">
             <div className="sticky top-6 space-y-4">
-              <Card className="border-violet-500/30 bg-violet-600/5 shadow-xl shadow-violet-500/5" glow>
+              <Card className="border-[#91C687]/30 bg-violet-600/5 shadow-xl shadow-violet-500/5" glow>
                 <CardHeader className="pb-3">
                   <CardTitle className="flex items-center gap-2 text-base">
-                    <DollarSign className="w-4 h-4 text-violet-400" />
+                    <DollarSign className="w-4 h-4 text-[#91C687]" />
                     Prize Pool
                   </CardTitle>
                 </CardHeader>
@@ -788,7 +788,7 @@ export default async function ChallengePage({
                 <Card className="border-white/10 bg-white/[0.03]">
                   <CardHeader className="pb-3">
                     <CardTitle className="text-sm flex items-center gap-2">
-                      <Target className="w-4 h-4 text-violet-400" />
+                      <Target className="w-4 h-4 text-[#91C687]" />
                       Progress
                     </CardTitle>
                   </CardHeader>

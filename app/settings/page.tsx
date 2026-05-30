@@ -35,7 +35,7 @@ export default function SettingsPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#080810] py-8 px-4">
+    <div className="min-h-screen bg-[#303D31] py-8 px-4">
       <div className="max-w-2xl mx-auto">
         <h1 className="text-3xl font-bold text-white mb-8">Settings</h1>
 
@@ -44,7 +44,7 @@ export default function SettingsPage() {
           <Card className="border-white/10 bg-white/5">
             <CardHeader>
               <CardTitle className="flex items-center gap-2 text-white">
-                <User className="w-4 h-4 text-violet-400" />
+                <User className="w-4 h-4 text-[#91C687]" />
                 Profile
               </CardTitle>
             </CardHeader>
@@ -102,7 +102,7 @@ export default function SettingsPage() {
           <Card className="border-white/10 bg-white/5">
             <CardHeader>
               <CardTitle className="flex items-center gap-2 text-white">
-                <Bell className="w-4 h-4 text-violet-400" />
+                <Bell className="w-4 h-4 text-[#91C687]" />
                 Notifications
               </CardTitle>
             </CardHeader>
@@ -135,7 +135,7 @@ export default function SettingsPage() {
           <Card className="border-white/10 bg-white/5">
             <CardHeader>
               <CardTitle className="flex items-center gap-2 text-white">
-                <CreditCard className="w-4 h-4 text-violet-400" />
+                <CreditCard className="w-4 h-4 text-[#91C687]" />
                 Payment & Payouts
               </CardTitle>
             </CardHeader>
@@ -156,7 +156,7 @@ export default function SettingsPage() {
           <Card className="border-white/10 bg-white/5">
             <CardHeader>
               <CardTitle className="flex items-center gap-2 text-white">
-                <Shield className="w-4 h-4 text-violet-400" />
+                <Shield className="w-4 h-4 text-[#91C687]" />
                 Legal & Compliance
               </CardTitle>
             </CardHeader>

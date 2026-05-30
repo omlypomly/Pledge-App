@@ -76,10 +76,10 @@ export default async function AdminPage() {
   const stats = await getAdminStats();
 
   return (
-    <div className="min-h-screen bg-[#080810] py-8 px-6">
+    <div className="min-h-screen bg-[#303D31] py-8 px-6">
       <div className="max-w-7xl mx-auto">
         <div className="flex items-center gap-3 mb-8">
-          <Shield className="w-8 h-8 text-violet-400" />
+          <Shield className="w-8 h-8 text-[#91C687]" />
           <div>
             <h1 className="text-3xl font-bold text-white">Admin Dashboard</h1>
             <p className="text-white/50 text-sm">Platform overview and management</p>
@@ -90,7 +90,7 @@ export default async function AdminPage() {
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
           {[
             { icon: Users, label: "Total Users", value: stats.totalUsers.toLocaleString(), color: "text-blue-400", bg: "bg-blue-600/10" },
-            { icon: Trophy, label: "Total Challenges", value: stats.totalChallenges.toLocaleString(), color: "text-violet-400", bg: "bg-violet-600/10" },
+            { icon: Trophy, label: "Total Challenges", value: stats.totalChallenges.toLocaleString(), color: "text-[#91C687]", bg: "bg-violet-600/10" },
             { icon: DollarSign, label: "Platform Revenue", value: formatCurrency(stats.totalRevenue), color: "text-emerald-400", bg: "bg-emerald-600/10" },
             { icon: TrendingUp, label: "Active Challenges", value: stats.activeChallenges.toLocaleString(), color: "text-yellow-400", bg: "bg-yellow-600/10" },
           ].map((stat) => (
@@ -140,7 +140,7 @@ export default async function AdminPage() {
           <Card className="border-white/10 bg-white/5">
             <CardHeader>
               <CardTitle className="flex items-center gap-2 text-white">
-                <Users className="w-4 h-4 text-violet-400" />
+                <Users className="w-4 h-4 text-[#91C687]" />
                 Recent Users
               </CardTitle>
             </CardHeader>
@@ -174,7 +174,7 @@ export default async function AdminPage() {
           <Card className="border-white/10 bg-white/5">
             <CardHeader>
               <CardTitle className="flex items-center gap-2 text-white">
-                <Trophy className="w-4 h-4 text-violet-400" />
+                <Trophy className="w-4 h-4 text-[#91C687]" />
                 Recent Challenges
               </CardTitle>
             </CardHeader>

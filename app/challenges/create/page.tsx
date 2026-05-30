@@ -134,11 +134,11 @@ export default function CreateChallengePage() {
   const net = prizePool - fee;
 
   return (
-    <div className="min-h-screen bg-[#080810] bg-grid">
+    <div className="min-h-screen bg-[#303D31] bg-grid">
       <div className="max-w-2xl mx-auto px-4 py-12">
         {/* Header */}
         <div className="text-center mb-10">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-violet-600/20 border border-violet-500/30 text-violet-300 text-sm mb-4">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#785964]/20 border border-[#91C687]/30 text-[#91C687] text-sm mb-4">
             <Trophy className="w-4 h-4" />
             New Challenge
           </div>
@@ -155,7 +155,7 @@ export default function CreateChallengePage() {
                   i + 1 < step
                     ? "bg-violet-600 text-white"
                     : i + 1 === step
-                    ? "bg-violet-600 text-white ring-4 ring-violet-500/30"
+                    ? "bg-violet-600 text-white ring-4 ring-[#91C687]/30"
                     : "bg-white/10 text-white/40"
                 }`}
               >
@@ -186,7 +186,7 @@ export default function CreateChallengePage() {
               <Card className="border-white/10 bg-white/5">
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
-                    <Target className="w-5 h-5 text-violet-400" />
+                    <Target className="w-5 h-5 text-[#91C687]" />
                     What&apos;s your challenge goal?
                   </CardTitle>
                 </CardHeader>
@@ -198,7 +198,7 @@ export default function CreateChallengePage() {
                         onClick={() => setForm({ ...form, goalType: type.value })}
                         className={`p-3 rounded-xl border text-left transition-all ${
                           form.goalType === type.value
-                            ? "border-violet-500 bg-violet-600/20 text-white"
+                            ? "border-violet-500 bg-[#785964]/20 text-white"
                             : "border-white/10 bg-white/5 text-white/70 hover:border-white/20 hover:bg-white/10"
                         }`}
                       >
@@ -238,7 +238,7 @@ export default function CreateChallengePage() {
               <Card className="border-white/10 bg-white/5">
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
-                    <Camera className="w-5 h-5 text-violet-400" />
+                    <Camera className="w-5 h-5 text-[#91C687]" />
                     How will you prove progress?
                   </CardTitle>
                 </CardHeader>
@@ -249,7 +249,7 @@ export default function CreateChallengePage() {
                       onClick={() => setForm({ ...form, verificationMethod: method.value })}
                       className={`w-full p-4 rounded-xl border text-left transition-all ${
                         form.verificationMethod === method.value
-                          ? "border-violet-500 bg-violet-600/20"
+                          ? "border-violet-500 bg-[#785964]/20"
                           : "border-white/10 bg-white/5 hover:border-white/20 hover:bg-white/10"
                       }`}
                     >
@@ -266,7 +266,7 @@ export default function CreateChallengePage() {
               <Card className="border-white/10 bg-white/5">
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
-                    <DollarSign className="w-5 h-5 text-violet-400" />
+                    <DollarSign className="w-5 h-5 text-[#91C687]" />
                     Duration & Stakes
                   </CardTitle>
                 </CardHeader>
@@ -280,7 +280,7 @@ export default function CreateChallengePage() {
                           onClick={() => setForm({ ...form, durationMonths: d.value })}
                           className={`p-4 rounded-xl border text-left transition-all ${
                             form.durationMonths === d.value
-                              ? "border-violet-500 bg-violet-600/20"
+                              ? "border-violet-500 bg-[#785964]/20"
                               : "border-white/10 bg-white/5 hover:border-white/20"
                           }`}
                         >
@@ -317,7 +317,7 @@ export default function CreateChallengePage() {
                   </div>
 
                   {/* Prize Pool Preview */}
-                  <div className="p-4 rounded-xl bg-violet-600/10 border border-violet-500/30">
+                  <div className="p-4 rounded-xl bg-violet-600/10 border border-[#91C687]/30">
                     <div className="text-sm text-white/60 mb-3">Prize Pool Preview</div>
                     <div className="space-y-1.5 text-sm">
                       <div className="flex justify-between">
@@ -344,7 +344,7 @@ export default function CreateChallengePage() {
                 <CardHeader>
                   <div className="flex items-center justify-between">
                     <CardTitle className="flex items-center gap-2">
-                      <Calendar className="w-5 h-5 text-violet-400" />
+                      <Calendar className="w-5 h-5 text-[#91C687]" />
                       Set Your Milestones
                     </CardTitle>
                     <Button
@@ -352,7 +352,7 @@ export default function CreateChallengePage() {
                       size="sm"
                       onClick={handleGenerateMilestones}
                       disabled={aiLoading}
-                      className="text-violet-400 border-violet-500/30"
+                      className="text-[#91C687] border-[#91C687]/30"
                     >
                       {aiLoading ? (
                         <Loader2 className="w-3 h-3 animate-spin mr-1" />
@@ -367,7 +367,7 @@ export default function CreateChallengePage() {
                   {milestones.map((milestone, i) => (
                     <div key={i} className="p-4 rounded-xl bg-white/5 border border-white/10 space-y-3">
                       <div className="flex items-center justify-between">
-                        <span className="text-sm font-medium text-violet-400">Milestone {i + 1}</span>
+                        <span className="text-sm font-medium text-[#91C687]">Milestone {i + 1}</span>
                         {milestones.length > 1 && (
                           <button
                             onClick={() => setMilestones(milestones.filter((_, j) => j !== i))}
@@ -470,12 +470,12 @@ export default function CreateChallengePage() {
               <Card className="border-white/10 bg-white/5">
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
-                    <Trophy className="w-5 h-5 text-violet-400" />
+                    <Trophy className="w-5 h-5 text-[#91C687]" />
                     Review Your Challenge
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
-                  <div className="p-4 rounded-xl bg-gradient-to-r from-violet-600/20 to-purple-600/20 border border-violet-500/30">
+                  <div className="p-4 rounded-xl bg-gradient-to-r from-violet-600/20 to-purple-600/20 border border-[#91C687]/30">
                     <h3 className="text-xl font-bold text-white mb-1">{form.name}</h3>
                     <p className="text-white/60 text-sm">{form.description}</p>
                   </div>
@@ -501,7 +501,7 @@ export default function CreateChallengePage() {
                   </div>
 
                   <Button
-                    className="w-full bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-500 hover:to-purple-500 h-12 text-base font-semibold"
+                    className="w-full bg-gradient-to-r from-[#91C687] to-[#785964] hover:from-violet-500 hover:to-purple-500 h-12 text-base font-semibold"
                     onClick={handleSubmit}
                     disabled={loading}
                   >

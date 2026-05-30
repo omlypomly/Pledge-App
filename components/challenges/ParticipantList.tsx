@@ -71,7 +71,7 @@ export default function ParticipantList({ participants, creatorId }: Participant
                 </div>
                 {participant.winProbability !== null && participant.status === "ACTIVE" && (
                   <div className="flex items-center gap-2 mt-1">
-                    <TrendingUp className="w-3 h-3 text-violet-400 flex-shrink-0" />
+                    <TrendingUp className="w-3 h-3 text-[#91C687] flex-shrink-0" />
                     <Progress
                       value={participant.winProbability}
                       className="h-1 flex-1"

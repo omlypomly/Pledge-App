@@ -18,7 +18,7 @@ const BADGE_META: Record<string, { emoji: string; label: string; desc: string; c
   FIRST_WIN: { emoji: "⭐", label: "First Win", desc: "Won your first challenge", color: "text-yellow-400" },
   SOCIAL_BUTTERFLY: { emoji: "🦋", label: "Social Butterfly", desc: "Joined 5+ challenges", color: "text-pink-400" },
   HIGH_ROLLER: { emoji: "💰", label: "High Roller", desc: "Staked $500+", color: "text-emerald-400" },
-  STREAK_MASTER: { emoji: "⚡", label: "Streak Master", desc: "30-day streak", color: "text-violet-400" },
+  STREAK_MASTER: { emoji: "⚡", label: "Streak Master", desc: "30-day streak", color: "text-[#91C687]" },
   EARLY_ADOPTER: { emoji: "🚀", label: "Early Adopter", desc: "Joined in the first month", color: "text-blue-400" },
   REFERRAL_KING: { emoji: "🤝", label: "Referral King", desc: "Invited 5+ friends", color: "text-green-400" },
 };
@@ -39,13 +39,13 @@ export default async function ProfilePage({ params }: { params: Promise<{ id: st
       : 0;
 
   return (
-    <div className="min-h-screen bg-[#080810] bg-grid py-12 px-4">
+    <div className="min-h-screen bg-[#303D31] bg-grid py-12 px-4">
       <div className="max-w-4xl mx-auto">
         {/* Profile Header */}
         <div className="relative mb-8">
           <div className="h-40 rounded-2xl bg-gradient-to-r from-violet-900/50 via-purple-800/30 to-pink-900/30 border border-white/10" />
           <div className="absolute -bottom-12 left-6 flex items-end gap-4">
-            <Avatar className="w-24 h-24 ring-4 ring-[#080810]">
+            <Avatar className="w-24 h-24 ring-4 ring-[#303D31]">
               <AvatarImage src={user.avatarUrl ?? ""} />
               <AvatarFallback className="text-2xl">{user.displayName?.[0] ?? "?"}</AvatarFallback>
             </Avatar>
@@ -60,7 +60,7 @@ export default async function ProfilePage({ params }: { params: Promise<{ id: st
           </div>
           <div className="text-right">
             <div className="flex items-center gap-2 justify-end">
-              <Zap className="w-4 h-4 text-violet-400" />
+              <Zap className="w-4 h-4 text-[#91C687]" />
               <span className="text-white font-bold">Level {user.level}</span>
             </div>
             <div className="text-xs text-white/40 mt-0.5">{user.xp.toLocaleString()} XP total</div>
@@ -72,7 +72,7 @@ export default async function ProfilePage({ params }: { params: Promise<{ id: st
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8">
           {[
             { icon: Trophy, label: "Challenges Won", value: user.challengesWon, color: "text-yellow-400" },
-            { icon: Target, label: "Challenges Entered", value: user.challengesEntered, color: "text-violet-400" },
+            { icon: Target, label: "Challenges Entered", value: user.challengesEntered, color: "text-[#91C687]" },
             { icon: TrendingUp, label: "Win Rate", value: `${winRate}%`, color: "text-emerald-400" },
             { icon: Star, label: "Total Earned", value: formatCurrency(user.totalEarned), color: "text-green-400" },
           ].map((stat) => (
@@ -113,7 +113,7 @@ export default async function ProfilePage({ params }: { params: Promise<{ id: st
           <Card className="border-white/10 bg-white/5">
             <CardHeader>
               <CardTitle className="flex items-center gap-2 text-white text-base">
-                <Medal className="w-4 h-4 text-violet-400" />
+                <Medal className="w-4 h-4 text-[#91C687]" />
                 Badges ({user.badges.length})
               </CardTitle>
             </CardHeader>
@@ -145,7 +145,7 @@ export default async function ProfilePage({ params }: { params: Promise<{ id: st
         <Card className="border-white/10 bg-white/5">
           <CardHeader>
             <CardTitle className="flex items-center gap-2 text-white">
-              <Calendar className="w-5 h-5 text-violet-400" />
+              <Calendar className="w-5 h-5 text-[#91C687]" />
               Challenge History
             </CardTitle>
           </CardHeader>

@@ -33,7 +33,7 @@ export default function PrizePoolCard({
     : netPool / Math.max(1, participantCount);
 
   return (
-    <Card className="border-violet-500/30 bg-gradient-to-b from-violet-600/10 to-transparent sticky top-4">
+    <Card className="border-[#91C687]/30 bg-gradient-to-b from-violet-600/10 to-transparent sticky top-4">
       <CardHeader className="pb-3">
         <CardTitle className="flex items-center gap-2 text-white">
           <Trophy className="w-5 h-5 text-yellow-400" />
@@ -65,7 +65,7 @@ export default function PrizePoolCard({
           {participantCount > 0 && (
             <div className="flex justify-between border-t border-white/10 pt-2">
               <span className="text-white/60">Est. per winner</span>
-              <span className="text-violet-400 font-bold">{formatCurrency(estimatedPayout)}</span>
+              <span className="text-[#91C687] font-bold">{formatCurrency(estimatedPayout)}</span>
             </div>
           )}
         </div>
@@ -73,7 +73,7 @@ export default function PrizePoolCard({
         {/* Stats */}
         <div className="grid grid-cols-2 gap-3">
           <div className="text-center p-2.5 rounded-lg bg-white/5 border border-white/10">
-            <Users className="w-4 h-4 text-violet-400 mx-auto mb-1" />
+            <Users className="w-4 h-4 text-[#91C687] mx-auto mb-1" />
             <div className="text-lg font-bold text-white">{participantCount}</div>
             <div className="text-xs text-white/40">of {maxParticipants}</div>
           </div>
@@ -96,16 +96,16 @@ export default function PrizePoolCard({
         {/* Time remaining */}
         {endsAt && status === "ACTIVE" && (
           <div className="flex items-center gap-2 text-sm text-white/60">
-            <Clock className="w-4 h-4 text-violet-400" />
+            <Clock className="w-4 h-4 text-[#91C687]" />
             <span>Ends {formatRelativeTime(endsAt)}</span>
           </div>
         )}
 
         {/* User's stake */}
         {userStake && (
-          <div className="p-3 rounded-lg bg-violet-600/10 border border-violet-500/30 text-center">
+          <div className="p-3 rounded-lg bg-violet-600/10 border border-[#91C687]/30 text-center">
             <div className="text-xs text-white/50">Your stake</div>
-            <div className="text-lg font-bold text-violet-400">{formatCurrency(userStake)}</div>
+            <div className="text-lg font-bold text-[#91C687]">{formatCurrency(userStake)}</div>
             <div className="text-xs text-white/40 mt-0.5">
               {estimatedPayout > userStake
                 ? `+${formatCurrency(estimatedPayout - userStake)} potential gain`
