@@ -46,9 +46,9 @@ const BADGE_CONFIG = {
     icon: Users,
     label: "Social Butterfly",
     desc: "Joined 5 or more challenges",
-    color: "text-pink-400",
-    bg: "bg-pink-400/10",
-    border: "border-pink-400/30",
+    color: "text-[#785964]",
+    bg: "bg-[#785964]/10",
+    border: "border-[#785964]/30",
   },
   HIGH_ROLLER: {
     icon: DollarSign,

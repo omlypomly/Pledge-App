@@ -67,7 +67,7 @@ function NavLogo({ showText = true }: { showText?: boolean }) {
         <Trophy className="w-4 h-4 text-white" />
       </div>
       {showText && (
-        <span className="font-bold text-lg bg-gradient-to-r from-[#D9F6FF] via-[#AFC2D5] to-pink-300 bg-clip-text text-transparent tracking-tight">
+        <span className="font-bold text-lg bg-gradient-to-r from-[#D9F6FF] via-[#AFC2D5] to-[#785964] bg-clip-text text-transparent tracking-tight">
           Pledge.
         </span>
       )}

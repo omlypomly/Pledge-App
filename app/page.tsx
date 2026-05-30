@@ -160,7 +160,7 @@ function LandingNavbar() {
           <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-gradient-to-br from-[#91C687] to-[#785964] shadow-lg shadow-[#91C687]/40">
             <Trophy className="w-4 h-4 text-white" />
           </div>
-          <span className="font-bold text-lg bg-gradient-to-r from-[#D9F6FF] via-[#AFC2D5] to-pink-300 bg-clip-text text-transparent">
+          <span className="font-bold text-lg bg-gradient-to-r from-[#D9F6FF] via-[#AFC2D5] to-[#785964] bg-clip-text text-transparent">
             Pledge.
           </span>
         </Link>
@@ -262,7 +262,7 @@ const heroStats: StatCard[] = [
     value: "12,000+",
     label: "Challengers",
     icon: <Users className="w-4 h-4" />,
-    color: "from-pink-500/20 to-rose-500/10 border-pink-500/20",
+    color: "from-[#785964]/20 to-[#785964]/10 border-[#785964]/20",
   },
 ];
 
@@ -272,7 +272,7 @@ function HeroSection() {
       {/* Background glowing orbs */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute -top-40 -left-40 w-[600px] h-[600px] rounded-full bg-[#91C687]/10 blur-[120px]" />
-        <div className="absolute -bottom-40 -right-20 w-[500px] h-[500px] rounded-full bg-pink-600/8 blur-[100px]" />
+        <div className="absolute -bottom-40 -right-20 w-[500px] h-[500px] rounded-full bg-[#785964]/8 blur-[100px]" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] rounded-full bg-purple-900/10 blur-[80px]" />
       </div>
 
@@ -296,7 +296,7 @@ function HeroSection() {
           className="text-5xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white mb-6 leading-[1.08]"
         >
           Put Your Money{" "}
-          <span className="bg-gradient-to-r from-[#91C687] via-[#785964] to-pink-400 bg-clip-text text-transparent">
+          <span className="bg-gradient-to-r from-[#91C687] via-[#785964] to-[#785964] bg-clip-text text-transparent">
             Where Your Goals Are
           </span>
         </motion.h1>
@@ -492,7 +492,7 @@ const goalCategories: GoalCategory[] = [
     title: "Quit Smoking",
     example: "100 smoke-free days",
     stake: "$200/person",
-    color: "from-red-500/10 to-rose-500/5 border-red-500/15",
+    color: "from-red-500/10 to-[#785964]/5 border-red-500/15",
   },
   {
     emoji: "📚",
@@ -533,7 +533,7 @@ function ChallengeTypesSection() {
     <section className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-transparent via-violet-950/10 to-transparent">
       <div className="max-w-7xl mx-auto">
         <FadeInWhenVisible className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-pink-500/10 border border-pink-500/25 text-pink-300 text-sm font-medium mb-4">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#785964]/10 border border-[#785964]/25 text-[#785964] text-sm font-medium mb-4">
             <Star className="w-3.5 h-3.5" />
             Any goal. Any stakes.
           </div>
@@ -638,7 +638,7 @@ function VerificationSection() {
                         ? "bg-[#91C687]/15 text-[#91C687]"
                         : item.color === "blue"
                         ? "bg-blue-500/15 text-blue-400"
-                        : "bg-pink-500/15 text-pink-400"
+                        : "bg-[#785964]/15 text-[#785964]"
                     )}
                   >
                     {item.icon}
@@ -653,7 +653,7 @@ function VerificationSection() {
                             ? "bg-[#91C687]/15 text-[#91C687]"
                             : item.color === "blue"
                             ? "bg-blue-500/15 text-blue-300"
-                            : "bg-pink-500/15 text-pink-300"
+                            : "bg-[#785964]/15 text-[#785964]"
                         )}
                       >
                         {item.tag}
@@ -1038,7 +1038,7 @@ function Footer() {
               <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-gradient-to-br from-[#91C687] to-[#785964]">
                 <Trophy className="w-4 h-4 text-white" />
               </div>
-              <span className="font-bold text-lg bg-gradient-to-r from-[#D9F6FF] to-pink-300 bg-clip-text text-transparent">
+              <span className="font-bold text-lg bg-gradient-to-r from-[#D9F6FF] to-[#785964] bg-clip-text text-transparent">
                 Pledge.
               </span>
             </div>

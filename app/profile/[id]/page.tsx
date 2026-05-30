@@ -16,7 +16,7 @@ const BADGE_META: Record<string, { emoji: string; label: string; desc: string; c
   LAST_SURVIVOR: { emoji: "🏆", label: "Last Survivor", desc: "Only winner in a challenge", color: "text-amber-400" },
   CONSISTENCY_MASTER: { emoji: "🔥", label: "Consistency Master", desc: "10+ day streak", color: "text-orange-400" },
   FIRST_WIN: { emoji: "⭐", label: "First Win", desc: "Won your first challenge", color: "text-yellow-400" },
-  SOCIAL_BUTTERFLY: { emoji: "🦋", label: "Social Butterfly", desc: "Joined 5+ challenges", color: "text-pink-400" },
+  SOCIAL_BUTTERFLY: { emoji: "🦋", label: "Social Butterfly", desc: "Joined 5+ challenges", color: "text-[#785964]" },
   HIGH_ROLLER: { emoji: "💰", label: "High Roller", desc: "Staked $500+", color: "text-emerald-400" },
   STREAK_MASTER: { emoji: "⚡", label: "Streak Master", desc: "30-day streak", color: "text-[#91C687]" },
   EARLY_ADOPTER: { emoji: "🚀", label: "Early Adopter", desc: "Joined in the first month", color: "text-blue-400" },
@@ -43,7 +43,7 @@ export default async function ProfilePage({ params }: { params: Promise<{ id: st
       <div className="max-w-4xl mx-auto">
         {/* Profile Header */}
         <div className="relative mb-8">
-          <div className="h-40 rounded-2xl bg-gradient-to-r from-[#303D31]/50 via-purple-800/30 to-pink-900/30 border border-white/10" />
+          <div className="h-40 rounded-2xl bg-gradient-to-r from-[#303D31]/50 via-purple-800/30 to-[#785964]/30 border border-white/10" />
           <div className="absolute -bottom-12 left-6 flex items-end gap-4">
             <Avatar className="w-24 h-24 ring-4 ring-[#303D31]">
               <AvatarImage src={user.avatarUrl ?? ""} />
