@@ -138,7 +138,7 @@ export default async function ChallengePage({
     <div className="min-h-screen bg-[#303D31] text-white">
       {/* Cover / Header */}
       <div className="relative">
-        <div className="h-48 sm:h-64 w-full overflow-hidden bg-gradient-to-br from-[#303D31]/40 via-purple-900/30 to-[#303D31]">
+        <div className="h-48 sm:h-64 w-full overflow-hidden bg-gradient-to-br from-[#303D31]/40 via-[#785964]/30 to-[#303D31]">
           {challenge.coverImageUrl ? (
             <Image
               src={challenge.coverImageUrl}
@@ -148,7 +148,7 @@ export default async function ChallengePage({
               priority
             />
           ) : (
-            <div className="absolute inset-0 bg-gradient-to-br from-[#3d4e3e]/20 to-purple-800/10" />
+            <div className="absolute inset-0 bg-gradient-to-br from-[#3d4e3e]/20 to-[#785964]/10" />
           )}
           <div className="absolute inset-0 bg-gradient-to-t from-[#303D31] via-transparent to-transparent" />
         </div>

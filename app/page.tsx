@@ -273,7 +273,7 @@ function HeroSection() {
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute -top-40 -left-40 w-[600px] h-[600px] rounded-full bg-[#91C687]/10 blur-[120px]" />
         <div className="absolute -bottom-40 -right-20 w-[500px] h-[500px] rounded-full bg-[#785964]/8 blur-[100px]" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] rounded-full bg-purple-900/10 blur-[80px]" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] rounded-full bg-[#785964]/10 blur-[80px]" />
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -530,7 +530,7 @@ const goalCategories: GoalCategory[] = [
 
 function ChallengeTypesSection() {
   return (
-    <section className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-transparent via-violet-950/10 to-transparent">
+    <section className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-transparent via-[#91C687]/10 to-transparent">
       <div className="max-w-7xl mx-auto">
         <FadeInWhenVisible className="text-center mb-16">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#785964]/10 border border-[#785964]/25 text-[#785964] text-sm font-medium mb-4">
@@ -818,7 +818,7 @@ function TestimonialsSection() {
   return (
     <section
       id="leaderboard"
-      className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-transparent via-violet-950/10 to-transparent"
+      className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-transparent via-[#91C687]/10 to-transparent"
     >
       <div className="max-w-7xl mx-auto">
         <FadeInWhenVisible className="text-center mb-16">

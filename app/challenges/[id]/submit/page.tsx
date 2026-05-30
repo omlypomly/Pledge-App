@@ -417,7 +417,7 @@ export default function SubmitProofPage() {
         ) : null}
 
         {/* AI Verification Info */}
-        <Card className="border-[#91C687]/20 bg-gradient-to-r from-[#303D31]/10 to-purple-900/10">
+        <Card className="border-[#91C687]/20 bg-gradient-to-r from-[#303D31]/10 to-[#785964]/10">
           <CardContent className="p-4 flex items-start gap-3">
             <div className="w-9 h-9 rounded-xl bg-[#785964]/20 flex items-center justify-center shrink-0">
               <Zap className="w-4 h-4 text-[#91C687]" />
