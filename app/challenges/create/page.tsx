@@ -8,7 +8,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import {
   Trophy, Target, DollarSign, Calendar, Camera,
   ChevronRight, ChevronLeft, Plus, Trash2, Sparkles, Loader2,
-  Copy, Check, Share2, Link, Users
+  UserPlus, X, CheckCircle2, Rocket
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -57,18 +57,14 @@ interface Milestone {
   targetUnit?: string;
 }
 
-function generateCode() {
-  return Math.random().toString(36).substring(2, 8).toUpperCase();
-}
-
 export default function CreateChallengePage() {
   const router = useRouter();
   const { user } = useUser();
   const [step, setStep] = useState(1);
   const [loading, setLoading] = useState(false);
   const [aiLoading, setAiLoading] = useState(false);
-  const [copied, setCopied] = useState(false);
-  const [inviteCode, setInviteCode] = useState("");
+  const [friends, setFriends] = useState<string[]>([]);
+  const [friendInput, setFriendInput] = useState("");
   const [challengeId, setChallengeId] = useState<string | null>(null);
 
   const [form, setForm] = useState({
@@ -87,8 +83,8 @@ export default function CreateChallengePage() {
     { title: "", description: "", deadline: addMonths(new Date(), 1) },
   ]);
 
-  const totalSteps = 6;
-  const STEP_LABELS = ["Goal", "Proof", "Stakes", "Milestones", "Review", "Invite"];
+  const totalSteps = 7;
+  const STEP_LABELS = ["Goal", "Proof", "Stakes", "Milestones", "Review", "Friends", "Done"];
 
   const handleGenerateMilestones = async () => {
     if (!form.description || !form.goalType) {
@@ -116,77 +112,74 @@ export default function CreateChallengePage() {
 
   const handleSubmit = async () => {
     setLoading(true);
-    const code = generateCode();
     try {
       const result = await createChallenge({ ...form, milestones });
       if (result.success) {
         setChallengeId(result.challenge.id);
-        setInviteCode(result.challenge.inviteCode || code);
         toast.success("Challenge created!");
-        setStep(6);
-        return;
       }
     } catch {
-      // DB not ready — still show invite step with preview code
+      // DB not ready — continue anyway
     }
-    setInviteCode(code);
-    toast.success("Challenge ready — share your invite link!");
     setStep(6);
     setLoading(false);
   };
 
-  const appUrl = typeof window !== "undefined" ? window.location.origin : "https://pledge-app.vercel.app";
-  const inviteLink = `${appUrl}/challenges/join/${inviteCode}`;
-
-  const handleCopy = () => {
-    navigator.clipboard.writeText(inviteLink);
-    setCopied(true);
-    toast.success("Link copied!");
-    setTimeout(() => setCopied(false), 2000);
+  const handleAddFriend = () => {
+    const val = friendInput.trim();
+    if (!val) return;
+    if (friends.includes(val)) { toast.error("Already added"); return; }
+    setFriends([...friends, val]);
+    setFriendInput("");
+    toast.success(`${val} added!`);
   };
 
   const prizePool = form.stakeAmount * form.maxParticipants;
   const fee = prizePool * 0.1;
   const net = prizePool - fee;
 
+  void user;
+
   return (
     <div className="min-h-screen bg-[#303D31] bg-grid">
       <div className="max-w-2xl mx-auto px-4 py-12">
-        {/* Header */}
-        <div className="text-center mb-10">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#91C687]/20 border border-[#91C687]/30 text-[#91C687] text-sm mb-4">
-            <Trophy className="w-4 h-4" />
-            New Challenge
-          </div>
-          <h1 className="text-4xl font-bold text-[#D9F6FF] mb-2">Create a Challenge</h1>
-          <p className="text-[#AFC2D5]">Set up your accountability challenge in a few steps</p>
-        </div>
 
-        {/* Progress Steps */}
-        <div className="flex items-center justify-between mb-8">
-          {Array.from({ length: totalSteps }, (_, i) => (
-            <div key={i} className="flex items-center flex-1">
-              <div className="flex flex-col items-center">
-                <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold transition-all ${
-                  i + 1 < step ? "bg-[#91C687] text-[#303D31]"
-                  : i + 1 === step ? "bg-[#91C687] text-[#303D31] ring-4 ring-[#91C687]/30"
-                  : "bg-[#D9F6FF]/10 text-[#AFC2D5]"
-                }`}>
-                  {i + 1 < step ? "✓" : i + 1}
-                </div>
-                <span className="text-[10px] text-[#AFC2D5] mt-1 hidden sm:block">{STEP_LABELS[i]}</span>
-              </div>
-              {i < totalSteps - 1 && (
-                <div className={`h-0.5 flex-1 mx-1 transition-all ${i + 1 < step ? "bg-[#91C687]" : "bg-[#D9F6FF]/10"}`} />
-              )}
+        {step < 7 && (
+          <div className="text-center mb-10">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#91C687]/20 border border-[#91C687]/30 text-[#91C687] text-sm mb-4">
+              <Trophy className="w-4 h-4" />
+              New Challenge
             </div>
-          ))}
-        </div>
+            <h1 className="text-4xl font-bold text-[#D9F6FF] mb-2">Create a Challenge</h1>
+            <p className="text-[#AFC2D5]">Set up your accountability challenge in a few steps</p>
+          </div>
+        )}
+
+        {step < 7 && (
+          <div className="flex items-center justify-between mb-8">
+            {Array.from({ length: totalSteps }, (_, i) => (
+              <div key={i} className="flex items-center flex-1">
+                <div className="flex flex-col items-center">
+                  <div className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold transition-all ${
+                    i + 1 < step ? "bg-[#91C687] text-[#303D31]"
+                    : i + 1 === step ? "bg-[#91C687] text-[#303D31] ring-4 ring-[#91C687]/30"
+                    : "bg-[#D9F6FF]/10 text-[#AFC2D5]"
+                  }`}>
+                    {i + 1 < step ? "✓" : i + 1}
+                  </div>
+                  <span className="text-[9px] text-[#AFC2D5] mt-1 hidden sm:block">{STEP_LABELS[i]}</span>
+                </div>
+                {i < totalSteps - 1 && (
+                  <div className={`h-0.5 flex-1 mx-1 transition-all ${i + 1 < step ? "bg-[#91C687]" : "bg-[#D9F6FF]/10"}`} />
+                )}
+              </div>
+            ))}
+          </div>
+        )}
 
         <AnimatePresence mode="wait">
           <motion.div key={step} initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} transition={{ duration: 0.2 }}>
 
-            {/* Step 1: Goal */}
             {step === 1 && (
               <Card className="border-[#D9F6FF]/10 bg-[#D9F6FF]/5">
                 <CardHeader>
@@ -227,7 +220,6 @@ export default function CreateChallengePage() {
               </Card>
             )}
 
-            {/* Step 2: Verification */}
             {step === 2 && (
               <Card className="border-[#D9F6FF]/10 bg-[#D9F6FF]/5">
                 <CardHeader>
@@ -252,7 +244,6 @@ export default function CreateChallengePage() {
               </Card>
             )}
 
-            {/* Step 3: Stakes */}
             {step === 3 && (
               <Card className="border-[#D9F6FF]/10 bg-[#D9F6FF]/5">
                 <CardHeader>
@@ -313,7 +304,6 @@ export default function CreateChallengePage() {
               </Card>
             )}
 
-            {/* Step 4: Milestones */}
             {step === 4 && (
               <Card className="border-[#D9F6FF]/10 bg-[#D9F6FF]/5">
                 <CardHeader>
@@ -380,7 +370,6 @@ export default function CreateChallengePage() {
               </Card>
             )}
 
-            {/* Step 5: Review */}
             {step === 5 && (
               <Card className="border-[#D9F6FF]/10 bg-[#D9F6FF]/5">
                 <CardHeader>
@@ -416,104 +405,161 @@ export default function CreateChallengePage() {
                     onClick={handleSubmit} disabled={loading}>
                     {loading
                       ? <><Loader2 className="w-4 h-4 animate-spin mr-2" />Creating...</>
-                      : <><Trophy className="w-4 h-4 mr-2" />Create Challenge & Get Invite Link</>
+                      : <><Trophy className="w-4 h-4 mr-2" />Create Challenge</>
                     }
                   </Button>
                 </CardContent>
               </Card>
             )}
 
-            {/* Step 6: Invite Friends */}
+            {/* Step 6: Add Friends */}
             {step === 6 && (
-              <Card className="border-[#91C687]/30 bg-[#91C687]/5">
+              <Card className="border-[#D9F6FF]/10 bg-[#D9F6FF]/5">
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2 text-[#D9F6FF]">
-                    <Users className="w-5 h-5 text-[#91C687]" />
-                    Invite Your Friends
+                    <UserPlus className="w-5 h-5 text-[#91C687]" />
+                    Add Friends
                   </CardTitle>
+                  <p className="text-[#AFC2D5] text-sm mt-1">
+                    Invite people to join <strong className="text-[#D9F6FF]">{form.name || "your challenge"}</strong>
+                  </p>
                 </CardHeader>
-                <CardContent className="space-y-6">
-                  <div className="text-center py-4">
-                    <div className="w-16 h-16 rounded-full bg-[#91C687]/20 flex items-center justify-center mx-auto mb-3">
-                      <Trophy className="w-8 h-8 text-[#91C687]" />
+                <CardContent className="space-y-5">
+                  <div className="flex gap-2">
+                    <Input
+                      placeholder="Enter username or email"
+                      value={friendInput}
+                      onChange={(e) => setFriendInput(e.target.value)}
+                      onKeyDown={(e) => { if (e.key === "Enter") handleAddFriend(); }}
+                      className="bg-[#D9F6FF]/5 border-[#D9F6FF]/10 text-[#D9F6FF] placeholder:text-[#AFC2D5]"
+                      autoFocus
+                    />
+                    <Button onClick={handleAddFriend}
+                      className="bg-[#91C687] hover:bg-[#91C687]/80 text-[#303D31] font-semibold px-5 shrink-0">
+                      Add
+                    </Button>
+                  </div>
+
+                  {friends.length > 0 ? (
+                    <div className="space-y-2">
+                      <p className="text-xs text-[#AFC2D5] uppercase tracking-wide">Added ({friends.length})</p>
+                      {friends.map((f) => (
+                        <div key={f} className="flex items-center justify-between px-3 py-2.5 rounded-lg bg-[#91C687]/10 border border-[#91C687]/20">
+                          <div className="flex items-center gap-2">
+                            <div className="w-7 h-7 rounded-full bg-[#91C687]/30 flex items-center justify-center text-xs font-bold text-[#91C687]">
+                              {f[0].toUpperCase()}
+                            </div>
+                            <span className="text-[#D9F6FF] text-sm font-medium">{f}</span>
+                          </div>
+                          <button onClick={() => setFriends(friends.filter((x) => x !== f))}
+                            className="text-[#AFC2D5] hover:text-red-400 transition-colors">
+                            <X className="w-4 h-4" />
+                          </button>
+                        </div>
+                      ))}
                     </div>
-                    <h3 className="text-xl font-bold text-[#D9F6FF]">Challenge Created!</h3>
-                    <p className="text-[#AFC2D5] text-sm mt-1">
-                      Share this link with friends to join <strong className="text-[#D9F6FF]">{form.name || "your challenge"}</strong>
+                  ) : (
+                    <p className="text-center py-4 text-[#AFC2D5] text-sm">
+                      Type a username and press Add, or skip to go solo
                     </p>
-                  </div>
+                  )}
 
-                  <div className="space-y-2">
-                    <Label className="text-[#AFC2D5] text-xs uppercase tracking-wide">Your Invite Link</Label>
-                    <div className="flex gap-2">
-                      <div className="flex-1 flex items-center gap-2 px-3 py-2.5 rounded-lg bg-[#303D31] border border-[#91C687]/30 overflow-hidden">
-                        <Link className="w-4 h-4 text-[#91C687] shrink-0" />
-                        <span className="text-[#D9F6FF] text-sm truncate">{inviteLink}</span>
-                      </div>
-                      <Button onClick={handleCopy} className="bg-[#91C687] hover:bg-[#91C687]/80 text-[#303D31] font-semibold px-4 shrink-0">
-                        {copied ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
-                      </Button>
-                    </div>
+                  <div className="flex gap-3 pt-2">
+                    <Button variant="outline" onClick={() => setStep(7)}
+                      className="flex-1 border-[#D9F6FF]/20 text-[#AFC2D5] hover:text-[#D9F6FF] hover:bg-[#D9F6FF]/5">
+                      Skip for now
+                    </Button>
+                    <Button onClick={() => setStep(7)}
+                      className="flex-1 bg-gradient-to-r from-[#91C687] to-[#785964] text-[#303D31] font-semibold">
+                      {friends.length > 0 ? `Invite ${friends.length} Friend${friends.length > 1 ? "s" : ""}` : "Continue"}
+                    </Button>
                   </div>
-
-                  <div className="text-center p-4 rounded-xl bg-[#785964]/20 border border-[#785964]/30">
-                    <div className="text-xs text-[#AFC2D5] mb-1">Or share this code</div>
-                    <div className="text-3xl font-bold tracking-[0.3em] text-[#D9F6FF]">{inviteCode}</div>
-                  </div>
-
-                  <div className="grid grid-cols-2 gap-3">
-                    <button onClick={() => { (navigator as Navigator & { share?: (d: object) => void }).share?.({ title: "Join my Pledge. challenge!", url: inviteLink }) ?? handleCopy(); }}
-                      className="flex items-center justify-center gap-2 p-3 rounded-xl border border-[#D9F6FF]/10 bg-[#D9F6FF]/5 text-[#D9F6FF] hover:bg-[#D9F6FF]/10 transition-colors text-sm font-medium">
-                      <Share2 className="w-4 h-4 text-[#91C687]" />Share
-                    </button>
-                    <button onClick={handleCopy}
-                      className="flex items-center justify-center gap-2 p-3 rounded-xl border border-[#D9F6FF]/10 bg-[#D9F6FF]/5 text-[#D9F6FF] hover:bg-[#D9F6FF]/10 transition-colors text-sm font-medium">
-                      <Copy className="w-4 h-4 text-[#91C687]" />Copy Link
-                    </button>
-                  </div>
-
-                  <div className="space-y-2">
-                    <div className="text-xs text-[#AFC2D5] uppercase tracking-wide mb-2">What happens next</div>
-                    {[
-                      { n: "1", t: "Friends join using your link or code" },
-                      { n: "2", t: "Everyone deposits their stake" },
-                      { n: "3", t: "Challenge starts — hit your milestones!" },
-                      { n: "4", t: "Winners split the prize pool" },
-                    ].map((s) => (
-                      <div key={s.n} className="flex items-center gap-3 p-3 rounded-lg bg-[#D9F6FF]/5">
-                        <span className="w-6 h-6 rounded-full bg-[#91C687] text-[#303D31] text-xs font-bold flex items-center justify-center shrink-0">{s.n}</span>
-                        <span className="text-[#D9F6FF] text-sm">{s.t}</span>
-                      </div>
-                    ))}
-                  </div>
-
-                  <Button onClick={() => router.push(challengeId ? `/challenges/${challengeId}` : "/dashboard")}
-                    className="w-full bg-gradient-to-r from-[#91C687] to-[#785964] text-[#303D31] font-semibold h-12">
-                    Go to Dashboard
-                  </Button>
                 </CardContent>
               </Card>
+            )}
+
+            {/* Step 7: You're Ready! */}
+            {step === 7 && (
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.4 }}
+                className="text-center space-y-8 py-6"
+              >
+                <div className="relative inline-flex">
+                  <div className="w-24 h-24 rounded-full bg-[#91C687]/20 border-2 border-[#91C687]/40 flex items-center justify-center mx-auto">
+                    <CheckCircle2 className="w-12 h-12 text-[#91C687]" />
+                  </div>
+                  <div className="absolute -top-1 -right-1 w-8 h-8 rounded-full bg-[#785964]/80 flex items-center justify-center">
+                    <Rocket className="w-4 h-4 text-[#D9F6FF]" />
+                  </div>
+                </div>
+
+                <div className="space-y-3">
+                  <h1 className="text-4xl font-bold text-[#D9F6FF]">You&apos;re All Set!</h1>
+                  <p className="text-xl text-[#91C687] font-medium">Get to achieving your goals.</p>
+                  <p className="text-[#AFC2D5] max-w-sm mx-auto leading-relaxed">
+                    {form.name
+                      ? <><strong className="text-[#D9F6FF]">{form.name}</strong> is live. Stay consistent, hit your milestones, and take home the prize.</>
+                      : "Your challenge is live. Stay consistent, hit your milestones, and take home the prize."
+                    }
+                  </p>
+                </div>
+
+                {friends.length > 0 && (
+                  <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#91C687]/15 border border-[#91C687]/30 text-[#91C687] text-sm">
+                    <CheckCircle2 className="w-4 h-4" />
+                    Invites sent to {friends.length} friend{friends.length > 1 ? "s" : ""}
+                  </div>
+                )}
+
+                <div className="grid grid-cols-3 gap-4 max-w-sm mx-auto">
+                  {[
+                    { emoji: "🎯", label: "Goal set" },
+                    { emoji: "👥", label: friends.length > 0 ? `${friends.length} invited` : "Solo mode" },
+                    { emoji: "💰", label: `$${net.toLocaleString()} prize` },
+                  ].map((item) => (
+                    <div key={item.label} className="p-3 rounded-xl bg-[#D9F6FF]/5 border border-[#D9F6FF]/10 text-center">
+                      <div className="text-2xl mb-1">{item.emoji}</div>
+                      <div className="text-xs text-[#AFC2D5]">{item.label}</div>
+                    </div>
+                  ))}
+                </div>
+
+                <Button
+                  onClick={() => router.push(challengeId ? `/challenges/${challengeId}` : "/dashboard")}
+                  className="w-full max-w-sm bg-gradient-to-r from-[#91C687] to-[#785964] text-[#303D31] font-bold h-14 text-lg">
+                  Let&apos;s Go
+                </Button>
+              </motion.div>
             )}
 
           </motion.div>
         </AnimatePresence>
 
-        {/* Navigation — hide on step 6 */}
-        {step < 6 && (
+        {step >= 1 && step <= 4 && (
           <div className="flex justify-between mt-6">
             <Button variant="outline" onClick={() => setStep(Math.max(1, step - 1))} disabled={step === 1}
               className="border-[#D9F6FF]/20 text-[#D9F6FF] hover:bg-[#D9F6FF]/5">
               <ChevronLeft className="w-4 h-4 mr-1" />Back
             </Button>
-            {step < 5 && (
-              <Button onClick={() => setStep(Math.min(5, step + 1))}
-                disabled={(step === 1 && (!form.name || !form.goalType)) || (step === 2 && !form.verificationMethod)}
-                className="bg-[#91C687] text-[#303D31] hover:bg-[#91C687]/80 font-semibold">
-                Next<ChevronRight className="w-4 h-4 ml-1" />
-              </Button>
-            )}
+            <Button onClick={() => setStep(Math.min(5, step + 1))}
+              disabled={(step === 1 && (!form.name || !form.goalType)) || (step === 2 && !form.verificationMethod)}
+              className="bg-[#91C687] text-[#303D31] hover:bg-[#91C687]/80 font-semibold">
+              Next<ChevronRight className="w-4 h-4 ml-1" />
+            </Button>
           </div>
         )}
+
+        {step === 5 && (
+          <div className="flex mt-6">
+            <Button variant="outline" onClick={() => setStep(4)}
+              className="border-[#D9F6FF]/20 text-[#D9F6FF] hover:bg-[#D9F6FF]/5">
+              <ChevronLeft className="w-4 h-4 mr-1" />Back
+            </Button>
+          </div>
+        )}
+
       </div>
     </div>
   );
