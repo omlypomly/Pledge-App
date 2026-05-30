@@ -1,0 +1,438 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../node_modules/.prisma/client"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum ChallengeStatus {
+  DRAFT
+  PENDING
+  ACTIVE
+  COMPLETED
+  CANCELLED
+}
+
+enum ParticipantStatus {
+  INVITED
+  ACTIVE
+  ELIMINATED
+  WINNER
+}
+
+enum MilestoneStatus {
+  PENDING
+  ACTIVE
+  COMPLETED
+  FAILED
+  SKIPPED
+}
+
+enum SubmissionStatus {
+  PENDING
+  AI_REVIEWING
+  COMMUNITY_VOTING
+  DISPUTE
+  APPROVED
+  REJECTED
+}
+
+enum VoteType {
+  APPROVE
+  REJECT
+}
+
+enum DisputeStatus {
+  OPEN
+  UNDER_REVIEW
+  RESOLVED
+  DISMISSED
+}
+
+enum TransactionType {
+  DEPOSIT
+  WITHDRAWAL
+  PAYOUT
+  FEE
+  REFUND
+}
+
+enum TransactionStatus {
+  PENDING
+  COMPLETED
+  FAILED
+  REFUNDED
+}
+
+enum NotificationType {
+  MILESTONE_DUE
+  MILESTONE_APPROVED
+  MILESTONE_REJECTED
+  ELIMINATED
+  CHALLENGE_STARTED
+  CHALLENGE_ENDED
+  PAYOUT_SENT
+  VOTE_NEEDED
+  DISPUTE_OPENED
+  NEW_PARTICIPANT
+  CHAT_MESSAGE
+  BADGE_EARNED
+}
+
+enum VerificationMethod {
+  PHOTO_UPLOAD
+  VIDEO_UPLOAD
+  STRAVA
+  APPLE_HEALTH
+  GOOGLE_FIT
+  BANK_STATEMENT
+  CUSTOM
+}
+
+enum GoalType {
+  FITNESS_WEIGHT_LOSS
+  FITNESS_RUNNING
+  FITNESS_CYCLING
+  FINANCE_SAVINGS
+  FINANCE_DEBT_PAYOFF
+  HABIT_QUIT_SMOKING
+  HABIT_READING
+  LEARNING_CODING
+  LEARNING_LANGUAGE
+  BUSINESS_REVENUE
+  CUSTOM
+}
+
+enum BadgeType {
+  PERFECT_CHALLENGER
+  COMEBACK_KING
+  LAST_SURVIVOR
+  CONSISTENCY_MASTER
+  FIRST_WIN
+  SOCIAL_BUTTERFLY
+  HIGH_ROLLER
+  STREAK_MASTER
+  EARLY_ADOPTER
+  REFERRAL_KING
+}
+
+enum UserRole {
+  USER
+  ADMIN
+  MODERATOR
+}
+
+model User {
+  id                String    @id @default(cuid())
+  clerkId           String    @unique
+  email             String    @unique
+  username          String?   @unique
+  displayName       String?
+  avatarUrl         String?
+  bio               String?
+  role              UserRole  @default(USER)
+  xp                Int       @default(0)
+  level             Int       @default(1)
+  streakCount       Int       @default(0)
+  longestStreak     Int       @default(0)
+  totalEarned       Float     @default(0)
+  totalStaked       Float     @default(0)
+  challengesWon     Int       @default(0)
+  challengesEntered Int       @default(0)
+  country           String?
+  timezone          String?
+  ageVerified       Boolean   @default(false)
+  tosAccepted       Boolean   @default(false)
+  stripeAccountId   String?
+  stripeCustomerId  String?
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+  lastActiveAt      DateTime?
+  isBanned          Boolean   @default(false)
+  banReason         String?
+
+  participants    Participant[]
+  createdChallenges Challenge[] @relation("CreatedChallenges")
+  badges          Badge[]
+  notifications   Notification[]
+  chatMessages    ChatMessage[]
+  votes           Vote[]
+  disputes        Dispute[]   @relation("DisputeRaiser")
+  transactions    Transaction[]
+  auditLogs       AuditLog[]
+
+  @@index([clerkId])
+  @@index([email])
+}
+
+model Challenge {
+  id                String          @id @default(cuid())
+  name              String
+  description       String
+  goalType          GoalType
+  verificationMethod VerificationMethod
+  status            ChallengeStatus @default(DRAFT)
+  durationMonths    Int
+  stakeAmount       Float
+  maxParticipants   Int
+  platformFeePercent Float          @default(10)
+  inviteCode        String          @unique
+  inviteLink        String          @unique
+  startsAt          DateTime?
+  endsAt            DateTime?
+  createdAt         DateTime        @default(now())
+  updatedAt         DateTime        @updatedAt
+  creatorId         String
+  prizePool         Float           @default(0)
+  winnersCount      Int             @default(0)
+  totalParticipants Int             @default(0)
+  eliminatedCount   Int             @default(0)
+  isPrivate         Boolean         @default(false)
+  requiresApproval  Boolean         @default(false)
+  customRules       String?
+  coverImageUrl     String?
+  stripePaymentIntentId String?
+
+  creator       User          @relation("CreatedChallenges", fields: [creatorId], references: [id])
+  participants  Participant[]
+  milestones    Milestone[]
+  transactions  Transaction[]
+  chatMessages  ChatMessage[]
+  notifications Notification[]
+  auditLogs     AuditLog[]
+  payouts       Payout[]
+
+  @@index([status])
+  @@index([creatorId])
+  @@index([inviteCode])
+}
+
+model Participant {
+  id            String            @id @default(cuid())
+  userId        String
+  challengeId   String
+  status        ParticipantStatus @default(INVITED)
+  joinedAt      DateTime?
+  eliminatedAt  DateTime?
+  depositedAt   DateTime?
+  stakeAmount   Float
+  payoutAmount  Float?
+  stripePaymentIntentId String?
+  winProbability Float?
+  eliminationMilestoneId String?
+  lastSubmissionAt DateTime?
+  xpEarned      Int               @default(0)
+  createdAt     DateTime          @default(now())
+  updatedAt     DateTime          @updatedAt
+
+  user          User              @relation(fields: [userId], references: [id])
+  challenge     Challenge         @relation(fields: [challengeId], references: [id])
+  submissions   Submission[]
+  votes         Vote[]
+  payout        Payout?
+
+  @@unique([userId, challengeId])
+  @@index([challengeId])
+  @@index([userId])
+}
+
+model Milestone {
+  id            String          @id @default(cuid())
+  challengeId   String
+  title         String
+  description   String
+  orderIndex    Int
+  deadline      DateTime
+  status        MilestoneStatus @default(PENDING)
+  targetValue   Float?
+  targetUnit    String?
+  completedCount Int            @default(0)
+  failedCount   Int             @default(0)
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @updatedAt
+
+  challenge     Challenge       @relation(fields: [challengeId], references: [id])
+  submissions   Submission[]
+
+  @@index([challengeId])
+  @@index([deadline])
+}
+
+model Submission {
+  id              String           @id @default(cuid())
+  participantId   String
+  milestoneId     String
+  challengeId     String
+  status          SubmissionStatus @default(PENDING)
+  proofUrls       String[]
+  proofType       VerificationMethod
+  notes           String?
+  aiConfidence    Float?
+  aiAnalysis      String?
+  aiFlags         String[]
+  communityApprove Int             @default(0)
+  communityReject Int              @default(0)
+  votingDeadline  DateTime?
+  submittedAt     DateTime         @default(now())
+  reviewedAt      DateTime?
+  updatedAt       DateTime         @updatedAt
+  pHashFingerprint String?
+  riskScore       Float?
+
+  participant   Participant      @relation(fields: [participantId], references: [id])
+  milestone     Milestone        @relation(fields: [milestoneId], references: [id])
+  votes         Vote[]
+  dispute       Dispute?
+
+  @@index([participantId])
+  @@index([milestoneId])
+  @@index([status])
+}
+
+model Vote {
+  id            String    @id @default(cuid())
+  submissionId  String
+  participantId String
+  userId        String
+  voteType      VoteType
+  createdAt     DateTime  @default(now())
+
+  submission    Submission  @relation(fields: [submissionId], references: [id])
+  participant   Participant @relation(fields: [participantId], references: [id])
+  user          User        @relation(fields: [userId], references: [id])
+
+  @@unique([submissionId, userId])
+  @@index([submissionId])
+}
+
+model Dispute {
+  id            String        @id @default(cuid())
+  submissionId  String        @unique
+  raisedById    String
+  status        DisputeStatus @default(OPEN)
+  reason        String
+  evidence      String[]
+  adminNotes    String?
+  resolution    String?
+  resolvedAt    DateTime?
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+
+  submission    Submission    @relation(fields: [submissionId], references: [id])
+  raisedBy      User          @relation("DisputeRaiser", fields: [raisedById], references: [id])
+
+  @@index([status])
+}
+
+model Transaction {
+  id                    String            @id @default(cuid())
+  userId                String
+  challengeId           String?
+  type                  TransactionType
+  status                TransactionStatus @default(PENDING)
+  amount                Float
+  currency              String            @default("usd")
+  stripePaymentIntentId String?
+  stripeTransferId      String?
+  description           String?
+  metadata              Json?
+  createdAt             DateTime          @default(now())
+  updatedAt             DateTime          @updatedAt
+
+  user        User      @relation(fields: [userId], references: [id])
+  challenge   Challenge? @relation(fields: [challengeId], references: [id])
+
+  @@index([userId])
+  @@index([challengeId])
+  @@index([status])
+}
+
+model Payout {
+  id            String    @id @default(cuid())
+  challengeId   String
+  participantId String    @unique
+  amount        Float
+  platformFee   Float
+  netAmount     Float
+  stripeTransferId String?
+  status        TransactionStatus @default(PENDING)
+  processedAt   DateTime?
+  createdAt     DateTime  @default(now())
+
+  challenge     Challenge   @relation(fields: [challengeId], references: [id])
+  participant   Participant @relation(fields: [participantId], references: [id])
+
+  @@index([challengeId])
+}
+
+model ChatMessage {
+  id          String    @id @default(cuid())
+  challengeId String
+  userId      String
+  content     String
+  imageUrl    String?
+  isSystem    Boolean   @default(false)
+  reactions   Json?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  challenge   Challenge @relation(fields: [challengeId], references: [id])
+  user        User      @relation(fields: [userId], references: [id])
+
+  @@index([challengeId])
+  @@index([createdAt])
+}
+
+model Notification {
+  id          String           @id @default(cuid())
+  userId      String
+  challengeId String?
+  type        NotificationType
+  title       String
+  body        String
+  isRead      Boolean          @default(false)
+  metadata    Json?
+  createdAt   DateTime         @default(now())
+
+  user        User      @relation(fields: [userId], references: [id])
+  challenge   Challenge? @relation(fields: [challengeId], references: [id])
+
+  @@index([userId])
+  @@index([isRead])
+}
+
+model Badge {
+  id          String    @id @default(cuid())
+  userId      String
+  type        BadgeType
+  earnedAt    DateTime  @default(now())
+  challengeId String?
+  metadata    Json?
+
+  user        User      @relation(fields: [userId], references: [id])
+
+  @@unique([userId, type])
+  @@index([userId])
+}
+
+model AuditLog {
+  id          String    @id @default(cuid())
+  userId      String?
+  challengeId String?
+  action      String
+  entity      String
+  entityId    String
+  metadata    Json?
+  ipAddress   String?
+  userAgent   String?
+  createdAt   DateTime  @default(now())
+
+  user        User?     @relation(fields: [userId], references: [id])
+  challenge   Challenge? @relation(fields: [challengeId], references: [id])
+
+  @@index([userId])
+  @@index([entity, entityId])
+  @@index([createdAt])
+}
