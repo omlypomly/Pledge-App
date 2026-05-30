@@ -1,0 +1,1823 @@
+diff --git a/app/(auth)/sign-in/[[...sign-in]]/page.tsx b/app/(auth)/sign-in/[[...sign-in]]/page.tsx
+index 3ef18c0..1b1d8c8 100644
+--- a/app/(auth)/sign-in/[[...sign-in]]/page.tsx
++++ b/app/(auth)/sign-in/[[...sign-in]]/page.tsx
+@@ -2,10 +2,10 @@ import { SignIn } from "@clerk/nextjs";
+ 
+ export default function SignInPage() {
+   return (
+-    <div className="min-h-screen bg-[#080810] bg-grid flex items-center justify-center p-4">
++    <div className="min-h-screen bg-[#303D31] bg-grid flex items-center justify-center p-4">
+       <div className="w-full max-w-md">
+         <div className="text-center mb-8">
+-          <h1 className="text-3xl font-bold gradient-text">StakeUp</h1>
++          <h1 className="text-3xl font-bold gradient-text">Pledge.</h1>
+           <p className="text-white/50 mt-2">Sign in to your account</p>
+         </div>
+         <SignIn
+diff --git a/app/(auth)/sign-up/[[...sign-up]]/page.tsx b/app/(auth)/sign-up/[[...sign-up]]/page.tsx
+index 1bc7121..9b62d80 100644
+--- a/app/(auth)/sign-up/[[...sign-up]]/page.tsx
++++ b/app/(auth)/sign-up/[[...sign-up]]/page.tsx
+@@ -2,10 +2,10 @@ import { SignUp } from "@clerk/nextjs";
+ 
+ export default function SignUpPage() {
+   return (
+-    <div className="min-h-screen bg-[#080810] bg-grid flex items-center justify-center p-4">
++    <div className="min-h-screen bg-[#303D31] bg-grid flex items-center justify-center p-4">
+       <div className="w-full max-w-md">
+         <div className="text-center mb-8">
+-          <h1 className="text-3xl font-bold gradient-text">StakeUp</h1>
++          <h1 className="text-3xl font-bold gradient-text">Pledge.</h1>
+           <p className="text-white/50 mt-2">Create your account and start winning</p>
+         </div>
+         <SignUp
+diff --git a/app/admin/page.tsx b/app/admin/page.tsx
+index dbc1ebc..df2a96c 100644
+--- a/app/admin/page.tsx
++++ b/app/admin/page.tsx
+@@ -76,10 +76,10 @@ export default async function AdminPage() {
+   const stats = await getAdminStats();
+ 
+   return (
+-    <div className="min-h-screen bg-[#080810] py-8 px-6">
++    <div className="min-h-screen bg-[#303D31] py-8 px-6">
+       <div className="max-w-7xl mx-auto">
+         <div className="flex items-center gap-3 mb-8">
+-          <Shield className="w-8 h-8 text-violet-400" />
++          <Shield className="w-8 h-8 text-[#91C687]" />
+           <div>
+             <h1 className="text-3xl font-bold text-white">Admin Dashboard</h1>
+             <p className="text-white/50 text-sm">Platform overview and management</p>
+@@ -90,7 +90,7 @@ export default async function AdminPage() {
+         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+           {[
+             { icon: Users, label: "Total Users", value: stats.totalUsers.toLocaleString(), color: "text-blue-400", bg: "bg-blue-600/10" },
+-            { icon: Trophy, label: "Total Challenges", value: stats.totalChallenges.toLocaleString(), color: "text-violet-400", bg: "bg-violet-600/10" },
++            { icon: Trophy, label: "Total Challenges", value: stats.totalChallenges.toLocaleString(), color: "text-[#91C687]", bg: "bg-violet-600/10" },
+             { icon: DollarSign, label: "Platform Revenue", value: formatCurrency(stats.totalRevenue), color: "text-emerald-400", bg: "bg-emerald-600/10" },
+             { icon: TrendingUp, label: "Active Challenges", value: stats.activeChallenges.toLocaleString(), color: "text-yellow-400", bg: "bg-yellow-600/10" },
+           ].map((stat) => (
+@@ -140,7 +140,7 @@ export default async function AdminPage() {
+           <Card className="border-white/10 bg-white/5">
+             <CardHeader>
+               <CardTitle className="flex items-center gap-2 text-white">
+-                <Users className="w-4 h-4 text-violet-400" />
++                <Users className="w-4 h-4 text-[#91C687]" />
+                 Recent Users
+               </CardTitle>
+             </CardHeader>
+@@ -174,7 +174,7 @@ export default async function AdminPage() {
+           <Card className="border-white/10 bg-white/5">
+             <CardHeader>
+               <CardTitle className="flex items-center gap-2 text-white">
+-                <Trophy className="w-4 h-4 text-violet-400" />
++                <Trophy className="w-4 h-4 text-[#91C687]" />
+                 Recent Challenges
+               </CardTitle>
+             </CardHeader>
+diff --git a/app/challenges/[id]/page.tsx b/app/challenges/[id]/page.tsx
+index 6f98d82..a62c551 100644
+--- a/app/challenges/[id]/page.tsx
++++ b/app/challenges/[id]/page.tsx
+@@ -73,7 +73,7 @@ function MilestoneStatusIcon({ status }: { status: string }) {
+     case "FAILED":
+       return <XCircle className="w-5 h-5 text-red-400" />;
+     case "ACTIVE":
+-      return <Circle className="w-5 h-5 text-violet-400 animate-pulse" />;
++      return <Circle className="w-5 h-5 text-[#91C687] animate-pulse" />;
+     default:
+       return <Circle className="w-5 h-5 text-white/20" />;
+   }
+@@ -135,10 +135,10 @@ export default async function ChallengePage({
+   });
+ 
+   return (
+-    <div className="min-h-screen bg-[#080810] text-white">
++    <div className="min-h-screen bg-[#303D31] text-white">
+       {/* Cover / Header */}
+       <div className="relative">
+-        <div className="h-48 sm:h-64 w-full overflow-hidden bg-gradient-to-br from-violet-900/40 via-purple-900/30 to-[#080810]">
++        <div className="h-48 sm:h-64 w-full overflow-hidden bg-gradient-to-br from-violet-900/40 via-purple-900/30 to-[#303D31]">
+           {challenge.coverImageUrl ? (
+             <Image
+               src={challenge.coverImageUrl}
+@@ -150,7 +150,7 @@ export default async function ChallengePage({
+           ) : (
+             <div className="absolute inset-0 bg-gradient-to-br from-violet-800/20 to-purple-800/10" />
+           )}
+-          <div className="absolute inset-0 bg-gradient-to-t from-[#080810] via-transparent to-transparent" />
++          <div className="absolute inset-0 bg-gradient-to-t from-[#303D31] via-transparent to-transparent" />
+         </div>
+ 
+         <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-8">
+@@ -160,7 +160,7 @@ export default async function ChallengePage({
+                 <div className="flex flex-wrap items-center gap-2 mb-2">
+                   <StatusBadge status={challenge.status} />
+                   {myParticipant && (
+-                    <Badge variant="outline" className="border-violet-500/40 text-violet-300">
++                    <Badge variant="outline" className="border-violet-500/40 text-[#91C687]">
+                       You&apos;re In
+                     </Badge>
+                   )}
+@@ -215,7 +215,7 @@ export default async function ChallengePage({
+             {/* Quick stats row */}
+             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-8">
+               <div className="rounded-xl bg-white/[0.03] border border-white/10 p-4 text-center">
+-                <p className="text-2xl font-bold text-violet-400">
++                <p className="text-2xl font-bold text-[#91C687]">
+                   {formatCurrency(challenge.prizePool)}
+                 </p>
+                 <p className="text-xs text-white/50 mt-1">Prize Pool</p>
+@@ -287,7 +287,7 @@ export default async function ChallengePage({
+                       <div>
+                         <p className="text-xs text-white/40 mb-1">Verification</p>
+                         <p className="text-sm text-white font-medium flex items-center gap-1">
+-                          <Shield className="w-3 h-3 text-violet-400" />
++                          <Shield className="w-3 h-3 text-[#91C687]" />
+                           {challenge.verificationMethod.replace(/_/g, " ")}
+                         </p>
+                       </div>
+@@ -415,7 +415,7 @@ export default async function ChallengePage({
+                                 milestone.status === "COMPLETED"
+                                   ? "bg-emerald-500/20 border-emerald-500"
+                                   : milestone.status === "ACTIVE"
+-                                  ? "bg-violet-500/20 border-violet-500"
++                                  ? "bg-[#91C687]/20 border-violet-500"
+                                   : milestone.status === "FAILED"
+                                   ? "bg-red-500/20 border-red-500"
+                                   : "bg-white/5 border-white/20"
+@@ -468,7 +468,7 @@ export default async function ChallengePage({
+                                       ? "bg-emerald-500/10 text-emerald-400"
+                                       : mySubmission.status === "REJECTED"
+                                       ? "bg-red-500/10 text-red-400"
+-                                      : "bg-violet-500/10 text-violet-400"
++                                      : "bg-[#91C687]/10 text-[#91C687]"
+                                   }`}
+                                 >
+                                   {mySubmission.status === "APPROVED" ? (
+@@ -577,7 +577,7 @@ export default async function ChallengePage({
+                           </div>
+                           <div className="text-right shrink-0">
+                             <p className="text-xs text-white/40">Level</p>
+-                            <p className="text-sm font-bold text-violet-400">
++                            <p className="text-sm font-bold text-[#91C687]">
+                               {participant.user.level}
+                             </p>
+                           </div>
+@@ -605,8 +605,8 @@ export default async function ChallengePage({
+                         key={message.id}
+                         className="flex items-start gap-3 p-4 rounded-xl bg-white/[0.02] border border-white/5"
+                       >
+-                        <div className="w-8 h-8 rounded-full bg-violet-500/10 flex items-center justify-center shrink-0">
+-                          <Zap className="w-3.5 h-3.5 text-violet-400" />
++                        <div className="w-8 h-8 rounded-full bg-[#91C687]/10 flex items-center justify-center shrink-0">
++                          <Zap className="w-3.5 h-3.5 text-[#91C687]" />
+                         </div>
+                         <div className="flex-1 min-w-0">
+                           <p className="text-sm text-white/80 leading-snug">
+@@ -691,10 +691,10 @@ export default async function ChallengePage({
+           {/* Right sticky column — Prize Pool Card */}
+           <div className="space-y-4">
+             <div className="sticky top-6 space-y-4">
+-              <Card className="border-violet-500/30 bg-violet-600/5 shadow-xl shadow-violet-500/5" glow>
++              <Card className="border-[#91C687]/30 bg-violet-600/5 shadow-xl shadow-violet-500/5" glow>
+                 <CardHeader className="pb-3">
+                   <CardTitle className="flex items-center gap-2 text-base">
+-                    <DollarSign className="w-4 h-4 text-violet-400" />
++                    <DollarSign className="w-4 h-4 text-[#91C687]" />
+                     Prize Pool
+                   </CardTitle>
+                 </CardHeader>
+@@ -788,7 +788,7 @@ export default async function ChallengePage({
+                 <Card className="border-white/10 bg-white/[0.03]">
+                   <CardHeader className="pb-3">
+                     <CardTitle className="text-sm flex items-center gap-2">
+-                      <Target className="w-4 h-4 text-violet-400" />
++                      <Target className="w-4 h-4 text-[#91C687]" />
+                       Progress
+                     </CardTitle>
+                   </CardHeader>
+diff --git a/app/challenges/[id]/submit/page.tsx b/app/challenges/[id]/submit/page.tsx
+index d9f3c4a..7847af2 100644
+--- a/app/challenges/[id]/submit/page.tsx
++++ b/app/challenges/[id]/submit/page.tsx
+@@ -245,19 +245,19 @@ export default function SubmitProofPage() {
+     const needsVoting = result.requiresVoting;
+ 
+     return (
+-      <div className="min-h-screen bg-[#080810] text-white flex items-center justify-center p-4">
++      <div className="min-h-screen bg-[#303D31] text-white flex items-center justify-center p-4">
+         <div className="max-w-md w-full space-y-6 text-center">
+           <div
+             className={`w-20 h-20 rounded-full flex items-center justify-center mx-auto ${
+               isApproved
+                 ? "bg-emerald-500/20 border-2 border-emerald-500"
+-                : "bg-violet-500/20 border-2 border-violet-500"
++                : "bg-[#91C687]/20 border-2 border-violet-500"
+             }`}
+           >
+             {isApproved ? (
+               <CheckCircle2 className="w-10 h-10 text-emerald-400" />
+             ) : (
+-              <Eye className="w-10 h-10 text-violet-400" />
++              <Eye className="w-10 h-10 text-[#91C687]" />
+             )}
+           </div>
+ 
+@@ -339,7 +339,7 @@ export default function SubmitProofPage() {
+   }
+ 
+   return (
+-    <div className="min-h-screen bg-[#080810] text-white py-8 px-4">
++    <div className="min-h-screen bg-[#303D31] text-white py-8 px-4">
+       <div className="max-w-2xl mx-auto space-y-6">
+         {/* Back nav */}
+         <Button variant="ghost" size="sm" className="text-white/40 -ml-1" asChild>
+@@ -361,7 +361,7 @@ export default function SubmitProofPage() {
+         {loadingMilestone ? (
+           <Card className="border-white/10 bg-white/[0.03]">
+             <CardContent className="flex items-center gap-3 p-6">
+-              <Loader2 className="w-5 h-5 text-violet-400 animate-spin" />
++              <Loader2 className="w-5 h-5 text-[#91C687] animate-spin" />
+               <span className="text-white/50 text-sm">Loading milestone...</span>
+             </CardContent>
+           </Card>
+@@ -373,7 +373,7 @@ export default function SubmitProofPage() {
+             </CardContent>
+           </Card>
+         ) : milestone ? (
+-          <Card className="border-violet-500/30 bg-violet-600/5">
++          <Card className="border-[#91C687]/30 bg-violet-600/5">
+             <CardContent className="p-5">
+               <div className="flex items-start justify-between gap-3">
+                 <div className="flex-1">
+@@ -397,7 +397,7 @@ export default function SubmitProofPage() {
+                     {milestone.description}
+                   </p>
+                   {milestone.targetValue && (
+-                    <p className="text-sm text-violet-400 mt-2 font-medium">
++                    <p className="text-sm text-[#91C687] mt-2 font-medium">
+                       Target: {milestone.targetValue} {milestone.targetUnit}
+                     </p>
+                   )}
+@@ -417,10 +417,10 @@ export default function SubmitProofPage() {
+         ) : null}
+ 
+         {/* AI Verification Info */}
+-        <Card className="border-violet-500/20 bg-gradient-to-r from-violet-900/10 to-purple-900/10">
++        <Card className="border-[#91C687]/20 bg-gradient-to-r from-violet-900/10 to-purple-900/10">
+           <CardContent className="p-4 flex items-start gap-3">
+-            <div className="w-9 h-9 rounded-xl bg-violet-600/20 flex items-center justify-center shrink-0">
+-              <Zap className="w-4 h-4 text-violet-400" />
++            <div className="w-9 h-9 rounded-xl bg-[#785964]/20 flex items-center justify-center shrink-0">
++              <Zap className="w-4 h-4 text-[#91C687]" />
+             </div>
+             <div>
+               <p className="text-sm font-semibold text-white mb-0.5">
+@@ -428,7 +428,7 @@ export default function SubmitProofPage() {
+               </p>
+               <p className="text-xs text-white/50 leading-relaxed">
+                 Our AI will analyze your proof. A confidence score of{" "}
+-                <strong className="text-violet-400">80% or higher</strong> gets
++                <strong className="text-[#91C687]">80% or higher</strong> gets
+                 instant approval. Lower scores go to community voting (24h
+                 window).
+               </p>
+@@ -450,17 +450,17 @@ export default function SubmitProofPage() {
+               <SelectTrigger className="bg-white/5 border-white/10 text-white h-11">
+                 <SelectValue />
+               </SelectTrigger>
+-              <SelectContent className="bg-[#0d0d1a] border-white/10">
++              <SelectContent className="bg-[#263228] border-white/10">
+                 {PROOF_TYPE_OPTIONS.map((opt) => {
+                   const Icon = opt.icon;
+                   return (
+                     <SelectItem
+                       key={opt.value}
+                       value={opt.value}
+-                      className="text-white focus:bg-violet-600/20 focus:text-white"
++                      className="text-white focus:bg-[#785964]/20 focus:text-white"
+                     >
+                       <span className="flex items-center gap-2">
+-                        <Icon className="w-4 h-4 text-violet-400" />
++                        <Icon className="w-4 h-4 text-[#91C687]" />
+                         {opt.label}
+                       </span>
+                     </SelectItem>
+@@ -486,7 +486,7 @@ export default function SubmitProofPage() {
+               onDrop={handleDrop}
+               className={`relative rounded-xl border-2 border-dashed transition-all duration-200 ${
+                 isDragging
+-                  ? "border-violet-500 bg-violet-500/10"
++                  ? "border-violet-500 bg-[#91C687]/10"
+                   : uploadedFiles.length === 0
+                   ? "border-white/20 bg-white/[0.02] hover:border-white/30 hover:bg-white/[0.04]"
+                   : "border-white/10 bg-white/[0.02]"
+@@ -502,8 +502,8 @@ export default function SubmitProofPage() {
+               />
+               {uploadedFiles.length === 0 ? (
+                 <div className="flex flex-col items-center justify-center py-14 text-center pointer-events-none">
+-                  <div className="w-14 h-14 rounded-2xl bg-violet-600/10 border border-violet-500/20 flex items-center justify-center mb-3">
+-                    <Upload className="w-6 h-6 text-violet-400" />
++                  <div className="w-14 h-14 rounded-2xl bg-violet-600/10 border border-[#91C687]/20 flex items-center justify-center mb-3">
++                    <Upload className="w-6 h-6 text-[#91C687]" />
+                   </div>
+                   <p className="text-white font-medium text-sm">
+                     Drag & drop files here
+@@ -529,9 +529,9 @@ export default function SubmitProofPage() {
+                       ) : (
+                         <div className="w-full h-full flex flex-col items-center justify-center gap-2 p-2">
+                           {uf.type === "video" ? (
+-                            <Video className="w-8 h-8 text-violet-400" />
++                            <Video className="w-8 h-8 text-[#91C687]" />
+                           ) : (
+-                            <FileText className="w-8 h-8 text-violet-400" />
++                            <FileText className="w-8 h-8 text-[#91C687]" />
+                           )}
+                           <p className="text-[10px] text-white/50 text-center leading-tight truncate w-full px-1">
+                             {uf.file.name}
+@@ -626,9 +626,9 @@ export default function SubmitProofPage() {
+ 
+           {/* Upload progress */}
+           {isUploading && (
+-            <Card className="border-violet-500/20 bg-violet-500/5">
++            <Card className="border-[#91C687]/20 bg-violet-500/5">
+               <CardContent className="flex items-center gap-3 p-4">
+-                <Loader2 className="w-4 h-4 text-violet-400 animate-spin shrink-0" />
++                <Loader2 className="w-4 h-4 text-[#91C687] animate-spin shrink-0" />
+                 <div className="flex-1">
+                   <p className="text-sm text-white font-medium">
+                     Uploading files...
+@@ -642,9 +642,9 @@ export default function SubmitProofPage() {
+           )}
+ 
+           {isPending && !isUploading && (
+-            <Card className="border-violet-500/20 bg-violet-500/5">
++            <Card className="border-[#91C687]/20 bg-violet-500/5">
+               <CardContent className="flex items-center gap-3 p-4">
+-                <Zap className="w-4 h-4 text-violet-400 animate-pulse shrink-0" />
++                <Zap className="w-4 h-4 text-[#91C687] animate-pulse shrink-0" />
+                 <div>
+                   <p className="text-sm text-white font-medium">
+                     AI is analyzing your proof...
+diff --git a/app/challenges/create/page.tsx b/app/challenges/create/page.tsx
+index 6a57692..41f01ad 100644
+--- a/app/challenges/create/page.tsx
++++ b/app/challenges/create/page.tsx
+@@ -134,11 +134,11 @@ export default function CreateChallengePage() {
+   const net = prizePool - fee;
+ 
+   return (
+-    <div className="min-h-screen bg-[#080810] bg-grid">
++    <div className="min-h-screen bg-[#303D31] bg-grid">
+       <div className="max-w-2xl mx-auto px-4 py-12">
+         {/* Header */}
+         <div className="text-center mb-10">
+-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-violet-600/20 border border-violet-500/30 text-violet-300 text-sm mb-4">
++          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#785964]/20 border border-[#91C687]/30 text-[#91C687] text-sm mb-4">
+             <Trophy className="w-4 h-4" />
+             New Challenge
+           </div>
+@@ -155,7 +155,7 @@ export default function CreateChallengePage() {
+                   i + 1 < step
+                     ? "bg-violet-600 text-white"
+                     : i + 1 === step
+-                    ? "bg-violet-600 text-white ring-4 ring-violet-500/30"
++                    ? "bg-violet-600 text-white ring-4 ring-[#91C687]/30"
+                     : "bg-white/10 text-white/40"
+                 }`}
+               >
+@@ -186,7 +186,7 @@ export default function CreateChallengePage() {
+               <Card className="border-white/10 bg-white/5">
+                 <CardHeader>
+                   <CardTitle className="flex items-center gap-2">
+-                    <Target className="w-5 h-5 text-violet-400" />
++                    <Target className="w-5 h-5 text-[#91C687]" />
+                     What&apos;s your challenge goal?
+                   </CardTitle>
+                 </CardHeader>
+@@ -198,7 +198,7 @@ export default function CreateChallengePage() {
+                         onClick={() => setForm({ ...form, goalType: type.value })}
+                         className={`p-3 rounded-xl border text-left transition-all ${
+                           form.goalType === type.value
+-                            ? "border-violet-500 bg-violet-600/20 text-white"
++                            ? "border-violet-500 bg-[#785964]/20 text-white"
+                             : "border-white/10 bg-white/5 text-white/70 hover:border-white/20 hover:bg-white/10"
+                         }`}
+                       >
+@@ -238,7 +238,7 @@ export default function CreateChallengePage() {
+               <Card className="border-white/10 bg-white/5">
+                 <CardHeader>
+                   <CardTitle className="flex items-center gap-2">
+-                    <Camera className="w-5 h-5 text-violet-400" />
++                    <Camera className="w-5 h-5 text-[#91C687]" />
+                     How will you prove progress?
+                   </CardTitle>
+                 </CardHeader>
+@@ -249,7 +249,7 @@ export default function CreateChallengePage() {
+                       onClick={() => setForm({ ...form, verificationMethod: method.value })}
+                       className={`w-full p-4 rounded-xl border text-left transition-all ${
+                         form.verificationMethod === method.value
+-                          ? "border-violet-500 bg-violet-600/20"
++                          ? "border-violet-500 bg-[#785964]/20"
+                           : "border-white/10 bg-white/5 hover:border-white/20 hover:bg-white/10"
+                       }`}
+                     >
+@@ -266,7 +266,7 @@ export default function CreateChallengePage() {
+               <Card className="border-white/10 bg-white/5">
+                 <CardHeader>
+                   <CardTitle className="flex items-center gap-2">
+-                    <DollarSign className="w-5 h-5 text-violet-400" />
++                    <DollarSign className="w-5 h-5 text-[#91C687]" />
+                     Duration & Stakes
+                   </CardTitle>
+                 </CardHeader>
+@@ -280,7 +280,7 @@ export default function CreateChallengePage() {
+                           onClick={() => setForm({ ...form, durationMonths: d.value })}
+                           className={`p-4 rounded-xl border text-left transition-all ${
+                             form.durationMonths === d.value
+-                              ? "border-violet-500 bg-violet-600/20"
++                              ? "border-violet-500 bg-[#785964]/20"
+                               : "border-white/10 bg-white/5 hover:border-white/20"
+                           }`}
+                         >
+@@ -317,7 +317,7 @@ export default function CreateChallengePage() {
+                   </div>
+ 
+                   {/* Prize Pool Preview */}
+-                  <div className="p-4 rounded-xl bg-violet-600/10 border border-violet-500/30">
++                  <div className="p-4 rounded-xl bg-violet-600/10 border border-[#91C687]/30">
+                     <div className="text-sm text-white/60 mb-3">Prize Pool Preview</div>
+                     <div className="space-y-1.5 text-sm">
+                       <div className="flex justify-between">
+@@ -344,7 +344,7 @@ export default function CreateChallengePage() {
+                 <CardHeader>
+                   <div className="flex items-center justify-between">
+                     <CardTitle className="flex items-center gap-2">
+-                      <Calendar className="w-5 h-5 text-violet-400" />
++                      <Calendar className="w-5 h-5 text-[#91C687]" />
+                       Set Your Milestones
+                     </CardTitle>
+                     <Button
+@@ -352,7 +352,7 @@ export default function CreateChallengePage() {
+                       size="sm"
+                       onClick={handleGenerateMilestones}
+                       disabled={aiLoading}
+-                      className="text-violet-400 border-violet-500/30"
++                      className="text-[#91C687] border-[#91C687]/30"
+                     >
+                       {aiLoading ? (
+                         <Loader2 className="w-3 h-3 animate-spin mr-1" />
+@@ -367,7 +367,7 @@ export default function CreateChallengePage() {
+                   {milestones.map((milestone, i) => (
+                     <div key={i} className="p-4 rounded-xl bg-white/5 border border-white/10 space-y-3">
+                       <div className="flex items-center justify-between">
+-                        <span className="text-sm font-medium text-violet-400">Milestone {i + 1}</span>
++                        <span className="text-sm font-medium text-[#91C687]">Milestone {i + 1}</span>
+                         {milestones.length > 1 && (
+                           <button
+                             onClick={() => setMilestones(milestones.filter((_, j) => j !== i))}
+@@ -470,12 +470,12 @@ export default function CreateChallengePage() {
+               <Card className="border-white/10 bg-white/5">
+                 <CardHeader>
+                   <CardTitle className="flex items-center gap-2">
+-                    <Trophy className="w-5 h-5 text-violet-400" />
++                    <Trophy className="w-5 h-5 text-[#91C687]" />
+                     Review Your Challenge
+                   </CardTitle>
+                 </CardHeader>
+                 <CardContent className="space-y-4">
+-                  <div className="p-4 rounded-xl bg-gradient-to-r from-violet-600/20 to-purple-600/20 border border-violet-500/30">
++                  <div className="p-4 rounded-xl bg-gradient-to-r from-violet-600/20 to-purple-600/20 border border-[#91C687]/30">
+                     <h3 className="text-xl font-bold text-white mb-1">{form.name}</h3>
+                     <p className="text-white/60 text-sm">{form.description}</p>
+                   </div>
+@@ -501,7 +501,7 @@ export default function CreateChallengePage() {
+                   </div>
+ 
+                   <Button
+-                    className="w-full bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-500 hover:to-purple-500 h-12 text-base font-semibold"
++                    className="w-full bg-gradient-to-r from-[#91C687] to-[#785964] hover:from-violet-500 hover:to-purple-500 h-12 text-base font-semibold"
+                     onClick={handleSubmit}
+                     disabled={loading}
+                   >
+diff --git a/app/challenges/join/[code]/page.tsx b/app/challenges/join/[code]/page.tsx
+index 8de7428..21c050e 100644
+--- a/app/challenges/join/[code]/page.tsx
++++ b/app/challenges/join/[code]/page.tsx
+@@ -111,7 +111,7 @@ export default function JoinChallengePage() {
+ 
+   if (loading) {
+     return (
+-      <div className="min-h-screen bg-[#080810] flex items-center justify-center">
++      <div className="min-h-screen bg-[#303D31] flex items-center justify-center">
+         <div className="flex flex-col items-center gap-4">
+           <div className="w-12 h-12 rounded-full border-2 border-violet-500 border-t-transparent animate-spin" />
+           <p className="text-white/60 text-sm">Loading challenge...</p>
+@@ -122,7 +122,7 @@ export default function JoinChallengePage() {
+ 
+   if (error || !challenge) {
+     return (
+-      <div className="min-h-screen bg-[#080810] flex items-center justify-center p-4">
++      <div className="min-h-screen bg-[#303D31] flex items-center justify-center p-4">
+         <Card className="max-w-md w-full border-red-500/20 bg-red-500/5">
+           <CardContent className="flex flex-col items-center gap-4 py-12 text-center">
+             <AlertTriangle className="w-12 h-12 text-red-400" />
+@@ -144,11 +144,11 @@ export default function JoinChallengePage() {
+   }
+ 
+   return (
+-    <div className="min-h-screen bg-[#080810] text-white py-12 px-4">
++    <div className="min-h-screen bg-[#303D31] text-white py-12 px-4">
+       <div className="max-w-2xl mx-auto space-y-6">
+         {/* Header */}
+         <div className="text-center space-y-2">
+-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-violet-600/10 border border-violet-500/20 text-violet-400 text-sm font-medium mb-2">
++          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-violet-600/10 border border-[#91C687]/20 text-[#91C687] text-sm font-medium mb-2">
+             <Trophy className="w-4 h-4" />
+             You&apos;ve been invited!
+           </div>
+@@ -239,7 +239,7 @@ export default function JoinChallengePage() {
+                 <p className="text-[10px] text-white/40">Your Stake</p>
+               </div>
+               <div className="p-3 rounded-xl bg-white/5 border border-white/10 text-center">
+-                <Trophy className="w-4 h-4 text-violet-400 mx-auto mb-1" />
++                <Trophy className="w-4 h-4 text-[#91C687] mx-auto mb-1" />
+                 <p className="text-lg font-bold text-white">
+                   {formatCurrency(
+                     challenge.prizePool > 0
+@@ -271,7 +271,7 @@ export default function JoinChallengePage() {
+                 <p className="text-[10px] text-white/40">Milestones</p>
+               </div>
+               <div className="p-3 rounded-xl bg-white/5 border border-white/10 text-center">
+-                <Shield className="w-4 h-4 text-violet-400 mx-auto mb-1" />
++                <Shield className="w-4 h-4 text-[#91C687] mx-auto mb-1" />
+                 <p className="text-xs font-bold text-white leading-tight">
+                   {challenge.verificationMethod.replace(/_/g, " ")}
+                 </p>
+@@ -295,7 +295,7 @@ export default function JoinChallengePage() {
+                   key={milestone.id}
+                   className="flex items-start gap-3 p-3 rounded-lg bg-white/5"
+                 >
+-                  <div className="w-7 h-7 rounded-full bg-violet-600/20 border border-violet-500/30 flex items-center justify-center text-xs font-bold text-violet-400 shrink-0 mt-0.5">
++                  <div className="w-7 h-7 rounded-full bg-[#785964]/20 border border-[#91C687]/30 flex items-center justify-center text-xs font-bold text-[#91C687] shrink-0 mt-0.5">
+                     {idx + 1}
+                   </div>
+                   <div className="flex-1 min-w-0">
+diff --git a/app/dashboard/layout.tsx b/app/dashboard/layout.tsx
+index 23c551d..9bbd446 100644
+--- a/app/dashboard/layout.tsx
++++ b/app/dashboard/layout.tsx
+@@ -6,7 +6,7 @@ export default function DashboardLayout({
+   children: React.ReactNode;
+ }) {
+   return (
+-    <div className="flex min-h-screen bg-[#080810]">
++    <div className="flex min-h-screen bg-[#303D31]">
+       <Sidebar />
+       <main className="flex-1 min-w-0 overflow-x-hidden">{children}</main>
+     </div>
+diff --git a/app/dashboard/page.tsx b/app/dashboard/page.tsx
+index bfb3847..97e06b8 100644
+--- a/app/dashboard/page.tsx
++++ b/app/dashboard/page.tsx
+@@ -104,8 +104,8 @@ export default async function DashboardPage() {
+       label: "Active Challenges",
+       value: activeChallenges.length,
+       icon: Trophy,
+-      color: "text-violet-400",
+-      bg: "bg-violet-500/10",
++      color: "text-[#91C687]",
++      bg: "bg-[#91C687]/10",
+     },
+     {
+       label: "Total Earned",
+@@ -134,7 +134,7 @@ export default async function DashboardPage() {
+     user.displayName?.split(" ")[0] || user.username || "Champion";
+ 
+   return (
+-    <div className="min-h-screen bg-[#080810] text-white">
++    <div className="min-h-screen bg-[#303D31] text-white">
+       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+         {/* Header */}
+         <div className="flex items-center justify-between">
+@@ -193,7 +193,7 @@ export default async function DashboardPage() {
+                   My Active Challenges
+                 </h2>
+                 <Button variant="ghost" size="sm" asChild>
+-                  <Link href="/challenges" className="text-violet-400 hover:text-violet-300">
++                  <Link href="/challenges" className="text-[#91C687] hover:text-[#91C687]">
+                     View all
+                     <ArrowRight className="w-4 h-4 ml-1" />
+                   </Link>
+@@ -203,8 +203,8 @@ export default async function DashboardPage() {
+               {activeChallenges.length === 0 ? (
+                 <Card className="border-dashed border-white/20 bg-transparent">
+                   <CardContent className="flex flex-col items-center justify-center py-16 text-center gap-4">
+-                    <div className="w-16 h-16 rounded-2xl bg-violet-600/10 border border-violet-500/20 flex items-center justify-center">
+-                      <Trophy className="w-8 h-8 text-violet-400" />
++                    <div className="w-16 h-16 rounded-2xl bg-violet-600/10 border border-[#91C687]/20 flex items-center justify-center">
++                      <Trophy className="w-8 h-8 text-[#91C687]" />
+                     </div>
+                     <div>
+                       <p className="text-white font-semibold text-lg">
+@@ -254,7 +254,7 @@ export default async function DashboardPage() {
+                     return (
+                       <Card
+                         key={challenge.id}
+-                        className={`border-white/10 bg-white/[0.03] overflow-hidden transition-all hover:border-violet-500/30 ${
++                        className={`border-white/10 bg-white/[0.03] overflow-hidden transition-all hover:border-[#91C687]/30 ${
+                           isEliminated ? "opacity-60" : ""
+                         }`}
+                       >
+@@ -355,14 +355,14 @@ export default async function DashboardPage() {
+                               className={`flex items-center justify-center w-10 h-10 rounded-xl shrink-0 ${
+                                 isUrgent
+                                   ? "bg-red-500/10 border border-red-500/20"
+-                                  : "bg-violet-500/10 border border-violet-500/20"
++                                  : "bg-[#91C687]/10 border border-[#91C687]/20"
+                               }`}
+                             >
+                               <Calendar
+                                 className={`w-4 h-4 ${
+                                   isUrgent
+                                     ? "text-red-400"
+-                                    : "text-violet-400"
++                                    : "text-[#91C687]"
+                                 }`}
+                               />
+                             </div>
+@@ -522,7 +522,7 @@ export default async function DashboardPage() {
+                           ) : isNegative ? (
+                             <XCircle className="w-3.5 h-3.5 text-red-400" />
+                           ) : (
+-                            <Zap className="w-3.5 h-3.5 text-violet-400" />
++                            <Zap className="w-3.5 h-3.5 text-[#91C687]" />
+                           )}
+                         </div>
+                         <div className="flex-1 min-w-0">
+@@ -549,7 +549,7 @@ export default async function DashboardPage() {
+             </Card>
+ 
+             {/* Quick Actions */}
+-            <Card className="border-violet-500/20 bg-violet-600/5">
++            <Card className="border-[#91C687]/20 bg-violet-600/5">
+               <CardContent className="p-5 space-y-3">
+                 <h3 className="text-sm font-semibold text-white">
+                   Quick Actions
+diff --git a/app/disputes/page.tsx b/app/disputes/page.tsx
+index c07c64a..586b0ab 100644
+--- a/app/disputes/page.tsx
++++ b/app/disputes/page.tsx
+@@ -40,7 +40,7 @@ export default async function DisputesPage() {
+   const disputes = await getDisputes();
+ 
+   return (
+-    <div className="min-h-screen bg-[#080810] py-8 px-6">
++    <div className="min-h-screen bg-[#303D31] py-8 px-6">
+       <div className="max-w-5xl mx-auto">
+         <div className="flex items-center gap-3 mb-8">
+           <AlertTriangle className="w-7 h-7 text-red-400" />
+@@ -113,7 +113,7 @@ export default async function DisputesPage() {
+                           href={url}
+                           target="_blank"
+                           rel="noopener noreferrer"
+-                          className="text-xs text-violet-400 hover:text-violet-300 underline"
++                          className="text-xs text-[#91C687] hover:text-[#91C687] underline"
+                         >
+                           Proof {i + 1}
+                         </a>
+diff --git a/app/globals.css b/app/globals.css
+index 53594ea..5dc2006 100644
+--- a/app/globals.css
++++ b/app/globals.css
+@@ -1,8 +1,13 @@
+ @import "tailwindcss";
+ 
+ :root {
+-  --background: 0 0% 4%;
+-  --foreground: 0 0% 98%;
++  --background: 120 13% 21%;
++  --foreground: 200 100% 97%;
++  --pledge-dark:     #303D31;
++  --pledge-green:    #91C687;
++  --pledge-mauve:    #785964;
++  --pledge-ice:      #D9F6FF;
++  --pledge-steel:    #AFC2D5;
+ }
+ 
+ @theme inline {
+@@ -12,73 +17,43 @@
+   --font-mono: var(--font-geist-mono);
+ }
+ 
+-* {
+-  box-sizing: border-box;
+-}
+-
+-html {
+-  scroll-behavior: smooth;
+-}
+-
++* { box-sizing: border-box; }
++html { scroll-behavior: smooth; }
+ body {
+-  background: #080810;
+-  color: #f8f8ff;
++  background: #303D31;
++  color: #D9F6FF;
+   font-family: var(--font-geist-sans), system-ui, sans-serif;
+   -webkit-font-smoothing: antialiased;
+ }
+-
+-::-webkit-scrollbar {
+-  width: 6px;
+-  height: 6px;
+-}
+-
+-::-webkit-scrollbar-track {
+-  background: rgba(255, 255, 255, 0.02);
+-}
+-
+-::-webkit-scrollbar-thumb {
+-  background: rgba(124, 58, 237, 0.4);
+-  border-radius: 3px;
+-}
+-
+-::-webkit-scrollbar-thumb:hover {
+-  background: rgba(124, 58, 237, 0.7);
+-}
++::-webkit-scrollbar { width: 6px; height: 6px; }
++::-webkit-scrollbar-track { background: rgba(145, 198, 135, 0.04); }
++::-webkit-scrollbar-thumb { background: rgba(145, 198, 135, 0.35); border-radius: 3px; }
++::-webkit-scrollbar-thumb:hover { background: rgba(145, 198, 135, 0.6); }
+ 
+ @keyframes float {
+   0%, 100% { transform: translateY(0px); }
+   50% { transform: translateY(-10px); }
+ }
+-
+ @keyframes pulse-glow {
+-  0%, 100% { box-shadow: 0 0 20px rgba(124, 58, 237, 0.3); }
+-  50% { box-shadow: 0 0 40px rgba(124, 58, 237, 0.6); }
+-}
+-
+-.animate-float {
+-  animation: float 3s ease-in-out infinite;
++  0%, 100% { box-shadow: 0 0 20px rgba(145, 198, 135, 0.25); }
++  50% { box-shadow: 0 0 40px rgba(145, 198, 135, 0.5); }
+ }
+-
+-.animate-pulse-glow {
+-  animation: pulse-glow 2s ease-in-out infinite;
+-}
+-
++.animate-float { animation: float 3s ease-in-out infinite; }
++.animate-pulse-glow { animation: pulse-glow 2s ease-in-out infinite; }
+ .gradient-text {
+-  background: linear-gradient(135deg, #a78bfa, #7c3aed, #ec4899);
++  background: linear-gradient(135deg, #91C687, #D9F6FF, #AFC2D5);
+   -webkit-background-clip: text;
+   -webkit-text-fill-color: transparent;
+   background-clip: text;
+ }
+-
+ .glass {
+-  background: rgba(255, 255, 255, 0.03);
++  background: rgba(217, 246, 255, 0.04);
+   backdrop-filter: blur(12px);
+-  border: 1px solid rgba(255, 255, 255, 0.08);
++  border: 1px solid rgba(217, 246, 255, 0.08);
+ }
+-
+ .bg-grid {
+   background-image:
+-    linear-gradient(rgba(124, 58, 237, 0.05) 1px, transparent 1px),
+-    linear-gradient(90deg, rgba(124, 58, 237, 0.05) 1px, transparent 1px);
++    linear-gradient(rgba(145, 198, 135, 0.04) 1px, transparent 1px),
++    linear-gradient(90deg, rgba(145, 198, 135, 0.04) 1px, transparent 1px);
+   background-size: 40px 40px;
+ }
+diff --git a/app/layout.tsx b/app/layout.tsx
+index 3f462ff..cb9bec0 100644
+--- a/app/layout.tsx
++++ b/app/layout.tsx
+@@ -15,12 +15,12 @@ const geistMono = Geist_Mono({
+ });
+ 
+ export const metadata: Metadata = {
+-  title: "StakeUp — Accountability Challenges with Real Stakes",
++  title: "Pledge. — Accountability Challenges with Real Stakes",
+   description:
+     "Put your money where your goals are. Join friend groups, stake money, hit milestones, and win the prize pool.",
+   keywords: ["accountability", "challenges", "fitness goals", "money stake", "friend groups"],
+   openGraph: {
+-    title: "StakeUp",
++    title: "Pledge.",
+     description: "Accountability challenges with real financial stakes",
+     type: "website",
+   },
+@@ -35,16 +35,16 @@ export default function RootLayout({
+     <ClerkProvider
+       appearance={{
+         variables: {
+-          colorPrimary: "#7c3aed",
+-          colorBackground: "#0d0d1a",
+-          colorInputBackground: "#1a1a2e",
++          colorPrimary: "#91C687",
++          colorBackground: "#263228",
++          colorInputBackground: "#2d3f2e",
+           borderRadius: "0.75rem",
+         },
+       }}
+     >
+       <html lang="en" className="dark">
+         <body
+-          className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#080810] text-white`}
++          className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#303D31] text-[#D9F6FF]`}
+         >
+           {children}
+           <Toaster
+@@ -52,9 +52,9 @@ export default function RootLayout({
+             position="top-right"
+             toastOptions={{
+               style: {
+-                background: "#1a1a2e",
+-                border: "1px solid rgba(124,58,237,0.3)",
+-                color: "white",
++                background: "#2d3f2e",
++                border: "1px solid rgba(145,198,135,0.3)",
++                color: "#D9F6FF",
+               },
+             }}
+           />
+diff --git a/app/leaderboard/page.tsx b/app/leaderboard/page.tsx
+index e684107..74e2879 100644
+--- a/app/leaderboard/page.tsx
++++ b/app/leaderboard/page.tsx
+@@ -20,7 +20,7 @@ export default async function LeaderboardPage() {
+   }));
+ 
+   return (
+-    <div className="min-h-screen bg-[#080810] bg-grid py-12 px-4">
++    <div className="min-h-screen bg-[#303D31] bg-grid py-12 px-4">
+       <div className="max-w-4xl mx-auto">
+         <div className="text-center mb-10">
+           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-yellow-600/20 border border-yellow-500/30 text-yellow-300 text-sm mb-4">
+@@ -93,7 +93,7 @@ export default async function LeaderboardPage() {
+         <Card className="border-white/10 bg-white/5">
+           <CardHeader>
+             <CardTitle className="flex items-center gap-2 text-white">
+-              <Medal className="w-5 h-5 text-violet-400" />
++              <Medal className="w-5 h-5 text-[#91C687]" />
+               All Rankings
+             </CardTitle>
+           </CardHeader>
+@@ -142,7 +142,7 @@ export default async function LeaderboardPage() {
+                       <div className="text-white/40 text-xs">Wins</div>
+                     </div>
+                     <div className="text-center">
+-                      <div className="text-violet-400 font-semibold">{user.winRate}%</div>
++                      <div className="text-[#91C687] font-semibold">{user.winRate}%</div>
+                       <div className="text-white/40 text-xs">Win Rate</div>
+                     </div>
+                     <div className="text-center">
+diff --git a/app/page.tsx b/app/page.tsx
+index 0220da4..ee1e9d9 100644
+--- a/app/page.tsx
++++ b/app/page.tsx
+@@ -150,7 +150,7 @@ function LandingNavbar() {
+       className={cn(
+         "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
+         scrolled
+-          ? "bg-[#080810]/80 backdrop-blur-xl border-b border-white/[0.06] shadow-lg shadow-black/40"
++          ? "bg-[#303D31]/80 backdrop-blur-xl border-b border-white/[0.06] shadow-lg shadow-black/40"
+           : "bg-transparent"
+       )}
+     >
+@@ -161,7 +161,7 @@ function LandingNavbar() {
+             <Trophy className="w-4 h-4 text-white" />
+           </div>
+           <span className="font-bold text-lg bg-gradient-to-r from-violet-300 via-purple-300 to-pink-300 bg-clip-text text-transparent">
+-            StakeUp
++            Pledge.
+           </span>
+         </Link>
+ 
+@@ -188,7 +188,7 @@ function LandingNavbar() {
+           </Link>
+           <Link
+             href="/sign-up"
+-            className="px-4 py-2 text-sm font-semibold rounded-lg bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-500 hover:to-purple-500 text-white transition-all duration-200 shadow-lg shadow-violet-500/25 hover:shadow-violet-500/40"
++            className="px-4 py-2 text-sm font-semibold rounded-lg bg-gradient-to-r from-[#91C687] to-[#785964] hover:from-violet-500 hover:to-purple-500 text-white transition-all duration-200 shadow-lg shadow-violet-500/25 hover:shadow-violet-500/40"
+           >
+             Get Started
+           </Link>
+@@ -210,7 +210,7 @@ function LandingNavbar() {
+           initial={{ opacity: 0, y: -8 }}
+           animate={{ opacity: 1, y: 0 }}
+           exit={{ opacity: 0, y: -8 }}
+-          className="md:hidden bg-[#0d0d1a]/95 backdrop-blur-xl border-b border-white/[0.06] px-4 pb-4 space-y-1"
++          className="md:hidden bg-[#263228]/95 backdrop-blur-xl border-b border-white/[0.06] px-4 pb-4 space-y-1"
+         >
+           {links.map((link) => (
+             <a
+@@ -231,7 +231,7 @@ function LandingNavbar() {
+             </Link>
+             <Link
+               href="/sign-up"
+-              className="block px-3 py-2.5 text-sm font-semibold rounded-lg bg-gradient-to-r from-violet-600 to-purple-600 text-white text-center"
++              className="block px-3 py-2.5 text-sm font-semibold rounded-lg bg-gradient-to-r from-[#91C687] to-[#785964] text-white text-center"
+             >
+               Get Started
+             </Link>
+@@ -256,7 +256,7 @@ const heroStats: StatCard[] = [
+     value: "94%",
+     label: "Completion Rate",
+     icon: <TrendingUp className="w-4 h-4" />,
+-    color: "from-violet-500/20 to-purple-500/10 border-violet-500/20",
++    color: "from-violet-500/20 to-purple-500/10 border-[#91C687]/20",
+   },
+   {
+     value: "12,000+",
+@@ -282,7 +282,7 @@ function HeroSection() {
+           initial={{ opacity: 0, scale: 0.9 }}
+           animate={{ opacity: 1, scale: 1 }}
+           transition={{ duration: 0.5 }}
+-          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-violet-500/10 border border-violet-500/25 text-violet-300 text-sm font-medium mb-8"
++          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#91C687]/10 border border-violet-500/25 text-[#91C687] text-sm font-medium mb-8"
+         >
+           <Flame className="w-3.5 h-3.5 text-orange-400" />
+           <span>Real money. Real accountability. Real results.</span>
+@@ -322,7 +322,7 @@ function HeroSection() {
+         >
+           <Link
+             href="/sign-up"
+-            className="group flex items-center gap-2 px-7 py-3.5 rounded-xl bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-500 hover:to-purple-500 text-white font-semibold text-base transition-all duration-200 shadow-xl shadow-violet-500/30 hover:shadow-violet-500/50 hover:-translate-y-0.5"
++            className="group flex items-center gap-2 px-7 py-3.5 rounded-xl bg-gradient-to-r from-[#91C687] to-[#785964] hover:from-violet-500 hover:to-purple-500 text-white font-semibold text-base transition-all duration-200 shadow-xl shadow-[#91C687]/30 hover:shadow-[#91C687]/50 hover:-translate-y-0.5"
+           >
+             Start a Challenge
+             <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+@@ -369,7 +369,7 @@ function HeroSection() {
+       </div>
+ 
+       {/* Bottom fade */}
+-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#080810] to-transparent pointer-events-none" />
++      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#303D31] to-transparent pointer-events-none" />
+     </section>
+   );
+ }
+@@ -414,7 +414,7 @@ function HowItWorksSection() {
+       <div className="max-w-7xl mx-auto">
+         {/* Header */}
+         <FadeInWhenVisible className="text-center mb-16">
+-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-violet-500/10 border border-violet-500/25 text-violet-300 text-sm font-medium mb-4">
++          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#91C687]/10 border border-violet-500/25 text-[#91C687] text-sm font-medium mb-4">
+             <Zap className="w-3.5 h-3.5" />
+             Simple by design
+           </div>
+@@ -431,7 +431,7 @@ function HowItWorksSection() {
+         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+           {steps.map((step, i) => (
+             <FadeInWhenVisible key={step.number} delay={i * 0.1}>
+-              <div className="relative group h-full p-6 rounded-2xl bg-white/[0.03] border border-white/[0.07] hover:border-violet-500/30 hover:bg-violet-500/[0.04] transition-all duration-300">
++              <div className="relative group h-full p-6 rounded-2xl bg-white/[0.03] border border-white/[0.07] hover:border-[#91C687]/30 hover:bg-violet-500/[0.04] transition-all duration-300">
+                 {/* Connector line */}
+                 {i < steps.length - 1 && (
+                   <div className="hidden lg:block absolute top-10 left-full w-6 h-px bg-gradient-to-r from-violet-500/40 to-transparent z-10" />
+@@ -443,7 +443,7 @@ function HowItWorksSection() {
+                 </span>
+ 
+                 {/* Icon */}
+-                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-violet-600/30 to-purple-600/20 border border-violet-500/25 flex items-center justify-center text-violet-400 mb-5 group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-violet-500/10">
++                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-violet-600/30 to-purple-600/20 border border-violet-500/25 flex items-center justify-center text-[#91C687] mb-5 group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-violet-500/10">
+                   {step.icon}
+                 </div>
+ 
+@@ -565,7 +565,7 @@ function ChallengeTypesSection() {
+                   {cat.example}
+                 </p>
+                 <div className="flex items-center justify-between">
+-                  <span className="text-xs font-semibold text-violet-300 bg-violet-500/10 px-2.5 py-1 rounded-full">
++                  <span className="text-xs font-semibold text-[#91C687] bg-[#91C687]/10 px-2.5 py-1 rounded-full">
+                     Stake: {cat.stake}
+                   </span>
+                   <ChevronRight className="w-3.5 h-3.5 text-white/25 group-hover:text-white/60 group-hover:translate-x-0.5 transition-all duration-200" />
+@@ -635,7 +635,7 @@ function VerificationSection() {
+                     className={cn(
+                       "w-12 h-12 rounded-xl flex items-center justify-center shrink-0",
+                       item.color === "violet"
+-                        ? "bg-violet-500/15 text-violet-400"
++                        ? "bg-[#91C687]/15 text-[#91C687]"
+                         : item.color === "blue"
+                         ? "bg-blue-500/15 text-blue-400"
+                         : "bg-pink-500/15 text-pink-400"
+@@ -650,7 +650,7 @@ function VerificationSection() {
+                         className={cn(
+                           "text-xs font-medium px-2 py-0.5 rounded-full",
+                           item.color === "violet"
+-                            ? "bg-violet-500/15 text-violet-300"
++                            ? "bg-[#91C687]/15 text-[#91C687]"
+                             : item.color === "blue"
+                             ? "bg-blue-500/15 text-blue-300"
+                             : "bg-pink-500/15 text-pink-300"
+@@ -674,7 +674,7 @@ function VerificationSection() {
+               {/* Glow */}
+               <div className="absolute inset-0 rounded-3xl bg-violet-600/10 blur-2xl scale-90" />
+ 
+-              <div className="relative p-7 rounded-3xl bg-[#0d0d1a] border border-violet-500/25 shadow-2xl shadow-violet-500/10">
++              <div className="relative p-7 rounded-3xl bg-[#263228] border border-violet-500/25 shadow-2xl shadow-violet-500/10">
+                 {/* Header */}
+                 <div className="flex items-center justify-between mb-6">
+                   <div>
+@@ -683,7 +683,7 @@ function VerificationSection() {
+                     </p>
+                     <h3 className="font-bold text-white">Milestone Review</h3>
+                   </div>
+-                  <span className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-violet-500/15 border border-violet-500/25 text-violet-300 text-sm font-semibold">
++                  <span className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#91C687]/15 border border-violet-500/25 text-[#91C687] text-sm font-semibold">
+                     <Brain className="w-3.5 h-3.5" />
+                     AI
+                   </span>
+@@ -780,7 +780,7 @@ const testimonials: Testimonial[] = [
+     name: "Jordan Rivera",
+     handle: "@jordanfit94",
+     avatar: "JR",
+-    text: "I'd tried losing weight for 3 years. StakeUp made it click — having $300 on the line and 5 friends watching every weigh-in is motivation I couldn't manufacture myself. Lost 28 lbs and split $1,800 with two others.",
++    text: "I'd tried losing weight for 3 years. Pledge. made it click — having $300 on the line and 5 friends watching every weigh-in is motivation I couldn't manufacture myself. Lost 28 lbs and split $1,800 with two others.",
+     amount: "+$600",
+     challenge: "Weight Loss — 6mo",
+     rating: 5,
+@@ -798,7 +798,7 @@ const testimonials: Testimonial[] = [
+     name: "Priya Nair",
+     handle: "@priya_saves",
+     avatar: "PN",
+-    text: "I used to be terrible at saving. Put $200 in a StakeUp savings challenge with 4 friends — had to prove monthly bank statements. Saved $6k in 4 months for the first time ever AND won an extra $320.",
++    text: "I used to be terrible at saving. Put $200 in a Pledge. savings challenge with 4 friends — had to prove monthly bank statements. Saved $6k in 4 months for the first time ever AND won an extra $320.",
+     amount: "+$320",
+     challenge: "Save $6k — 4mo",
+     rating: 5,
+@@ -838,7 +838,7 @@ function TestimonialsSection() {
+         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+           {testimonials.map((t, i) => (
+             <FadeInWhenVisible key={t.handle} delay={i * 0.1}>
+-              <div className="h-full p-6 rounded-2xl bg-white/[0.025] border border-white/[0.07] hover:border-violet-500/20 transition-all duration-300">
++              <div className="h-full p-6 rounded-2xl bg-white/[0.025] border border-white/[0.07] hover:border-[#91C687]/20 transition-all duration-300">
+                 {/* Top bar */}
+                 <div className="flex items-start justify-between mb-4">
+                   <div className="flex items-center gap-3">
+@@ -884,7 +884,7 @@ function PricingSection() {
+     <section id="pricing" className="py-24 px-4 sm:px-6 lg:px-8">
+       <div className="max-w-5xl mx-auto">
+         <FadeInWhenVisible className="text-center mb-16">
+-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-violet-500/10 border border-violet-500/25 text-violet-300 text-sm font-medium mb-4">
++          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#91C687]/10 border border-violet-500/25 text-[#91C687] text-sm font-medium mb-4">
+             <DollarSign className="w-3.5 h-3.5" />
+             Simple, transparent pricing
+           </div>
+@@ -944,16 +944,16 @@ function PricingSection() {
+             <div className="h-full p-8 rounded-2xl bg-gradient-to-b from-violet-600/15 to-purple-600/5 border border-violet-500/35 flex flex-col relative overflow-hidden">
+               {/* Popular badge */}
+               <div className="absolute top-5 right-5">
+-                <span className="px-3 py-1 rounded-full bg-gradient-to-r from-violet-600 to-purple-600 text-white text-xs font-semibold shadow-lg shadow-violet-500/30">
++                <span className="px-3 py-1 rounded-full bg-gradient-to-r from-[#91C687] to-[#785964] text-white text-xs font-semibold shadow-lg shadow-[#91C687]/30">
+                   Most Popular
+                 </span>
+               </div>
+ 
+               {/* Glow */}
+-              <div className="absolute top-0 right-0 w-60 h-60 bg-violet-500/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />
++              <div className="absolute top-0 right-0 w-60 h-60 bg-[#91C687]/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />
+ 
+               <div className="mb-6 relative">
+-                <p className="text-sm font-semibold text-violet-300 uppercase tracking-wider mb-2">
++                <p className="text-sm font-semibold text-[#91C687] uppercase tracking-wider mb-2">
+                   Pro
+                 </p>
+                 <div className="flex items-end gap-1 mb-3">
+@@ -977,7 +977,7 @@ function PricingSection() {
+                   "Reduced 7% platform fee",
+                 ].map((item) => (
+                   <li key={item} className="flex items-start gap-2.5 text-sm text-white/70">
+-                    <CheckCircle2 className="w-4 h-4 text-violet-400 shrink-0 mt-0.5" />
++                    <CheckCircle2 className="w-4 h-4 text-[#91C687] shrink-0 mt-0.5" />
+                     {item}
+                   </li>
+                 ))}
+@@ -985,7 +985,7 @@ function PricingSection() {
+ 
+               <Link
+                 href="/sign-up?plan=pro"
+-                className="relative block w-full py-3 rounded-xl bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-500 hover:to-purple-500 text-white font-semibold text-sm text-center transition-all duration-200 shadow-lg shadow-violet-500/30 hover:shadow-violet-500/50"
++                className="relative block w-full py-3 rounded-xl bg-gradient-to-r from-[#91C687] to-[#785964] hover:from-violet-500 hover:to-purple-500 text-white font-semibold text-sm text-center transition-all duration-200 shadow-lg shadow-[#91C687]/30 hover:shadow-[#91C687]/50"
+               >
+                 Start Pro Free for 7 Days
+               </Link>
+@@ -1004,7 +1004,7 @@ function PricingSection() {
+                 How the 10% platform fee works
+               </p>
+               <p className="text-sm text-white/45 leading-relaxed">
+-                Example: 8 friends stake $100 each = $800 pool. StakeUp keeps
++                Example: 8 friends stake $100 each = $800 pool. Pledge. keeps
+                 $80 (10%). If 3 people complete the challenge, they each get{" "}
+                 <strong className="text-white/70">$240</strong> — 2.4× their
+                 stake back. Lose? Your $100 goes to the winners.
+@@ -1029,7 +1029,7 @@ function Footer() {
+   };
+ 
+   return (
+-    <footer className="border-t border-white/[0.06] bg-[#080810]">
++    <footer className="border-t border-white/[0.06] bg-[#303D31]">
+       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+         <div className="grid grid-cols-2 md:grid-cols-5 gap-8 mb-12">
+           {/* Brand column */}
+@@ -1039,7 +1039,7 @@ function Footer() {
+                 <Trophy className="w-4 h-4 text-white" />
+               </div>
+               <span className="font-bold text-lg bg-gradient-to-r from-violet-300 to-pink-300 bg-clip-text text-transparent">
+-                StakeUp
++                Pledge.
+               </span>
+             </div>
+             <p className="text-sm text-white/40 leading-relaxed">
+@@ -1072,7 +1072,7 @@ function Footer() {
+ 
+         <div className="pt-8 border-t border-white/[0.06] flex flex-col sm:flex-row items-center justify-between gap-4">
+           <p className="text-sm text-white/25">
+-            © 2026 StakeUp, Inc. All rights reserved.
++            © 2026 Pledge., Inc. All rights reserved.
+           </p>
+           <div className="flex items-center gap-1.5 text-sm text-white/25">
+             <span>Built with</span>
+@@ -1090,7 +1090,7 @@ function Footer() {
+ ───────────────────────────────────────────── */
+ export default function LandingPage() {
+   return (
+-    <div className="min-h-screen bg-[#080810] text-white">
++    <div className="min-h-screen bg-[#303D31] text-white">
+       <LandingNavbar />
+       <HeroSection />
+       <HowItWorksSection />
+diff --git a/app/privacy/page.tsx b/app/privacy/page.tsx
+index 0c5ca62..ad00f99 100644
+--- a/app/privacy/page.tsx
++++ b/app/privacy/page.tsx
+@@ -1,6 +1,6 @@
+ export default function PrivacyPage() {
+   return (
+-    <div className="min-h-screen bg-[#080810] py-16 px-4">
++    <div className="min-h-screen bg-[#303D31] py-16 px-4">
+       <div className="max-w-3xl mx-auto">
+         <h1 className="text-4xl font-bold text-white mb-2">Privacy Policy</h1>
+         <p className="text-white/50 mb-10">Last updated: January 1, 2025</p>
+diff --git a/app/profile/[id]/page.tsx b/app/profile/[id]/page.tsx
+index 7d921e2..a4ac560 100644
+--- a/app/profile/[id]/page.tsx
++++ b/app/profile/[id]/page.tsx
+@@ -18,7 +18,7 @@ const BADGE_META: Record<string, { emoji: string; label: string; desc: string; c
+   FIRST_WIN: { emoji: "⭐", label: "First Win", desc: "Won your first challenge", color: "text-yellow-400" },
+   SOCIAL_BUTTERFLY: { emoji: "🦋", label: "Social Butterfly", desc: "Joined 5+ challenges", color: "text-pink-400" },
+   HIGH_ROLLER: { emoji: "💰", label: "High Roller", desc: "Staked $500+", color: "text-emerald-400" },
+-  STREAK_MASTER: { emoji: "⚡", label: "Streak Master", desc: "30-day streak", color: "text-violet-400" },
++  STREAK_MASTER: { emoji: "⚡", label: "Streak Master", desc: "30-day streak", color: "text-[#91C687]" },
+   EARLY_ADOPTER: { emoji: "🚀", label: "Early Adopter", desc: "Joined in the first month", color: "text-blue-400" },
+   REFERRAL_KING: { emoji: "🤝", label: "Referral King", desc: "Invited 5+ friends", color: "text-green-400" },
+ };
+@@ -39,13 +39,13 @@ export default async function ProfilePage({ params }: { params: Promise<{ id: st
+       : 0;
+ 
+   return (
+-    <div className="min-h-screen bg-[#080810] bg-grid py-12 px-4">
++    <div className="min-h-screen bg-[#303D31] bg-grid py-12 px-4">
+       <div className="max-w-4xl mx-auto">
+         {/* Profile Header */}
+         <div className="relative mb-8">
+-          <div className="h-40 rounded-2xl bg-gradient-to-r from-violet-900/50 via-purple-800/30 to-pink-900/30 border border-white/10" />
++          <div className="h-40 rounded-2xl bg-gradient-to-r from-[#263228]/80 via-[#785964]/20 to-[#785964]/30 border border-white/10" />
+           <div className="absolute -bottom-12 left-6 flex items-end gap-4">
+-            <Avatar className="w-24 h-24 ring-4 ring-[#080810]">
++            <Avatar className="w-24 h-24 ring-4 ring-[#303D31]">
+               <AvatarImage src={user.avatarUrl ?? ""} />
+               <AvatarFallback className="text-2xl">{user.displayName?.[0] ?? "?"}</AvatarFallback>
+             </Avatar>
+@@ -60,7 +60,7 @@ export default async function ProfilePage({ params }: { params: Promise<{ id: st
+           </div>
+           <div className="text-right">
+             <div className="flex items-center gap-2 justify-end">
+-              <Zap className="w-4 h-4 text-violet-400" />
++              <Zap className="w-4 h-4 text-[#91C687]" />
+               <span className="text-white font-bold">Level {user.level}</span>
+             </div>
+             <div className="text-xs text-white/40 mt-0.5">{user.xp.toLocaleString()} XP total</div>
+@@ -72,7 +72,7 @@ export default async function ProfilePage({ params }: { params: Promise<{ id: st
+         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8">
+           {[
+             { icon: Trophy, label: "Challenges Won", value: user.challengesWon, color: "text-yellow-400" },
+-            { icon: Target, label: "Challenges Entered", value: user.challengesEntered, color: "text-violet-400" },
++            { icon: Target, label: "Challenges Entered", value: user.challengesEntered, color: "text-[#91C687]" },
+             { icon: TrendingUp, label: "Win Rate", value: `${winRate}%`, color: "text-emerald-400" },
+             { icon: Star, label: "Total Earned", value: formatCurrency(user.totalEarned), color: "text-green-400" },
+           ].map((stat) => (
+@@ -113,7 +113,7 @@ export default async function ProfilePage({ params }: { params: Promise<{ id: st
+           <Card className="border-white/10 bg-white/5">
+             <CardHeader>
+               <CardTitle className="flex items-center gap-2 text-white text-base">
+-                <Medal className="w-4 h-4 text-violet-400" />
++                <Medal className="w-4 h-4 text-[#91C687]" />
+                 Badges ({user.badges.length})
+               </CardTitle>
+             </CardHeader>
+@@ -145,7 +145,7 @@ export default async function ProfilePage({ params }: { params: Promise<{ id: st
+         <Card className="border-white/10 bg-white/5">
+           <CardHeader>
+             <CardTitle className="flex items-center gap-2 text-white">
+-              <Calendar className="w-5 h-5 text-violet-400" />
++              <Calendar className="w-5 h-5 text-[#91C687]" />
+               Challenge History
+             </CardTitle>
+           </CardHeader>
+diff --git a/app/settings/page.tsx b/app/settings/page.tsx
+index 960f491..721154a 100644
+--- a/app/settings/page.tsx
++++ b/app/settings/page.tsx
+@@ -35,7 +35,7 @@ export default function SettingsPage() {
+   };
+ 
+   return (
+-    <div className="min-h-screen bg-[#080810] py-8 px-4">
++    <div className="min-h-screen bg-[#303D31] py-8 px-4">
+       <div className="max-w-2xl mx-auto">
+         <h1 className="text-3xl font-bold text-white mb-8">Settings</h1>
+ 
+@@ -44,7 +44,7 @@ export default function SettingsPage() {
+           <Card className="border-white/10 bg-white/5">
+             <CardHeader>
+               <CardTitle className="flex items-center gap-2 text-white">
+-                <User className="w-4 h-4 text-violet-400" />
++                <User className="w-4 h-4 text-[#91C687]" />
+                 Profile
+               </CardTitle>
+             </CardHeader>
+@@ -102,7 +102,7 @@ export default function SettingsPage() {
+           <Card className="border-white/10 bg-white/5">
+             <CardHeader>
+               <CardTitle className="flex items-center gap-2 text-white">
+-                <Bell className="w-4 h-4 text-violet-400" />
++                <Bell className="w-4 h-4 text-[#91C687]" />
+                 Notifications
+               </CardTitle>
+             </CardHeader>
+@@ -135,7 +135,7 @@ export default function SettingsPage() {
+           <Card className="border-white/10 bg-white/5">
+             <CardHeader>
+               <CardTitle className="flex items-center gap-2 text-white">
+-                <CreditCard className="w-4 h-4 text-violet-400" />
++                <CreditCard className="w-4 h-4 text-[#91C687]" />
+                 Payment & Payouts
+               </CardTitle>
+             </CardHeader>
+@@ -156,7 +156,7 @@ export default function SettingsPage() {
+           <Card className="border-white/10 bg-white/5">
+             <CardHeader>
+               <CardTitle className="flex items-center gap-2 text-white">
+-                <Shield className="w-4 h-4 text-violet-400" />
++                <Shield className="w-4 h-4 text-[#91C687]" />
+                 Legal & Compliance
+               </CardTitle>
+             </CardHeader>
+diff --git a/app/terms/page.tsx b/app/terms/page.tsx
+index a9d92fd..3a11462 100644
+--- a/app/terms/page.tsx
++++ b/app/terms/page.tsx
+@@ -1,6 +1,6 @@
+ export default function TermsPage() {
+   return (
+-    <div className="min-h-screen bg-[#080810] py-16 px-4">
++    <div className="min-h-screen bg-[#303D31] py-16 px-4">
+       <div className="max-w-3xl mx-auto">
+         <h1 className="text-4xl font-bold text-white mb-2">Terms of Service</h1>
+         <p className="text-white/50 mb-10">Last updated: January 1, 2025</p>
+@@ -9,7 +9,7 @@ export default function TermsPage() {
+           <section>
+             <h2 className="text-xl font-semibold text-white mb-3">1. Overview</h2>
+             <p className="text-white/70">
+-              StakeUp is a skill-based accountability platform, not a gambling service.
++              Pledge. is a skill-based accountability platform, not a gambling service.
+               Participants stake money at the start of a challenge and can recover their
+               stake—plus a proportionate share of eliminated participants&apos; stakes—by
+               completing all verified milestones. No house edge is applied; the platform
+@@ -68,7 +68,7 @@ export default function TermsPage() {
+           <section>
+             <h2 className="text-xl font-semibold text-white mb-3">7. Platform Fee</h2>
+             <p className="text-white/70">
+-              StakeUp collects a 10% administrative fee from the total prize pool at
++              Pledge. collects a 10% administrative fee from the total prize pool at
+               challenge completion. This fee covers payment processing, AI verification,
+               moderation, and platform operations.
+             </p>
+diff --git a/components/challenges/MilestoneTimeline.tsx b/components/challenges/MilestoneTimeline.tsx
+index 2f3f3d0..31ec571 100644
+--- a/components/challenges/MilestoneTimeline.tsx
++++ b/components/challenges/MilestoneTimeline.tsx
+@@ -92,7 +92,7 @@ export default function MilestoneTimeline({
+                       {formatDate(milestone.deadline)}
+                     </div>
+                     {milestone.targetValue && (
+-                      <div className="text-xs text-violet-400 font-medium mt-0.5">
++                      <div className="text-xs text-[#91C687] font-medium mt-0.5">
+                         Target: {milestone.targetValue} {milestone.targetUnit}
+                       </div>
+                     )}
+diff --git a/components/challenges/ParticipantList.tsx b/components/challenges/ParticipantList.tsx
+index 82e843d..bc377cf 100644
+--- a/components/challenges/ParticipantList.tsx
++++ b/components/challenges/ParticipantList.tsx
+@@ -71,7 +71,7 @@ export default function ParticipantList({ participants, creatorId }: Participant
+                 </div>
+                 {participant.winProbability !== null && participant.status === "ACTIVE" && (
+                   <div className="flex items-center gap-2 mt-1">
+-                    <TrendingUp className="w-3 h-3 text-violet-400 flex-shrink-0" />
++                    <TrendingUp className="w-3 h-3 text-[#91C687] flex-shrink-0" />
+                     <Progress
+                       value={participant.winProbability}
+                       className="h-1 flex-1"
+diff --git a/components/challenges/PrizePoolCard.tsx b/components/challenges/PrizePoolCard.tsx
+index 2b07d4d..640fd3f 100644
+--- a/components/challenges/PrizePoolCard.tsx
++++ b/components/challenges/PrizePoolCard.tsx
+@@ -33,7 +33,7 @@ export default function PrizePoolCard({
+     : netPool / Math.max(1, participantCount);
+ 
+   return (
+-    <Card className="border-violet-500/30 bg-gradient-to-b from-violet-600/10 to-transparent sticky top-4">
++    <Card className="border-[#91C687]/30 bg-gradient-to-b from-violet-600/10 to-transparent sticky top-4">
+       <CardHeader className="pb-3">
+         <CardTitle className="flex items-center gap-2 text-white">
+           <Trophy className="w-5 h-5 text-yellow-400" />
+@@ -65,7 +65,7 @@ export default function PrizePoolCard({
+           {participantCount > 0 && (
+             <div className="flex justify-between border-t border-white/10 pt-2">
+               <span className="text-white/60">Est. per winner</span>
+-              <span className="text-violet-400 font-bold">{formatCurrency(estimatedPayout)}</span>
++              <span className="text-[#91C687] font-bold">{formatCurrency(estimatedPayout)}</span>
+             </div>
+           )}
+         </div>
+@@ -73,7 +73,7 @@ export default function PrizePoolCard({
+         {/* Stats */}
+         <div className="grid grid-cols-2 gap-3">
+           <div className="text-center p-2.5 rounded-lg bg-white/5 border border-white/10">
+-            <Users className="w-4 h-4 text-violet-400 mx-auto mb-1" />
++            <Users className="w-4 h-4 text-[#91C687] mx-auto mb-1" />
+             <div className="text-lg font-bold text-white">{participantCount}</div>
+             <div className="text-xs text-white/40">of {maxParticipants}</div>
+           </div>
+@@ -96,16 +96,16 @@ export default function PrizePoolCard({
+         {/* Time remaining */}
+         {endsAt && status === "ACTIVE" && (
+           <div className="flex items-center gap-2 text-sm text-white/60">
+-            <Clock className="w-4 h-4 text-violet-400" />
++            <Clock className="w-4 h-4 text-[#91C687]" />
+             <span>Ends {formatRelativeTime(endsAt)}</span>
+           </div>
+         )}
+ 
+         {/* User's stake */}
+         {userStake && (
+-          <div className="p-3 rounded-lg bg-violet-600/10 border border-violet-500/30 text-center">
++          <div className="p-3 rounded-lg bg-violet-600/10 border border-[#91C687]/30 text-center">
+             <div className="text-xs text-white/50">Your stake</div>
+-            <div className="text-lg font-bold text-violet-400">{formatCurrency(userStake)}</div>
++            <div className="text-lg font-bold text-[#91C687]">{formatCurrency(userStake)}</div>
+             <div className="text-xs text-white/40 mt-0.5">
+               {estimatedPayout > userStake
+                 ? `+${formatCurrency(estimatedPayout - userStake)} potential gain`
+diff --git a/components/challenges/VotingCard.tsx b/components/challenges/VotingCard.tsx
+index c3d390f..e09d5f6 100644
+--- a/components/challenges/VotingCard.tsx
++++ b/components/challenges/VotingCard.tsx
+@@ -103,7 +103,7 @@ export default function VotingCard({ submission, onVoted }: VotingCardProps) {
+ 
+         {/* AI Analysis */}
+         {submission.aiConfidence !== null && (
+-          <div className="p-3 rounded-lg bg-violet-600/10 border border-violet-500/20">
++          <div className="p-3 rounded-lg bg-violet-600/10 border border-[#91C687]/20">
+             <div className="flex items-center justify-between mb-1.5">
+               <span className="text-xs text-white/50">AI Confidence</span>
+               <span className={`text-sm font-bold ${
+diff --git a/components/dashboard/ChallengeCard.tsx b/components/dashboard/ChallengeCard.tsx
+index 2ba1fcc..e8a12ab 100644
+--- a/components/dashboard/ChallengeCard.tsx
++++ b/components/dashboard/ChallengeCard.tsx
+@@ -35,7 +35,7 @@ export default function ChallengeCard({ challenge, userId }: ChallengeCardProps)
+ 
+   return (
+     <Link href={`/challenges/${challenge.id}`}>
+-      <Card className="border-white/10 bg-white/5 hover:border-violet-500/30 hover:bg-white/8 transition-all cursor-pointer group overflow-hidden">
++      <Card className="border-white/10 bg-white/5 hover:border-[#91C687]/30 hover:bg-white/8 transition-all cursor-pointer group overflow-hidden">
+         {challenge.coverImageUrl && (
+           <div
+             className="h-28 bg-cover bg-center opacity-40"
+@@ -45,7 +45,7 @@ export default function ChallengeCard({ challenge, userId }: ChallengeCardProps)
+         <CardContent className={`p-4 ${challenge.coverImageUrl ? "" : "pt-4"}`}>
+           <div className="flex items-start justify-between gap-2 mb-3">
+             <div className="flex-1 min-w-0">
+-              <h3 className="font-semibold text-white truncate group-hover:text-violet-300 transition-colors">
++              <h3 className="font-semibold text-white truncate group-hover:text-[#91C687] transition-colors">
+                 {challenge.name}
+               </h3>
+               <p className="text-xs text-white/40 mt-0.5">
+@@ -91,8 +91,8 @@ export default function ChallengeCard({ challenge, userId }: ChallengeCardProps)
+             </div>
+             {nextDeadline && (
+               <div className="flex items-center gap-1 ml-auto">
+-                <Clock className="w-3 h-3 text-violet-400" />
+-                <span className="text-violet-300">{formatRelativeTime(nextDeadline.deadline)}</span>
++                <Clock className="w-3 h-3 text-[#91C687]" />
++                <span className="text-[#91C687]">{formatRelativeTime(nextDeadline.deadline)}</span>
+               </div>
+             )}
+             {challenge.endsAt && challenge.status === "ACTIVE" && !nextDeadline && (
+@@ -118,7 +118,7 @@ export default function ChallengeCard({ challenge, userId }: ChallengeCardProps)
+                 </div>
+               ))}
+             </div>
+-            <ArrowRight className="w-4 h-4 text-white/30 group-hover:text-violet-400 group-hover:translate-x-0.5 transition-all" />
++            <ArrowRight className="w-4 h-4 text-white/30 group-hover:text-[#91C687] group-hover:translate-x-0.5 transition-all" />
+           </div>
+         </CardContent>
+       </Card>
+diff --git a/components/dashboard/StatsCards.tsx b/components/dashboard/StatsCards.tsx
+index 27c7683..ec3c0a8 100644
+--- a/components/dashboard/StatsCards.tsx
++++ b/components/dashboard/StatsCards.tsx
+@@ -13,9 +13,9 @@ export default function StatsCards({ stats }: StatsCardsProps) {
+       icon: Trophy,
+       label: "Active Challenges",
+       value: stats.activeChallenges,
+-      color: "text-violet-400",
++      color: "text-[#91C687]",
+       bg: "from-violet-600/20 to-violet-600/5",
+-      border: "border-violet-500/20",
++      border: "border-[#91C687]/20",
+     },
+     {
+       icon: DollarSign,
+@@ -53,7 +53,7 @@ export default function StatsCards({ stats }: StatsCardsProps) {
+       icon: Zap,
+       label: "XP",
+       value: `${stats.xp.toLocaleString()} (Lv.${stats.level})`,
+-      color: "text-purple-400",
++      color: "text-[#785964]",
+       bg: "from-purple-600/20 to-purple-600/5",
+       border: "border-purple-500/20",
+     },
+diff --git a/components/gamification/BadgeShowcase.tsx b/components/gamification/BadgeShowcase.tsx
+index 120bf13..ef19ef7 100644
+--- a/components/gamification/BadgeShowcase.tsx
++++ b/components/gamification/BadgeShowcase.tsx
+@@ -62,14 +62,14 @@ const BADGE_CONFIG = {
+     icon: Flame,
+     label: "Streak Master",
+     desc: "Reached a 30-day streak",
+-    color: "text-violet-400",
++    color: "text-[#91C687]",
+     bg: "bg-violet-400/10",
+     border: "border-violet-400/30",
+   },
+   EARLY_ADOPTER: {
+     icon: Rocket,
+     label: "Early Adopter",
+-    desc: "Joined StakeUp in the first month",
++    desc: "Joined Pledge. in the first month",
+     color: "text-blue-400",
+     bg: "bg-blue-400/10",
+     border: "border-blue-400/30",
+diff --git a/components/layout/Navbar.tsx b/components/layout/Navbar.tsx
+index 227b00e..60b8e59 100644
+--- a/components/layout/Navbar.tsx
++++ b/components/layout/Navbar.tsx
+@@ -61,14 +61,14 @@ function NavLogo({ showText = true }: { showText?: boolean }) {
+     <Link
+       href="/"
+       className="flex items-center gap-2.5 shrink-0 group"
+-      aria-label="StakeUp home"
++      aria-label="Pledge. home"
+     >
+-      <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-gradient-to-br from-violet-500 to-purple-700 shadow-lg shadow-violet-500/30 group-hover:shadow-violet-500/50 transition-shadow duration-200">
+-        <Trophy className="w-4 h-4 text-white" />
++      <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-gradient-to-br from-[#91C687] to-[#785964] shadow-lg shadow-[#91C687]/30 group-hover:shadow-[#91C687]/50 transition-shadow duration-200">
++        <Trophy className="w-4 h-4 text-[#303D31]" />
+       </div>
+       {showText && (
+-        <span className="font-bold text-lg bg-gradient-to-r from-violet-300 via-purple-300 to-pink-300 bg-clip-text text-transparent tracking-tight">
+-          StakeUp
++        <span className="font-bold text-lg bg-gradient-to-r from-[#91C687] via-[#D9F6FF] to-[#AFC2D5] bg-clip-text text-transparent tracking-tight">
++          Pledge.
+         </span>
+       )}
+     </Link>
+@@ -101,7 +101,7 @@ function NotificationBell({ count = 0 }: { count?: number }) {
+       >
+         <Bell className="w-4.5 h-4.5 w-[18px] h-[18px]" />
+         {count > 0 && (
+-          <span className="absolute top-1.5 right-1.5 flex items-center justify-center min-w-[16px] h-4 rounded-full bg-violet-600 text-[10px] font-bold text-white px-1 shadow-lg shadow-violet-500/30">
++          <span className="absolute top-1.5 right-1.5 flex items-center justify-center min-w-[16px] h-4 rounded-full bg-violet-600 text-[10px] font-bold text-white px-1 shadow-lg shadow-[#91C687]/30">
+             {count > 9 ? "9+" : count}
+           </span>
+         )}
+@@ -109,13 +109,13 @@ function NotificationBell({ count = 0 }: { count?: number }) {
+ 
+       {/* Dropdown */}
+       {open && (
+-        <div className="absolute right-0 top-full mt-2 w-80 rounded-2xl bg-[#0d0d1a] border border-white/[0.08] shadow-2xl shadow-black/60 overflow-hidden z-50">
++        <div className="absolute right-0 top-full mt-2 w-80 rounded-2xl bg-[#263228] border border-white/[0.08] shadow-2xl shadow-black/60 overflow-hidden z-50">
+           <div className="flex items-center justify-between px-4 py-3 border-b border-white/[0.06]">
+             <span className="text-sm font-semibold text-white">
+               Notifications
+             </span>
+             {count > 0 && (
+-              <span className="text-xs text-violet-400 hover:text-violet-300 cursor-pointer font-medium">
++              <span className="text-xs text-[#91C687] hover:text-[#91C687] cursor-pointer font-medium">
+                 Mark all read
+               </span>
+             )}
+@@ -190,7 +190,7 @@ function NotificationBell({ count = 0 }: { count?: number }) {
+             <Link
+               href="/notifications"
+               onClick={() => setOpen(false)}
+-              className="block text-center text-xs font-medium text-violet-400 hover:text-violet-300 transition-colors"
++              className="block text-center text-xs font-medium text-[#91C687] hover:text-[#91C687] transition-colors"
+             >
+               View all notifications
+             </Link>
+@@ -222,7 +222,7 @@ function MobileMenu({
+   if (!isOpen) return null;
+ 
+   return (
+-    <div className="md:hidden border-t border-white/[0.06] bg-[#0d0d1a]/98 backdrop-blur-xl">
++    <div className="md:hidden border-t border-white/[0.06] bg-[#263228]/98 backdrop-blur-xl">
+       <nav className="px-4 py-3 space-y-1">
+         {links.map((link) => {
+           const isActive = link.exact
+@@ -237,7 +237,7 @@ function MobileMenu({
+               className={cn(
+                 "flex items-center justify-between px-3 py-2.5 rounded-lg text-sm font-medium transition-colors",
+                 isActive
+-                  ? "bg-violet-500/15 text-violet-300"
++                  ? "bg-[#91C687]/15 text-[#91C687]"
+                   : "text-white/60 hover:text-white hover:bg-white/5"
+               )}
+             >
+@@ -264,7 +264,7 @@ function MobileMenu({
+           <Link
+             href="/sign-up"
+             onClick={onClose}
+-            className="block px-4 py-2.5 text-sm font-semibold rounded-lg bg-gradient-to-r from-violet-600 to-purple-600 text-white text-center"
++            className="block px-4 py-2.5 text-sm font-semibold rounded-lg bg-gradient-to-r from-[#91C687] to-[#785964] text-white text-center"
+           >
+             Get Started
+           </Link>
+@@ -316,7 +316,7 @@ export function Navbar({
+       className={cn(
+         "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
+         scrolled
+-          ? "bg-[#080810]/85 backdrop-blur-xl border-b border-white/[0.06] shadow-lg shadow-black/40"
++          ? "bg-[#303D31]/85 backdrop-blur-xl border-b border-white/[0.06] shadow-lg shadow-black/40"
+           : "bg-transparent",
+         className
+       )}
+@@ -342,7 +342,7 @@ export function Navbar({
+                   className={cn(
+                     "relative flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200",
+                     isActive
+-                      ? "text-white bg-violet-500/10"
++                      ? "text-white bg-[#91C687]/10"
+                       : "text-white/55 hover:text-white hover:bg-white/5"
+                   )}
+                 >
+@@ -353,7 +353,7 @@ export function Navbar({
+                     </span>
+                   )}
+                   {isActive && (
+-                    <span className="absolute inset-x-3 -bottom-0.5 h-px bg-gradient-to-r from-violet-500 to-purple-500 rounded-full" />
++                    <span className="absolute inset-x-3 -bottom-0.5 h-px bg-gradient-to-r from-[#91C687] to-[#785964] rounded-full" />
+                   )}
+                 </Link>
+               );
+@@ -387,7 +387,7 @@ export function Navbar({
+                   className={cn(
+                     "hidden md:flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium transition-colors",
+                     pathname.startsWith("/dashboard")
+-                      ? "text-violet-300 bg-violet-500/10"
++                      ? "text-[#91C687] bg-[#91C687]/10"
+                       : "text-white/50 hover:text-white hover:bg-white/5"
+                   )}
+                 >
+@@ -403,8 +403,8 @@ export function Navbar({
+                   appearance={{
+                     elements: {
+                       avatarBox:
+-                        "w-8 h-8 ring-2 ring-violet-500/30 hover:ring-violet-500/60 transition-all duration-200",
+-                      userButtonPopoverCard: "bg-[#0d0d1a] border border-white/10",
++                        "w-8 h-8 ring-2 ring-[#91C687]/30 hover:ring-[#91C687]/60 transition-all duration-200",
++                      userButtonPopoverCard: "bg-[#263228] border border-white/10",
+                       userButtonPopoverActions: "text-white",
+                       userButtonPopoverActionButton:
+                         "text-white/70 hover:text-white hover:bg-white/5",
+@@ -424,7 +424,7 @@ export function Navbar({
+                 </Link>
+                 <Link
+                   href="/sign-up"
+-                  className="flex items-center gap-1.5 px-4 py-2 text-sm font-semibold rounded-lg bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-500 hover:to-purple-500 text-white transition-all duration-200 shadow-lg shadow-violet-500/20 hover:shadow-violet-500/35"
++                  className="flex items-center gap-1.5 px-4 py-2 text-sm font-semibold rounded-lg bg-gradient-to-r from-[#91C687] to-[#785964] hover:from-violet-500 hover:to-purple-500 text-white transition-all duration-200 shadow-lg shadow-[#91C687]/20 hover:shadow-[#91C687]/35"
+                 >
+                   Get Started
+                   <ChevronDown className="w-3.5 h-3.5 -rotate-90" />
+diff --git a/components/layout/Sidebar.tsx b/components/layout/Sidebar.tsx
+index 332c996..8d843ac 100644
+--- a/components/layout/Sidebar.tsx
++++ b/components/layout/Sidebar.tsx
+@@ -248,11 +248,11 @@ function SidebarNavItem({ item, isActive, collapsed }: NavItemProps) {
+         "relative flex items-center gap-3 rounded-xl text-sm font-medium transition-all duration-200 group",
+         collapsed ? "px-2 py-2.5 justify-center" : "px-3 py-2.5",
+         isActive
+-          ? "bg-violet-600/20 text-violet-300 border border-violet-500/30 shadow-sm shadow-violet-500/10"
++          ? "bg-[#785964]/20 text-[#91C687] border border-[#91C687]/30 shadow-sm shadow-violet-500/10"
+           : item.highlight
+           ? [
+-              "text-violet-400 border border-violet-500/20",
+-              "hover:bg-violet-600/10 hover:text-violet-300 hover:border-violet-500/40",
++              "text-[#91C687] border border-[#91C687]/20",
++              "hover:bg-violet-600/10 hover:text-[#91C687] hover:border-violet-500/40",
+             ]
+           : "text-white/55 hover:text-white hover:bg-white/[0.06] border border-transparent"
+       )}
+@@ -263,9 +263,9 @@ function SidebarNavItem({ item, isActive, collapsed }: NavItemProps) {
+           "shrink-0 transition-colors duration-200",
+           collapsed ? "w-5 h-5" : "w-4 h-4",
+           isActive
+-            ? "text-violet-400"
++            ? "text-[#91C687]"
+             : item.highlight
+-            ? "text-violet-400 group-hover:text-violet-300"
++            ? "text-[#91C687] group-hover:text-[#91C687]"
+             : "text-current"
+         )}
+       />
+@@ -275,7 +275,7 @@ function SidebarNavItem({ item, isActive, collapsed }: NavItemProps) {
+         <>
+           <span className="flex-1 truncate">{item.label}</span>
+           {typeof item.badge === "number" && item.badge > 0 && (
+-            <span className="flex items-center justify-center min-w-[20px] h-5 rounded-full bg-violet-600 text-[10px] font-bold text-white px-1.5 shadow-sm shadow-violet-500/30">
++            <span className="flex items-center justify-center min-w-[20px] h-5 rounded-full bg-violet-600 text-[10px] font-bold text-white px-1.5 shadow-sm shadow-[#91C687]/30">
+               {item.badge > 9 ? "9+" : item.badge}
+             </span>
+           )}
+@@ -284,7 +284,7 @@ function SidebarNavItem({ item, isActive, collapsed }: NavItemProps) {
+ 
+       {/* Dot badge (collapsed) */}
+       {collapsed && typeof item.badge === "number" && item.badge > 0 && (
+-        <span className="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-violet-500 shadow-sm shadow-violet-500/50" />
++        <span className="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-violet-500 shadow-sm shadow-[#91C687]/50" />
+       )}
+ 
+       {/* Active indicator line */}
+@@ -418,7 +418,7 @@ export function Sidebar({
+     return (
+       <aside
+         className={cn(
+-          "flex flex-col h-screen bg-[#0d0d1a] border-r border-white/[0.07] transition-all duration-300",
++          "flex flex-col h-screen bg-[#263228] border-r border-white/[0.07] transition-all duration-300",
+           effectiveCollapsed ? "w-[68px]" : "w-[240px]",
+           className
+         )}
+@@ -433,8 +433,8 @@ export function Sidebar({
+           {/* Logo mark */}
+           <Link
+             href="/dashboard"
+-            className="flex items-center justify-center w-8 h-8 rounded-lg bg-gradient-to-br from-violet-500 to-purple-700 shadow-lg shadow-violet-500/30 shrink-0 hover:shadow-violet-500/50 transition-shadow duration-200"
+-            aria-label="StakeUp Dashboard"
++            className="flex items-center justify-center w-8 h-8 rounded-lg bg-gradient-to-br from-violet-500 to-purple-700 shadow-lg shadow-[#91C687]/30 shrink-0 hover:shadow-[#91C687]/50 transition-shadow duration-200"
++            aria-label="Pledge. Dashboard"
+           >
+             <Zap className="w-4 h-4 text-white" />
+           </Link>
+@@ -445,7 +445,7 @@ export function Sidebar({
+                 href="/dashboard"
+                 className="font-bold text-lg bg-gradient-to-r from-violet-300 via-purple-300 to-pink-300 bg-clip-text text-transparent tracking-tight hover:opacity-80 transition-opacity"
+               >
+-                StakeUp
++                Pledge.
+               </Link>
+               <CollapseButton
+                 collapsed={effectiveCollapsed}
+@@ -457,7 +457,7 @@ export function Sidebar({
+           {effectiveCollapsed && (
+             <button
+               onClick={() => setCollapsed(false)}
+-              className="absolute right-0 translate-x-full top-5 flex items-center justify-center w-5 h-6 rounded-r-md bg-[#0d0d1a] border border-l-0 border-white/[0.07] text-white/30 hover:text-white transition-colors z-10"
++              className="absolute right-0 translate-x-full top-5 flex items-center justify-center w-5 h-6 rounded-r-md bg-[#263228] border border-l-0 border-white/[0.07] text-white/30 hover:text-white transition-colors z-10"
+               aria-label="Expand sidebar"
+             >
+               <ChevronRight className="w-3 h-3" />
+@@ -516,7 +516,7 @@ export function Sidebar({
+                 avatarBox:
+                   "w-8 h-8 ring-1 ring-violet-500/25 hover:ring-violet-500/50 transition-all duration-200",
+                 userButtonPopoverCard:
+-                  "bg-[#0d0d1a] border border-white/10 shadow-2xl shadow-black/60",
++                  "bg-[#263228] border border-white/10 shadow-2xl shadow-black/60",
+                 userButtonPopoverActions: "text-white",
+                 userButtonPopoverActionButton:
+                   "text-white/70 hover:text-white hover:bg-white/5",
+@@ -564,7 +564,7 @@ export function Sidebar({
+ 
+       {/* Mobile toggle button — shown below lg */}
+       <button
+-        className="lg:hidden fixed top-4 left-4 z-50 flex items-center justify-center w-9 h-9 rounded-xl bg-[#0d0d1a] border border-white/10 text-white/60 hover:text-white shadow-lg shadow-black/40 transition-colors"
++        className="lg:hidden fixed top-4 left-4 z-50 flex items-center justify-center w-9 h-9 rounded-xl bg-[#263228] border border-white/10 text-white/60 hover:text-white shadow-lg shadow-black/40 transition-colors"
+         onClick={() => setMobileOpen(true)}
+         aria-label="Open sidebar"
+       >
+diff --git a/components/ui/avatar.tsx b/components/ui/avatar.tsx
+index e7f48bf..15b2005 100644
+--- a/components/ui/avatar.tsx
++++ b/components/ui/avatar.tsx
+@@ -38,7 +38,7 @@ const AvatarFallback = React.forwardRef<
+   <AvatarPrimitive.Fallback
+     ref={ref}
+     className={cn(
+-      "flex h-full w-full items-center justify-center rounded-full bg-violet-600/30 text-violet-300 text-sm font-semibold",
++      "flex h-full w-full items-center justify-center rounded-full bg-[#785964]/30 text-[#91C687] text-sm font-semibold",
+       className
+     )}
+     {...props}
+diff --git a/components/ui/button.tsx b/components/ui/button.tsx
+index 2b8753b..355fc4a 100644
+--- a/components/ui/button.tsx
++++ b/components/ui/button.tsx
+@@ -18,9 +18,9 @@ const buttonVariants = cva(
+           "bg-white/10 text-white hover:bg-white/15 active:scale-95",
+         ghost:
+           "text-white/70 hover:text-white hover:bg-white/10 active:scale-95",
+-        link: "text-violet-400 underline-offset-4 hover:underline hover:text-violet-300",
++        link: "text-[#91C687] underline-offset-4 hover:underline hover:text-[#91C687]",
+         gradient:
+-          "bg-gradient-to-r from-violet-600 to-purple-600 text-white shadow-lg shadow-violet-500/30 hover:from-violet-500 hover:to-purple-500 active:scale-95",
++          "bg-gradient-to-r from-[#91C687] to-[#785964] text-white shadow-lg shadow-[#91C687]/30 hover:from-violet-500 hover:to-purple-500 active:scale-95",
+         success:
+           "bg-emerald-600 text-white shadow-lg shadow-emerald-500/25 hover:bg-emerald-500 active:scale-95",
+       },
+diff --git a/components/ui/card.tsx b/components/ui/card.tsx
+index 646e617..d1c28c8 100644
+--- a/components/ui/card.tsx
++++ b/components/ui/card.tsx
+@@ -9,7 +9,7 @@ const Card = React.forwardRef<
+     ref={ref}
+     className={cn(
+       "rounded-xl border border-white/10 bg-white/5 backdrop-blur-sm shadow-xl",
+-      glow && "shadow-violet-500/10 border-violet-500/20",
++      glow && "shadow-violet-500/10 border-[#91C687]/20",
+       className
+     )}
+     {...props}
+diff --git a/components/ui/progress.tsx b/components/ui/progress.tsx
+index 72bbc60..a842782 100644
+--- a/components/ui/progress.tsx
++++ b/components/ui/progress.tsx
+@@ -20,7 +20,7 @@ const Progress = React.forwardRef<
+   >
+     <ProgressPrimitive.Indicator
+       className={cn(
+-        "h-full w-full flex-1 bg-gradient-to-r from-violet-500 to-purple-500 transition-all duration-500",
++        "h-full w-full flex-1 bg-gradient-to-r from-[#91C687] to-[#785964] transition-all duration-500",
+         indicatorClassName
+       )}
+       style={{ transform: `translateX(-${100 - (value || 0)}%)` }}
+diff --git a/components/ui/select.tsx b/components/ui/select.tsx
+index b0b936e..ed2872c 100644
+--- a/components/ui/select.tsx
++++ b/components/ui/select.tsx
+@@ -115,7 +115,7 @@ const SelectItem = React.forwardRef<
+   >
+     <span className="absolute left-2 flex h-3.5 w-3.5 items-center justify-center">
+       <SelectPrimitive.ItemIndicator>
+-        <Check className="h-4 w-4 text-violet-400" />
++        <Check className="h-4 w-4 text-[#91C687]" />
+       </SelectPrimitive.ItemIndicator>
+     </span>
+     <SelectPrimitive.ItemText>{children}</SelectPrimitive.ItemText>
+diff --git a/lib/utils.ts b/lib/utils.ts
+index 3aa9f03..18964f2 100644
+--- a/lib/utils.ts
++++ b/lib/utils.ts
+@@ -70,7 +70,7 @@ export function getStatusColor(status: string): string {
+     ACTIVE: "text-green-400",
+     ELIMINATED: "text-red-400",
+     PENDING: "text-yellow-400",
+-    WINNER: "text-purple-400",
++    WINNER: "text-[#785964]",
+     COMPLETED: "text-blue-400",
+     DRAFT: "text-gray-400",
+   };
